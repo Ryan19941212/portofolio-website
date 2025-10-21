@@ -1,16 +1,65 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home - Claude">
+  <!-- Hero Section -->
+  <section class="min-h-[calc(100vh-5rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center space-y-8">
+        <!-- Greeting -->
+        <div class="animate-fade-in-up">
+          <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-4">
+            Hi, I'm Claude –
+          </h1>
+          <!-- Typewriter Effect -->
+          <div class="inline-block">
+            <h2 class="text-4xl md:text-6xl font-bold text-blue-600 typewriter inline-block">
+              A Builder of Ideas.
+            </h2>
+          </div>
+        </div>
+
+        <!-- Subtitle -->
+        <p class="text-lg md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
+          Turning ideas into reality through code and creativity.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-6 animate-fade-in" style="animation-delay: 0.6s;">
+          <a
+            href="/projects"
+            class="group inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 font-medium text-lg"
+          >
+            <span>View Projects</span>
+            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-xl hover:bg-blue-50 transition-all duration-300 font-medium text-lg hover:scale-105"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+  }
+</style>

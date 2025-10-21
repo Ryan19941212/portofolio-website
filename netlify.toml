@@ -1,0 +1,12 @@
+# Netlify Build Settings
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Netlify Forms - Enable form handling
+[build.environment]
+  NODE_VERSION = "18"
+
+# Plugins
+[[plugins]]
+  package = "@netlify/plugin-forms"

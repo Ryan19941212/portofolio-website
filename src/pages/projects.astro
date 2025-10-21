@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'E-Commerce Platform',
+    description: 'A full-stack e-commerce website with shopping cart, checkout, and admin dashboard.',
+    tags: ['React', 'Node.js', 'MongoDB'],
+    demoUrl: 'https://demo-ecommerce.example.com',
+    githubUrl: 'https://github.com/yourusername/ecommerce',
+  },
+  {
+    title: 'Task Management App',
+    description: 'Team collaboration tool with kanban boards and real-time updates.',
+    tags: ['Vue.js', 'Express', 'Socket.io'],
+    demoUrl: 'https://demo-taskmanager.example.com',
+    githubUrl: 'https://github.com/yourusername/task-manager',
+  },
+  {
+    title: 'Weather Forecast App',
+    description: 'Weather application with 7-day forecast and interactive maps.',
+    tags: ['React', 'TypeScript', 'API'],
+    demoUrl: 'https://demo-weather.example.com',
+    githubUrl: 'https://github.com/yourusername/weather-app',
+  },
+];
+---
+
+<BaseLayout title="Projects - Claude" description="View my project portfolio">
+  <!-- Header -->
+  <section class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fade-in-up">
+        My Projects
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        A collection of my recent work in web development
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {projects.map((project, index) => (
+          <div
+            class="animate-fade-in-up"
+            style={`animation-delay: ${index * 0.1}s;`}
+          >
+            <ProjectCard {...project} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
