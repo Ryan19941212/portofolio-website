@@ -1,35 +1,60 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'E-Commerce Platform',
+    description: 'A full-stack e-commerce website with shopping cart, checkout, and admin dashboard.',
+    tags: ['React', 'Node.js', 'MongoDB'],
+    demoUrl: 'https://demo-ecommerce.example.com',
+    githubUrl: 'https://github.com/yourusername/ecommerce',
+  },
+  {
+    title: 'Task Management App',
+    description: 'Team collaboration tool with kanban boards and real-time updates.',
+    tags: ['Vue.js', 'Express', 'Socket.io'],
+    demoUrl: 'https://demo-taskmanager.example.com',
+    githubUrl: 'https://github.com/yourusername/task-manager',
+  },
+  {
+    title: 'Weather Forecast App',
+    description: 'Weather application with 7-day forecast and interactive maps.',
+    tags: ['React', 'TypeScript', 'API'],
+    demoUrl: 'https://demo-weather.example.com',
+    githubUrl: 'https://github.com/yourusername/weather-app',
+  },
+];
 ---
 
-<BaseLayout title="Home - Claude">
+<BaseLayout title="Portfolio - Claude" description="Full Stack Developer Portfolio">
   <!-- Hero Section -->
-  <section class="min-h-[calc(100vh-5rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-20 px-6">
+  <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 px-6 transition-colors duration-300">
     <div class="max-w-5xl mx-auto">
       <div class="text-center space-y-8">
         <!-- Greeting -->
         <div class="animate-fade-in-up">
-          <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-4">
+          <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 transition-colors">
             Hi, I'm Claude –
           </h1>
           <!-- Typewriter Effect -->
           <div class="inline-block">
-            <h2 class="text-4xl md:text-6xl font-bold text-blue-600 typewriter inline-block">
+            <h2 class="text-4xl md:text-6xl font-bold text-blue-600 dark:text-blue-400 typewriter inline-block transition-colors">
               A Builder of Ideas.
             </h2>
           </div>
         </div>
 
         <!-- Subtitle -->
-        <p class="text-lg md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
+        <p class="text-lg md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in transition-colors" style="animation-delay: 0.3s;">
           Turning ideas into reality through code and creativity.
         </p>
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center pt-6 animate-fade-in" style="animation-delay: 0.6s;">
           <a
-            href="/projects"
-            class="group inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 font-medium text-lg"
+            href="#projects"
+            class="group inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 font-medium text-lg"
           >
             <span>View Projects</span>
             <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,8 +62,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </svg>
           </a>
           <a
-            href="/contact"
-            class="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-xl hover:bg-blue-50 transition-all duration-300 font-medium text-lg hover:scale-105"
+            href="#contact"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-300 font-medium text-lg hover:scale-105"
           >
             Get in Touch
           </a>
@@ -46,7 +71,292 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in-up transition-colors">
+          My Projects
+        </h2>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors">
+          A collection of my recent work in web development
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {projects.map((project, index) => (
+          <div
+            class="animate-fade-in-up"
+            style={`animation-delay: ${index * 0.1}s;`}
+          >
+            <ProjectCard {...project} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume" class="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-8">
+      <div class="animate-fade-in-up">
+        <h2 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 transition-colors">
+          Resume
+        </h2>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed transition-colors">
+          Full Stack Developer | 5+ years experience
+        </p>
+      </div>
+
+      <!-- Self Introduction -->
+      <div class="max-w-3xl mx-auto animate-fade-in" style="animation-delay: 0.2s;">
+        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-4 transition-colors">
+          Passionate about building elegant and efficient web applications that solve real-world problems.
+          With expertise in modern frameworks and a strong foundation in both frontend and backend development,
+          I create seamless user experiences backed by robust, scalable systems.
+        </p>
+        <p class="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed transition-colors">
+          Specializing in React, TypeScript, Node.js, and cloud technologies.
+          Always eager to learn new tools and best practices to deliver high-quality solutions.
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8 animate-fade-in" style="animation-delay: 0.4s;">
+        <!-- Download PDF Button -->
+        <a
+          href="/resume.pdf"
+          download
+          class="group relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700 text-white rounded-2xl hover:from-blue-600 hover:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-2xl font-semibold text-lg overflow-hidden transform hover:scale-105"
+        >
+          <!-- Background effect -->
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 dark:from-blue-500 dark:to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+          <!-- Content -->
+          <div class="relative flex items-center">
+            <svg class="w-6 h-6 mr-3 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Download PDF</span>
+          </div>
+        </a>
+
+        <!-- View Online Button -->
+        <a
+          href="https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_FILE_ID/view"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-600 text-blue-600 dark:text-blue-300 border-2 border-blue-500 dark:border-blue-400 rounded-2xl hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-300 shadow-md hover:shadow-xl font-semibold text-lg overflow-hidden transform hover:scale-105"
+        >
+          <!-- Background effect -->
+          <div class="absolute inset-0 bg-blue-100 dark:bg-gray-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+
+          <!-- Content -->
+          <div class="relative flex items-center">
+            <svg class="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            <span>View Online</span>
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      <!-- Helper Text -->
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-6 animate-fade-in transition-colors" style="animation-delay: 0.6s;">
+        Feel free to download a copy or view it online
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-6 mb-12">
+      <h2 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white animate-fade-in-up transition-colors">
+        Contact Me
+      </h2>
+      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto transition-colors">
+        Let's work together on your next project
+      </p>
+    </div>
+
+    <div class="max-w-2xl mx-auto px-6 lg:px-8">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100 dark:border-gray-700 animate-fade-in transition-colors" style="animation-delay: 0.2s;">
+
+        <!-- Thank You Message (Hidden by default) -->
+        <div id="thank-you-message" class="hidden text-center space-y-6">
+          <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 dark:bg-green-900 rounded-full mb-4 transition-colors">
+            <svg class="w-10 h-10 text-green-600 dark:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold text-gray-900 dark:text-white transition-colors">
+            Thank You!
+          </h3>
+          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed transition-colors">
+            Your message has been sent successfully. I'll get back to you within 24 hours.
+          </p>
+          <button
+            id="send-another"
+            class="inline-flex items-center px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white rounded-xl hover:bg-blue-700 dark:hover:bg-blue-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl"
+          >
+            Send Another Message
+          </button>
+        </div>
+
+        <!-- Contact Form -->
+        <div id="contact-form-container">
+          <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center transition-colors">
+            Send me a message
+          </h3>
+
+          <!-- Netlify Form -->
+          <form
+            id="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            class="space-y-6"
+          >
+            <!-- Hidden fields for Netlify -->
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden">
+              <label>
+                Don't fill this out if you're human: <input name="bot-field" />
+              </label>
+            </p>
+
+            <!-- Name -->
+            <div>
+              <label for="name" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 transition-colors">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-5 py-4 border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 dark:hover:border-gray-500"
+                placeholder="Your name"
+              />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 transition-colors">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-5 py-4 border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 dark:hover:border-gray-500"
+                placeholder="your.email@example.com"
+              />
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="message" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 transition-colors">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                class="w-full px-5 py-4 border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 resize-none hover:border-gray-300 dark:hover:border-gray-500"
+                placeholder="Your message..."
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-4">
+              <button
+                type="submit"
+                id="submit-button"
+                class="w-full bg-blue-600 dark:bg-blue-500 text-white px-8 py-4 rounded-xl hover:bg-blue-700 dark:hover:bg-blue-600 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02]"
+              >
+                Send Message
+              </button>
+            </div>
+
+            <p class="text-sm text-gray-500 dark:text-gray-400 text-center pt-2 transition-colors">
+              I'll get back to you within 24 hours
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const formContainer = document.getElementById('contact-form-container');
+    const thankYouMessage = document.getElementById('thank-you-message');
+    const sendAnotherButton = document.getElementById('send-another');
+    const submitButton = document.getElementById('submit-button');
+
+    // Handle form submission
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Disable submit button and show loading state
+      if (submitButton) {
+        submitButton.textContent = 'Sending...';
+        submitButton.setAttribute('disabled', 'true');
+      }
+
+      // Get form data
+      const formData = new FormData(form);
+
+      try {
+        // Submit to Netlify
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData as any).toString(),
+        });
+
+        if (response.ok) {
+          // Hide form and show thank you message
+          formContainer?.classList.add('hidden');
+          thankYouMessage?.classList.remove('hidden');
+
+          // Reset form
+          form.reset();
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Sorry, there was an error sending your message. Please try again.');
+      } finally {
+        // Re-enable submit button
+        if (submitButton) {
+          submitButton.textContent = 'Send Message';
+          submitButton.removeAttribute('disabled');
+        }
+      }
+    });
+
+    // Handle "Send Another Message" button
+    sendAnotherButton?.addEventListener('click', () => {
+      thankYouMessage?.classList.add('hidden');
+      formContainer?.classList.remove('hidden');
+      // Scroll to form
+      formContainer?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
 
 <style>
   @keyframes fadeIn {
@@ -61,5 +371,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .animate-fade-in {
     opacity: 0;
     animation: fadeIn 1s ease-in forwards;
+  }
+
+  .animate-fade-in-up {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
   }
 </style>
