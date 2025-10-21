@@ -1,12 +1,13 @@
 # Netlify Build Settings
 [build]
-  command = "npm install --omit=optional && npm run build"
+  command = "npm ci --omit=optional || npm install --omit=optional && npm run build"
   publish = "dist"
 
 # Netlify Forms - Enable form handling
 [build.environment]
   NODE_VERSION = "18"
   NPM_FLAGS = "--omit=optional"
+  NPM_CONFIG_OPTIONAL = "false"
 
 # Plugins
 [[plugins]]
