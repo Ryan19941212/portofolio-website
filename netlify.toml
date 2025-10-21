@@ -5,7 +5,7 @@
 
 # Netlify Forms - Enable form handling
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
   NPM_FLAGS = "--omit=optional"
   NPM_CONFIG_OPTIONAL = "false"
 
