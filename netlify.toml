@@ -1,8 +1,0 @@
-# Netlify Build Settings
-[build]
-  command = "npm install && npm run build"
-  publish = "dist"
-
-# Environment
-[build.environment]
-  NODE_VERSION = "20"
