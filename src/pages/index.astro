@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import SkillsCarousel from '../components/SkillsCarousel';
 
 const projects = [
   {
@@ -76,6 +77,9 @@ const projects = [
       </div>
     </div>
   </section>
+
+  <!-- Skills Section -->
+  <SkillsCarousel client:only="react" />
 
   <!-- Resume Section with Glass Card -->
   <section id="resume" class="min-h-screen py-24 bg-black relative overflow-hidden">
