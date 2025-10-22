@@ -26,7 +26,7 @@ const skills: Skill[] = [
   // Product Tools
   { name: 'Jira', icon: SiJira, color: '#0052CC', category: 'product' },
   { name: 'Figma', icon: SiFigma, color: '#F24E1E', category: 'product' },
-  { name: 'Notion', icon: SiNotion, color: '#000000', category: 'product' },
+  { name: 'Notion', icon: SiNotion, color: '#ffffff', category: 'product' },
 
   // Tech Stack
   { name: 'Python', icon: SiPython, color: '#3776AB', category: 'tech' },
@@ -118,34 +118,21 @@ const SkillsCarousel: React.FC = () => {
           Skills
         </motion.h2>
 
-        {/* Animated Marquees */}
+        {/* Animated Marquee */}
         <div className="relative mb-8">
           {/* Gradient Overlays */}
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
-          {/* First Row - Product Tools + Tech Stack */}
+          {/* Single Row - All Skills */}
           <Marquee
             gradient={false}
             speed={40}
             pauseOnHover={true}
             className="py-8"
           >
-            {skills.slice(0, 8).map((skill, index) => (
+            {skills.map((skill, index) => (
               <SkillCard key={`${skill.name}-${index}`} skill={skill} index={index} />
-            ))}
-          </Marquee>
-
-          {/* Second Row - AI & Automation (reverse direction) */}
-          <Marquee
-            gradient={false}
-            speed={35}
-            direction="right"
-            pauseOnHover={true}
-            className="py-8"
-          >
-            {skills.slice(8).map((skill, index) => (
-              <SkillCard key={`${skill.name}-reverse-${index}`} skill={skill} index={index} />
             ))}
           </Marquee>
         </div>

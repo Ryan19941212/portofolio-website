@@ -54,7 +54,9 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl px-4">
-              Ryan Huang | <span className="gradient-underline bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AI Product Manager</span>
+              Ryan Huang
+              <br />
+              <span className="gradient-underline bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AI Product Manager</span>
             </h1>
           </motion.div>
 
