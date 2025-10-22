@@ -6,11 +6,12 @@
 /* Custom global styles */
 @layer base {
   body {
-    @apply bg-white text-gray-900 antialiased;
+    @apply bg-black text-white antialiased;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
 
   html {
+    @apply bg-black;
     scroll-behavior: smooth;
   }
 }

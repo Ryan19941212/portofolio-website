@@ -28,33 +28,41 @@ const projects = [
 ---
 
 <BaseLayout title="Portfolio - Claude" description="Full Stack Developer Portfolio">
-  <!-- Hero Section -->
-  <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:bg-black py-20 px-6 transition-colors duration-300">
-    <div class="max-w-5xl mx-auto">
+  <!-- Hero Section with Gradient Background -->
+  <section id="home" class="min-h-screen flex items-center justify-center bg-black py-20 px-6 relative overflow-hidden">
+    <!-- Animated gradient background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-pink-600/20 animate-gradient"></div>
+    <div class="absolute inset-0 backdrop-blur-3xl"></div>
+
+    <!-- Glow effects -->
+    <div class="absolute top-20 left-20 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
       <div class="text-center space-y-8">
         <!-- Greeting -->
         <div class="animate-fade-in-up">
-          <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 transition-colors">
+          <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 drop-shadow-2xl">
             Hi, I'm Claude –
           </h1>
-          <!-- Typewriter Effect -->
+          <!-- Typewriter Effect with Gradient -->
           <div class="inline-block">
-            <h2 class="text-4xl md:text-6xl font-bold text-blue-600 dark:text-blue-400 typewriter inline-block transition-colors">
+            <h2 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent typewriter inline-block">
               A Builder of Ideas.
             </h2>
           </div>
         </div>
 
         <!-- Subtitle -->
-        <p class="text-lg md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in transition-colors" style="animation-delay: 0.3s;">
+        <p class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
           Turning ideas into reality through code and creativity.
         </p>
 
-        <!-- CTA Buttons -->
+        <!-- CTA Buttons with Glass Effect -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center pt-6 animate-fade-in" style="animation-delay: 0.6s;">
           <a
             href="#projects"
-            class="group inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 font-medium text-lg"
+            class="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-500/70 hover:scale-105 font-medium text-lg"
           >
             <span>View Projects</span>
             <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,7 +71,7 @@ const projects = [
           </a>
           <a
             href="#contact"
-            class="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-300 font-medium text-lg hover:scale-105"
+            class="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 rounded-xl hover:bg-white/20 transition-all duration-300 font-medium text-lg hover:scale-105"
           >
             Get in Touch
           </a>
@@ -73,13 +81,16 @@ const projects = [
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="py-24 bg-white dark:bg-black transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+  <section id="projects" class="py-24 bg-black relative">
+    <!-- Background pattern -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/5 to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in-up transition-colors">
+        <h2 class="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in-up">
           My Projects
         </h2>
-        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors">
+        <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
           A collection of my recent work in web development
         </p>
       </div>
@@ -97,26 +108,30 @@ const projects = [
     </div>
   </section>
 
-  <!-- Resume Section -->
-  <section id="resume" class="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:bg-black transition-colors duration-300">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-8">
+  <!-- Resume Section with Glass Card -->
+  <section id="resume" class="py-24 bg-black relative overflow-hidden">
+    <!-- Glow effects -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-8 relative z-10">
       <div class="animate-fade-in-up">
-        <h2 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 transition-colors">
+        <h2 class="text-5xl md:text-6xl font-bold text-white mb-6">
           Resume
         </h2>
-        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed transition-colors">
+        <p class="text-xl md:text-2xl text-gray-400 leading-relaxed">
           Full Stack Developer | 5+ years experience
         </p>
       </div>
 
-      <!-- Self Introduction -->
-      <div class="max-w-3xl mx-auto animate-fade-in" style="animation-delay: 0.2s;">
-        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-4 transition-colors">
+      <!-- Glass card for resume content -->
+      <div class="max-w-3xl mx-auto animate-fade-in bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl" style="animation-delay: 0.2s;">
+        <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-4">
           Passionate about building elegant and efficient web applications that solve real-world problems.
           With expertise in modern frameworks and a strong foundation in both frontend and backend development,
           I create seamless user experiences backed by robust, scalable systems.
         </p>
-        <p class="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed transition-colors">
+        <p class="text-base md:text-lg text-gray-400 leading-relaxed">
           Specializing in React, TypeScript, Node.js, and cloud technologies.
           Always eager to learn new tools and best practices to deliver high-quality solutions.
         </p>
@@ -124,15 +139,12 @@ const projects = [
 
       <!-- Action Buttons -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8 animate-fade-in" style="animation-delay: 0.4s;">
-        <!-- Download PDF Button -->
+        <!-- Download PDF Button with Glow -->
         <a
           href="/resume.pdf"
           download
-          class="group relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700 text-white rounded-2xl hover:from-blue-600 hover:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-2xl font-semibold text-lg overflow-hidden transform hover:scale-105"
+          class="group relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg shadow-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/70 font-semibold text-lg overflow-hidden transform hover:scale-105"
         >
-          <!-- Background effect -->
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 dark:from-blue-500 dark:to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
           <!-- Content -->
           <div class="relative flex items-center">
             <svg class="w-6 h-6 mr-3 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,16 +154,13 @@ const projects = [
           </div>
         </a>
 
-        <!-- View Online Button -->
+        <!-- View Online Button Glass Effect -->
         <a
           href="https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_FILE_ID/view"
           target="_blank"
           rel="noopener noreferrer"
-          class="group relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-600 text-blue-600 dark:text-blue-300 border-2 border-blue-500 dark:border-blue-400 rounded-2xl hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-300 shadow-md hover:shadow-xl font-semibold text-lg overflow-hidden transform hover:scale-105"
+          class="group relative inline-flex items-center justify-center px-10 py-5 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 rounded-2xl hover:bg-white/20 transition-all duration-300 shadow-md hover:shadow-xl font-semibold text-lg overflow-hidden transform hover:scale-105"
         >
-          <!-- Background effect -->
-          <div class="absolute inset-0 bg-blue-100 dark:bg-gray-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-
           <!-- Content -->
           <div class="relative flex items-center">
             <svg class="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,42 +176,43 @@ const projects = [
       </div>
 
       <!-- Helper Text -->
-      <p class="text-sm text-gray-500 dark:text-gray-400 mt-6 animate-fade-in transition-colors" style="animation-delay: 0.6s;">
+      <p class="text-sm text-gray-500 mt-6 animate-fade-in" style="animation-delay: 0.6s;">
         Feel free to download a copy or view it online
       </p>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-24 bg-white dark:bg-black transition-colors duration-300">
+  <!-- Contact Section with Glass Form -->
+  <section id="contact" class="py-24 bg-black relative">
     <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-6 mb-12">
-      <h2 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white animate-fade-in-up transition-colors">
+      <h2 class="text-5xl md:text-6xl font-bold text-white animate-fade-in-up">
         Contact Me
       </h2>
-      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto transition-colors">
+      <p class="text-xl md:text-2xl text-gray-400 leading-relaxed max-w-2xl mx-auto">
         Let's work together on your next project
       </p>
     </div>
 
     <div class="max-w-2xl mx-auto px-6 lg:px-8">
-      <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100 dark:border-gray-800 animate-fade-in transition-colors" style="animation-delay: 0.2s;">
+      <!-- Glass morphism form container -->
+      <div class="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-12 border border-white/10 animate-fade-in" style="animation-delay: 0.2s;">
 
-        <!-- Thank You Message (Hidden by default) -->
+        <!-- Thank You Message -->
         <div id="thank-you-message" class="hidden text-center space-y-6">
-          <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 dark:bg-green-900 rounded-full mb-4 transition-colors">
-            <svg class="w-10 h-10 text-green-600 dark:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="inline-flex items-center justify-center w-20 h-20 bg-green-500/20 backdrop-blur-md rounded-full mb-4 border border-green-500/30">
+            <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
           </div>
-          <h3 class="text-3xl font-bold text-gray-900 dark:text-white transition-colors">
+          <h3 class="text-3xl font-bold text-white">
             Thank You!
           </h3>
-          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed transition-colors">
+          <p class="text-lg text-gray-400 leading-relaxed">
             Your message has been sent successfully. I'll get back to you within 24 hours.
           </p>
           <button
             id="send-another"
-            class="inline-flex items-center px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white rounded-xl hover:bg-blue-700 dark:hover:bg-blue-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl"
+            class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 font-semibold shadow-lg shadow-blue-500/50 hover:shadow-xl"
           >
             Send Another Message
           </button>
@@ -210,7 +220,7 @@ const projects = [
 
         <!-- Contact Form -->
         <div id="contact-form-container">
-          <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center transition-colors">
+          <h3 class="text-3xl font-bold text-white mb-8 text-center">
             Send me a message
           </h3>
 
@@ -233,7 +243,7 @@ const projects = [
 
             <!-- Name -->
             <div>
-              <label for="name" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 transition-colors">
+              <label for="name" class="block text-sm font-semibold text-gray-300 mb-3">
                 Name
               </label>
               <input
@@ -241,14 +251,14 @@ const projects = [
                 id="name"
                 name="name"
                 required
-                class="w-full px-5 py-4 border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 dark:hover:border-gray-600"
+                class="w-full px-5 py-4 bg-white/5 backdrop-blur-md border-2 border-white/10 text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-white/20 placeholder-gray-500"
                 placeholder="Your name"
               />
             </div>
 
             <!-- Email -->
             <div>
-              <label for="email" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 transition-colors">
+              <label for="email" class="block text-sm font-semibold text-gray-300 mb-3">
                 Email
               </label>
               <input
@@ -256,14 +266,14 @@ const projects = [
                 id="email"
                 name="email"
                 required
-                class="w-full px-5 py-4 border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 dark:hover:border-gray-600"
+                class="w-full px-5 py-4 bg-white/5 backdrop-blur-md border-2 border-white/10 text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-white/20 placeholder-gray-500"
                 placeholder="your.email@example.com"
               />
             </div>
 
             <!-- Message -->
             <div>
-              <label for="message" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 transition-colors">
+              <label for="message" class="block text-sm font-semibold text-gray-300 mb-3">
                 Message
               </label>
               <textarea
@@ -271,7 +281,7 @@ const projects = [
                 name="message"
                 rows="6"
                 required
-                class="w-full px-5 py-4 border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 resize-none hover:border-gray-300 dark:hover:border-gray-600"
+                class="w-full px-5 py-4 bg-white/5 backdrop-blur-md border-2 border-white/10 text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 resize-none hover:border-white/20 placeholder-gray-500"
                 placeholder="Your message..."
               ></textarea>
             </div>
@@ -281,13 +291,13 @@ const projects = [
               <button
                 type="submit"
                 id="submit-button"
-                class="w-full bg-blue-600 dark:bg-blue-500 text-white px-8 py-4 rounded-xl hover:bg-blue-700 dark:hover:bg-blue-600 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02]"
+                class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 font-semibold text-lg shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-500/70 hover:scale-[1.02]"
               >
                 Send Message
               </button>
             </div>
 
-            <p class="text-sm text-gray-500 dark:text-gray-400 text-center pt-2 transition-colors">
+            <p class="text-sm text-gray-500 text-center pt-2">
               I'll get back to you within 24 hours
             </p>
           </form>
@@ -376,6 +386,23 @@ const projects = [
   .animate-fade-in-up {
     opacity: 0;
     animation: fadeIn 1s ease-in forwards;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
   }
 
   /* Smooth scrolling */

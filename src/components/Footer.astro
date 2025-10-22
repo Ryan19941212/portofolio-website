@@ -2,21 +2,29 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-100 dark:bg-black border-t border-gray-200 dark:border-gray-800 mt-auto transition-colors duration-300">
-  <div class="max-w-7xl mx-auto py-12 px-6 lg:px-8">
-    <div class="text-center space-y-3">
-      <p class="text-gray-600 dark:text-gray-400 text-xs font-medium transition-colors">
-        Designed by Claude, Built with
+<!-- Glass morphism footer with gradient accents -->
+<footer class="bg-black/80 backdrop-blur-xl border-t border-white/10 mt-auto relative overflow-hidden">
+  <!-- Subtle gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-t from-blue-500/5 via-purple-500/5 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto py-12 px-6 lg:px-8 relative z-10">
+    <div class="text-center space-y-4">
+      <p class="text-gray-400 text-sm font-medium">
+        Designed by
+        <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-bold">
+          Claude
+        </span>
+        , Built with
         <a
           href="https://astro.build"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors duration-200 underline decoration-blue-200 dark:decoration-blue-800 hover:decoration-blue-400 dark:hover:decoration-blue-600"
+          class="text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-200 underline decoration-blue-500/30 hover:decoration-blue-400/60"
         >
           Astro
         </a>
       </p>
-      <p class="text-gray-400 dark:text-gray-500 text-xs transition-colors">
+      <p class="text-gray-500 text-xs">
         &copy; {currentYear} All rights reserved.
       </p>
     </div>
