@@ -35,8 +35,8 @@ const projects = [
     <div class="absolute inset-0 backdrop-blur-3xl"></div>
 
     <!-- Glow effects -->
-    <div class="absolute top-20 left-20 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse"></div>
-    <div class="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute top-20 left-20 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl"></div>
 
     <div class="max-w-5xl mx-auto relative z-10">
       <div class="text-center space-y-8">
@@ -81,13 +81,13 @@ const projects = [
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="py-24 bg-black relative overflow-hidden">
+  <section id="projects" class="min-h-screen py-24 bg-black relative overflow-hidden">
     <!-- Animated gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-blue-600/10 to-pink-600/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-600/15 via-blue-600/15 to-pink-600/15 animate-gradient"></div>
 
     <!-- Glow effects -->
-    <div class="absolute top-1/4 left-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/4 left-10 w-96 h-96 bg-purple-500/25 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-500/25 rounded-full blur-3xl"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16">
@@ -113,15 +113,16 @@ const projects = [
   </section>
 
   <!-- Resume Section with Glass Card -->
-  <section id="resume" class="py-24 bg-black relative overflow-hidden">
+  <section id="resume" class="min-h-screen py-24 bg-black relative overflow-hidden">
     <!-- Animated gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-pink-600/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-purple-600/15 to-pink-600/15 animate-gradient"></div>
 
     <!-- Glow effects -->
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 0.5s;"></div>
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/25 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/25 rounded-full blur-3xl"></div>
 
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-8 relative z-10">
+    <div class="relative z-10 w-full">
+      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-8">
       <div class="animate-fade-in-up">
         <h2 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
           Resume
@@ -186,28 +187,30 @@ const projects = [
       <p class="text-sm text-gray-500 mt-6 animate-fade-in" style="animation-delay: 0.6s;">
         Feel free to download a copy or view it online
       </p>
+      </div>
     </div>
   </section>
 
   <!-- Contact Section with Glass Form -->
-  <section id="contact" class="py-24 bg-black relative overflow-hidden">
+  <section id="contact" class="min-h-screen py-24 bg-black relative overflow-hidden">
     <!-- Animated gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-pink-600/10 via-purple-600/10 to-blue-600/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-pink-600/15 via-purple-600/15 to-blue-600/15 animate-gradient"></div>
 
     <!-- Glow effects -->
-    <div class="absolute top-20 right-20 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
-    <div class="absolute bottom-20 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 0.7s;"></div>
+    <div class="absolute top-20 right-20 w-96 h-96 bg-pink-500/25 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-20 w-96 h-96 bg-blue-500/25 rounded-full blur-3xl"></div>
 
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-6 mb-12 relative z-10">
-      <h2 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-fade-in-up">
-        Contact Me
-      </h2>
-      <p class="text-xl md:text-2xl text-gray-400 leading-relaxed max-w-2xl mx-auto">
-        Let's work together on your next project
-      </p>
-    </div>
+    <div class="relative z-10 w-full">
+      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-6 mb-12">
+        <h2 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-fade-in-up">
+          Contact Me
+        </h2>
+        <p class="text-xl md:text-2xl text-gray-400 leading-relaxed max-w-2xl mx-auto">
+          Let's work together on your next project
+        </p>
+      </div>
 
-    <div class="max-w-2xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="max-w-2xl mx-auto px-6 lg:px-8">
       <!-- Glass morphism form container -->
       <div class="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-12 border border-white/10 animate-fade-in" style="animation-delay: 0.2s;">
 
@@ -317,6 +320,7 @@ const projects = [
           </form>
         </div>
       </div>
+    </div>
     </div>
   </section>
 </BaseLayout>
