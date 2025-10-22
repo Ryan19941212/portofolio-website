@@ -60,12 +60,12 @@ const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
 const SkillsCarousel: React.FC = () => {
   return (
     <section
-      className="min-h-screen flex items-center justify-center py-20 px-6 relative overflow-hidden"
+      className="py-16 px-6 relative overflow-hidden"
       style={{ backgroundColor: '#0d0d0d' }}
     >
-      <div className="w-full max-w-7xl">
+      <div className="w-full max-w-7xl mx-auto">
         {/* Title */}
-        <h2 className="text-5xl md:text-6xl font-bold text-white text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12">
           Skills
         </h2>
 
@@ -89,7 +89,7 @@ const SkillsCarousel: React.FC = () => {
         </div>
 
         {/* Optional: Add a decorative element */}
-        <div className="mt-12 text-center">
+        <div className="mt-8 text-center">
           <p className="text-gray-500 text-sm">
             Hover to pause • Continuously learning new technologies
           </p>
