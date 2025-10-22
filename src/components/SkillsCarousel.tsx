@@ -11,7 +11,8 @@ import {
   SiMysql,
   SiPytorch,
   SiGooglegemini,
-  SiAutodesk
+  SiAutodesk,
+  SiRhinoceros
 } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
@@ -38,9 +39,9 @@ const skills: Skill[] = [
   // AI & Automation
   { name: 'PyTorch', icon: SiPytorch, color: '#EE4C2C', category: 'ai' },
   { name: 'Gemini', icon: SiGooglegemini, color: '#8E75B2', category: 'ai' },
-  { name: 'AutoCAD API', icon: SiAutodesk, color: '#E51050', category: 'ai' },
+  { name: 'AutoCAD', icon: SiAutodesk, color: '#E51050', category: 'ai' },
   { name: 'Revit', icon: SiAutodesk, color: '#0696D7', category: 'ai' },
-  { name: 'Rhino', icon: SiAutodesk, color: '#FFD700', category: 'ai' },
+  { name: 'Rhino', icon: SiRhinoceros, color: '#801010', category: 'ai' },
 ];
 
 const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) => {
