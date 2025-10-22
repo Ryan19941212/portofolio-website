@@ -40,7 +40,7 @@ const skills: Skill[] = [
   { name: 'Gemini', icon: SiGooglegemini, color: '#8E75B2', category: 'ai' },
   { name: 'AutoCAD API', icon: SiAutodesk, color: '#E51050', category: 'ai' },
   { name: 'Revit', icon: SiAutodesk, color: '#0696D7', category: 'ai' },
-  { name: 'RhinoMCP', icon: SiAutodesk, color: '#FFD700', category: 'ai' },
+  { name: 'Rhino', icon: SiAutodesk, color: '#FFD700', category: 'ai' },
 ];
 
 const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) => {
