@@ -5,21 +5,57 @@ interface Props {
   tags: string[];
   demoUrl?: string;
   githubUrl?: string;
+  videoUrl?: string; // YouTube URL or local video path
 }
 
-const { title, description, tags, demoUrl, githubUrl } = Astro.props;
+const { title, description, tags, demoUrl, githubUrl, videoUrl } = Astro.props;
+
+// Check if it's a YouTube URL
+const isYouTube = videoUrl?.includes('youtube.com') || videoUrl?.includes('youtu.be');
+let embedUrl = '';
+
+if (isYouTube && videoUrl) {
+  // Convert YouTube URL to embed URL
+  const videoId = videoUrl.includes('youtu.be')
+    ? videoUrl.split('youtu.be/')[1]?.split('?')[0]
+    : videoUrl.split('v=')[1]?.split('&')[0];
+  embedUrl = `https://www.youtube.com/embed/${videoId}`;
+}
 ---
 
 <!-- Glass morphism project card -->
 <div class="group bg-white/5 backdrop-blur-xl rounded-2xl overflow-hidden shadow-xl shadow-black/50 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 transform hover:scale-105 border border-white/10 hover:border-blue-500/50">
-  <!-- Project Image Placeholder with Gradient -->
-  <div class="h-52 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center relative overflow-hidden">
-    <div class="text-white text-7xl transform group-hover:scale-110 transition-transform duration-300">💼</div>
-    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
-
-    <!-- Glow effect on hover -->
-    <div class="absolute inset-0 bg-gradient-to-t from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all duration-300"></div>
-  </div>
+  <!-- Project Video or Image -->
+  {videoUrl ? (
+    <div class="h-52 relative overflow-hidden bg-black">
+      {isYouTube ? (
+        <iframe
+          src={embedUrl}
+          class="w-full h-full"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title={title}
+        ></iframe>
+      ) : (
+        <video
+          class="w-full h-full object-cover"
+          autoplay
+          muted
+          loop
+          playsinline
+        >
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+      )}
+    </div>
+  ) : (
+    <div class="h-52 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center relative overflow-hidden">
+      <div class="text-white text-7xl transform group-hover:scale-110 transition-transform duration-300">💼</div>
+      <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all duration-300"></div>
+    </div>
+  )}
 
   <!-- Project Content -->
   <div class="p-6 space-y-4">
