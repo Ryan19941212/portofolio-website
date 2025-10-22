@@ -11,26 +11,29 @@ const projects = [
 ];
 ---
 
-<BaseLayout title="Portfolio - Claude" description="Full Stack Developer Portfolio">
+<BaseLayout
+  title="Ryan Huang | AI Product Manager | UCLA Anderson MBA"
+  description="AI Product Manager building data-driven, human-centered products. UCLA Anderson MBA with civil engineering and automation background. Specializing in AI-powered tools for construction and design."
+>
   <!-- Hero Section with Gradient Background -->
   <section id="home" class="min-h-screen flex items-center justify-center bg-black px-6 py-24 relative overflow-hidden">
     <div class="max-w-5xl mx-auto relative z-10">
       <div class="text-center space-y-8">
         <!-- Greeting -->
         <div class="animate-fade-in-up">
-          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 drop-shadow-2xl px-4">
-            Ryan Huang
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl px-4">
+            Ryan Huang | <span class="gradient-underline bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AI Product Manager</span>
           </h1>
-          <!-- Typewriter Effect with Gradient -->
-          <div class="inline-block px-4">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent typewriter inline-block">
-              AI Product Manager
-          </div>
         </div>
 
-        <!-- Subtitle -->
-        <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in px-4" style="animation-delay: 0.3s;">
-          Turning ideas into reality through code and creativity.
+        <!-- Subheadline -->
+        <p class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-medium animate-fade-in px-4 mb-4" style="animation-delay: 0.2s;">
+          Building AI-powered products that bridge engineering precision and user empathy.
+        </p>
+
+        <!-- Tagline -->
+        <p class="text-sm sm:text-base md:text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in px-4 mb-2" style="animation-delay: 0.3s;">
+          UCLA Anderson MBA | Former Civil Engineer | AI & Automation Enthusiast
         </p>
 
         <!-- CTA Buttons with Glass Effect -->
@@ -39,7 +42,7 @@ const projects = [
             href="#projects"
             class="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-500/70 hover:scale-105 font-medium text-lg"
           >
-            <span>View Projects</span>
+            <span>View My Projects</span>
             <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -48,7 +51,33 @@ const projects = [
             href="#contact"
             class="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 rounded-xl hover:bg-white/20 transition-all duration-300 font-medium text-lg hover:scale-105"
           >
-            Get in Touch
+            Contact Ryan
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 bg-black relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-fade-in-up">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-8">
+          About Me
+        </h2>
+        <div class="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8 md:p-12 shadow-2xl">
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
+            I started my career building large-scale infrastructure—from underground railways to LNG terminals.
+            Now, as a UCLA Anderson MBA, I'm building digital infrastructure—AI-driven tools that make construction and design smarter and safer.
+          </p>
+          <a
+            href="#resume"
+            class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl hover:from-purple-600 hover:to-blue-600 transition-all duration-300 shadow-lg shadow-purple-500/50 hover:shadow-xl hover:shadow-purple-500/70 hover:scale-105 font-medium text-lg"
+          >
+            <span>Learn More About My Journey</span>
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </a>
         </div>
       </div>
@@ -59,57 +88,79 @@ const projects = [
   <SkillsCarousel client:only="react" />
 
   <!-- Projects Section -->
-  <section id="projects" class="min-h-screen py-32 bg-black relative overflow-hidden flex items-center">
+  <section id="projects" class="py-32 bg-black relative overflow-hidden">
     <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10 w-full">
       <div class="text-center mb-12 md:mb-16 pt-8">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent mb-4 md:mb-6 animate-fade-in-up">
-          My Project
+        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent mb-6 animate-fade-in-up">
+          Featured Project
         </h2>
-        <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
-          Featured work in web development
-        </p>
       </div>
 
       <div class="flex justify-center">
         {projects.map((project) => (
-          <div class="w-full max-w-3xl animate-fade-in-up" style="animation-delay: 0.2s;">
-            <ProjectCard {...project} />
+          <div class="w-full max-w-4xl">
+            <!-- Project Title -->
+            <div class="mb-6 text-center">
+              <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+                RhinoMCP – AI-driven geometry generation in Rhino 3D
+              </h3>
+              <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+                Built an MCP integration enabling users to generate parametric buildings and bridges using natural language.
+              </p>
+            </div>
+
+            <!-- Video Card with Enhanced Styling -->
+            <div class="mb-8 rounded-3xl overflow-hidden shadow-2xl hover:shadow-blue-500/30 transition-all duration-500 hover:-translate-y-2 transform">
+              <ProjectCard {...project} />
+            </div>
+
+            <!-- Impact Bullets -->
+            <div class="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 md:p-8">
+              <ul class="space-y-4">
+                <li class="flex items-start text-gray-300">
+                  <span class="text-2xl mr-3">🚀</span>
+                  <span class="text-base md:text-lg"><strong class="text-white">Reduced manual modeling time by 80%</strong> – Automated complex parametric workflows</span>
+                </li>
+                <li class="flex items-start text-gray-300">
+                  <span class="text-2xl mr-3">🤖</span>
+                  <span class="text-base md:text-lg"><strong class="text-white">Combined LLM reasoning with 3D procedural design</strong> – Seamlessly bridged natural language and computational geometry</span>
+                </li>
+                <li class="flex items-start text-gray-300">
+                  <span class="text-2xl mr-3">🧩</span>
+                  <span class="text-base md:text-lg"><strong class="text-white">Integrated with Python and Rhino API</strong> – Built robust, production-ready tooling for architects</span>
+                </li>
+              </ul>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Resume Section with Glass Card -->
-  <section id="resume" class="min-h-screen py-24 bg-black relative overflow-hidden">
-    <div class="relative z-10 w-full h-full flex flex-col">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8 w-full flex-1 flex flex-col">
-        <div class="text-center mb-6 md:mb-8 animate-fade-in-up">
-          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent px-4">
+  <!-- Resume Section -->
+  <section id="resume" class="py-24 bg-black relative overflow-hidden">
+    <div class="relative z-10 w-full">
+      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+        <div class="mb-8 animate-fade-in-up">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent px-4 mb-6">
             Resume
           </h2>
-        </div>
-
-        <!-- PDF Viewer with Glass Effect -->
-        <div class="bg-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-white/10 shadow-2xl overflow-hidden animate-fade-in" style="animation-delay: 0.2s;">
-          <iframe
-            src={`${import.meta.env.BASE_URL}/resume.pdf#view=Fit&toolbar=0&navpanes=0&scrollbar=0`}
-            class="w-full h-[70vh] md:h-[80vh] lg:h-[85vh]"
-            title="Resume PDF"
-          ></iframe>
+          <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-8">
+            See how I combine technical expertise and leadership experience to deliver product impact.
+          </p>
         </div>
 
         <!-- Download Button -->
-        <div class="text-center mt-8 animate-fade-in" style="animation-delay: 0.4s;">
+        <div class="animate-fade-in" style="animation-delay: 0.2s;">
           <a
             href={`${import.meta.env.BASE_URL}/resume.pdf`}
             download
-            class="group inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg shadow-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/70 font-semibold text-lg transform hover:scale-105"
+            class="group inline-flex items-center justify-center px-12 py-5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-2xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-2xl shadow-blue-500/50 hover:shadow-blue-500/70 font-bold text-xl transform hover:scale-105"
           >
-            <svg class="w-6 h-6 mr-3 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-7 h-7 mr-3 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            <span>Download PDF</span>
+            <span>Download Resume</span>
           </a>
         </div>
       </div>
@@ -119,12 +170,12 @@ const projects = [
   <!-- Contact Section with Glass Form -->
   <section id="contact" class="min-h-screen py-24 bg-black relative overflow-hidden">
     <div class="relative z-10 w-full">
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-4 md:space-y-8 mb-8 md:mb-12">
+      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-4 md:space-y-6 mb-8 md:mb-12">
         <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-fade-in-up">
           Contact Me
         </h2>
-        <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 leading-relaxed max-w-2xl mx-auto px-4">
-          Let's work together on your next project
+        <p class="text-xl sm:text-2xl md:text-3xl text-gray-200 leading-relaxed max-w-3xl mx-auto px-4 font-medium">
+          Let's collaborate to build the next AI-powered product.
         </p>
       </div>
 
@@ -279,7 +330,7 @@ const projects = [
                 rows="6"
                 required
                 class="w-full px-5 py-4 bg-white/5 backdrop-blur-md border-2 border-white/10 text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 resize-none hover:border-white/20 placeholder-gray-500"
-                placeholder="Your message..."
+                placeholder="Tell me about your project, idea, or opportunity…"
               ></textarea>
             </div>
 
@@ -406,5 +457,35 @@ const projects = [
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Gradient underline animation */
+  .gradient-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .gradient-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 </style>

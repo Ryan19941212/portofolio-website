@@ -6,19 +6,46 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
+  image?: string;
 }
 
-const { title, description = 'Claude - A Builder of Ideas' } = Astro.props;
+const {
+  title,
+  description = 'AI Product Manager building data-driven, human-centered products. UCLA Anderson MBA with a civil engineering and automation background.',
+  keywords = 'Ryan Huang, Product Manager, AI, UCLA Anderson, Portfolio, RhinoMCP, Automation, Civil Engineering, MBA',
+  image = '/og-image.png'
+} = Astro.props;
+
+const siteUrl = 'https://ryan19941212.github.io/portofolio-website';
+const fullImageUrl = `${siteUrl}${image}`;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Ryan Huang" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullImageUrl} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={fullImageUrl} />
+
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col">
