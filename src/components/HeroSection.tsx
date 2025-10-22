@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
   const backgroundY = useTransform(mouseY, [0, typeof window !== 'undefined' ? window.innerHeight : 1080], [-20, 20]);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-black px-6 py-24 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center bg-black px-4 sm:px-6 pt-20 pb-12 sm:py-24 relative overflow-hidden">
       {/* Animated Parallax Background */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -53,7 +53,7 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl px-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 drop-shadow-2xl px-2 sm:px-4 leading-tight">
               Ryan Huang
               <br />
               <span className="gradient-underline bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AI Product Manager</span>
@@ -62,7 +62,7 @@ const HeroSection: React.FC = () => {
 
           {/* Subheadline */}
           <motion.p
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-medium px-4 mb-4"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-medium px-4 sm:px-6 mb-3 sm:mb-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -72,7 +72,7 @@ const HeroSection: React.FC = () => {
 
           {/* Tagline */}
           <motion.p
-            className="text-sm sm:text-base md:text-lg text-gray-400 max-w-3xl mx-auto px-4 mb-2"
+            className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-400 max-w-3xl mx-auto px-4 sm:px-6 mb-2"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -82,14 +82,14 @@ const HeroSection: React.FC = () => {
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center pt-6"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4 sm:pt-6 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <motion.a
               href="#projects"
-              className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-medium text-lg relative overflow-hidden"
+              className="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-medium text-base sm:text-lg relative overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -103,7 +103,7 @@ const HeroSection: React.FC = () => {
 
             <motion.a
               href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 rounded-xl font-medium text-lg relative overflow-hidden group"
+              className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 rounded-xl font-medium text-base sm:text-lg relative overflow-hidden group"
               whileHover={{ scale: 1.05, borderColor: 'rgba(255, 255, 255, 0.4)' }}
               whileTap={{ scale: 0.95 }}
             >

@@ -25,30 +25,30 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen py-24 bg-black relative overflow-hidden">
+    <section id="contact" className="min-h-screen py-16 sm:py-24 bg-black relative overflow-hidden">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-pink-900/5 to-black" />
 
       <div className="relative z-10 w-full">
         <motion.div
-          className="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-4 md:space-y-6 mb-8 md:mb-12"
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 sm:space-y-4 md:space-y-6 mb-6 sm:mb-8 md:mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
             Contact Me
           </h2>
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-200 leading-relaxed max-w-3xl mx-auto px-4 font-medium">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed max-w-3xl mx-auto px-2 sm:px-4 font-medium">
             Let's collaborate to build the next AI-powered product.
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Glass morphism form container */}
           <motion.div
-            className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-12 border border-white/10 relative overflow-hidden group"
+            className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 border border-white/10 relative overflow-hidden group"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

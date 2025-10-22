@@ -12,19 +12,19 @@ interface ProjectsSectionProps {
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
   return (
-    <section id="projects" className="py-32 bg-black relative overflow-hidden">
+    <section id="projects" className="py-16 sm:py-24 md:py-32 bg-black relative overflow-hidden">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/5 to-black" />
 
-      <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <motion.div
-          className="text-center mb-12 md:mb-16 pt-8"
+          className="text-center mb-8 sm:mb-12 md:mb-16 pt-4 sm:pt-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent mb-4 sm:mb-6">
             Featured Project
           </h2>
         </motion.div>

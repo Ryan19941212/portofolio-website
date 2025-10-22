@@ -94,7 +94,7 @@ const hexToRgb = (hex: string): string => {
 const SkillsCarousel: React.FC = () => {
   return (
     <section
-      className="py-20 px-6 relative overflow-hidden bg-black"
+      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative overflow-hidden bg-black"
       id="skills"
     >
       {/* Animated background gradient */}
@@ -109,7 +109,7 @@ const SkillsCarousel: React.FC = () => {
       >
         {/* Title */}
         <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-center mb-4 sm:mb-6"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
