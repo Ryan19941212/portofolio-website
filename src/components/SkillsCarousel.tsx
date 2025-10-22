@@ -8,7 +8,11 @@ import {
   SiJavascript,
   SiReact,
   SiNextdotjs,
-  SiGooglegemini
+  SiGooglegemini,
+  SiAnthropic,
+  SiAutodesk,
+  SiJira,
+  SiMysql
 } from 'react-icons/si';
 
 interface Skill {
@@ -20,13 +24,17 @@ interface Skill {
 const skills: Skill[] = [
   { name: 'OpenAI', icon: <SiOpenai className="h-10 w-10 transition-all duration-300" />, color: '#00A67E' },
   { name: 'Python', icon: <SiPython className="h-10 w-10 transition-all duration-300" />, color: '#3776AB' },
-  { name: 'ClaudeAI', icon: <SiOpenai className="h-10 w-10 transition-all duration-300" />, color: '#CC9B7A' },
+  { name: 'Claude', icon: <SiAnthropic className="h-10 w-10 transition-all duration-300" />, color: '#CC9B7A' },
   { name: 'C/C++', icon: <SiCplusplus className="h-10 w-10 transition-all duration-300" />, color: '#00599C' },
   { name: 'PyTorch', icon: <SiPytorch className="h-10 w-10 transition-all duration-300" />, color: '#EE4C2C' },
   { name: 'JavaScript', icon: <SiJavascript className="h-10 w-10 transition-all duration-300" />, color: '#F7DF1E' },
   { name: 'Gemini', icon: <SiGooglegemini className="h-10 w-10 transition-all duration-300" />, color: '#8E75B2' },
   { name: 'React', icon: <SiReact className="h-10 w-10 transition-all duration-300" />, color: '#61DAFB' },
   { name: 'Next.js', icon: <SiNextdotjs className="h-10 w-10 transition-all duration-300" />, color: '#ffffff' },
+  { name: 'AutoCAD', icon: <SiAutodesk className="h-10 w-10 transition-all duration-300" />, color: '#E51050' },
+  { name: 'Revit', icon: <SiAutodesk className="h-10 w-10 transition-all duration-300" />, color: '#0696D7' },
+  { name: 'Jira', icon: <SiJira className="h-10 w-10 transition-all duration-300" />, color: '#0052CC' },
+  { name: 'SQL', icon: <SiMysql className="h-10 w-10 transition-all duration-300" />, color: '#4479A1' },
 ];
 
 const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
@@ -76,19 +84,6 @@ const SkillsCarousel: React.FC = () => {
           >
             {skills.map((skill, index) => (
               <SkillCard key={`${skill.name}-${index}`} skill={skill} />
-            ))}
-          </Marquee>
-
-          {/* Second row scrolling in opposite direction for visual interest */}
-          <Marquee
-            gradient={false}
-            speed={40}
-            direction="right"
-            pauseOnHover={true}
-            className="py-8"
-          >
-            {[...skills].reverse().map((skill, index) => (
-              <SkillCard key={`${skill.name}-reverse-${index}`} skill={skill} />
             ))}
           </Marquee>
         </div>
