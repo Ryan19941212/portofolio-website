@@ -14,10 +14,10 @@ const {
   title,
   description = 'AI Product Manager building data-driven, human-centered products. UCLA Anderson MBA with a civil engineering and automation background.',
   keywords = 'Ryan Huang, Product Manager, AI, UCLA Anderson, Portfolio, RhinoMCP, Automation, Civil Engineering, MBA',
-  image = '/og-image.png'
+  image = '/og-image.svg'
 } = Astro.props;
 
-const siteUrl = 'https://ryan19941212.github.io/portofolio-website';
+const siteUrl = 'https://ryanxhuang.com';
 const fullImageUrl = `${siteUrl}${image}`;
 ---
 
@@ -49,8 +49,15 @@ const fullImageUrl = `${siteUrl}${image}`;
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col">
+    <!-- Skip to main content link for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:ring-4 focus:ring-blue-500/50 focus:outline-none"
+    >
+      Skip to main content
+    </a>
     <Header />
-    <main class="flex-grow">
+    <main id="main-content" class="flex-grow">
       <slot />
     </main>
     <Footer />
