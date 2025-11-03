@@ -42,8 +42,8 @@ const ResumeSection: React.FC<ResumeSectionProps> = ({ baseUrl }) => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <motion.a
-              href={`${baseUrl}/resume.pdf`}
-              download
+              href={`${baseUrl}resume.pdf`}
+              download="Ryan_Huang_Resume.pdf"
               className="group relative inline-flex items-center justify-center px-12 py-5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-2xl font-bold text-xl overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
