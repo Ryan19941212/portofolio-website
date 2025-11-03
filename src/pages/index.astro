@@ -34,70 +34,9 @@ const projects = [
   <!-- Resume Section with Glowing Hover Effects -->
   <ResumeSection baseUrl={import.meta.env.BASE_URL} client:load />
 
-  <!-- Contact Section with Animated Form and Focus Glow -->
+  <!-- Contact Section -->
   <ContactForm client:load />
 </BaseLayout>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contact-form') as HTMLFormElement;
-    const formContainer = document.getElementById('contact-form-container');
-    const thankYouMessage = document.getElementById('thank-you-message');
-    const sendAnotherButton = document.getElementById('send-another');
-    const submitButton = document.getElementById('submit-button');
-
-    // Handle form submission
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Disable submit button and show loading state
-      if (submitButton) {
-        submitButton.textContent = 'Sending...';
-        submitButton.setAttribute('disabled', 'true');
-      }
-
-      // Get form data
-      const formData = new FormData(form);
-
-      try {
-        // Submit to Netlify
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData as any).toString(),
-        });
-
-        if (response.ok) {
-          // Hide form and show thank you message
-          formContainer?.classList.add('hidden');
-          thankYouMessage?.classList.remove('hidden');
-
-          // Reset form
-          form.reset();
-        } else {
-          throw new Error('Form submission failed');
-        }
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        alert('Sorry, there was an error sending your message. Please try again.');
-      } finally {
-        // Re-enable submit button
-        if (submitButton) {
-          submitButton.textContent = 'Send Message';
-          submitButton.removeAttribute('disabled');
-        }
-      }
-    });
-
-    // Handle "Send Another Message" button
-    sendAnotherButton?.addEventListener('click', () => {
-      thankYouMessage?.classList.add('hidden');
-      formContainer?.classList.remove('hidden');
-      // Scroll to form
-      formContainer?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-  });
-</script>
 
 <style>
   @keyframes fadeIn {

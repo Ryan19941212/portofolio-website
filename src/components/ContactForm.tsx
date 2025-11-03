@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 const ContactForm: React.FC = () => {
-  const [focusedField, setFocusedField] = useState<string | null>(null);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,7 +44,7 @@ const ContactForm: React.FC = () => {
         </motion.div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Glass morphism form container */}
+          {/* Glass morphism container */}
           <motion.div
             className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 border border-white/10 relative overflow-hidden group"
             initial={{ opacity: 0, y: 40 }}
@@ -59,7 +57,7 @@ const ContactForm: React.FC = () => {
 
             {/* Contact Information Cards */}
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 relative z-10"
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -141,196 +139,6 @@ const ContactForm: React.FC = () => {
                   </div>
                 </div>
               </motion.a>
-            </motion.div>
-
-            {/* Divider */}
-            <motion.div
-              className="border-t border-white/10 mb-8 relative z-10"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            />
-
-            {/* Form Content */}
-            <div className="relative z-10" id="contact-form-container">
-              <motion.h3
-                className="text-3xl font-bold text-white mb-8 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-              >
-                Send me a message
-              </motion.h3>
-
-              {/* Netlify Form */}
-              <motion.form
-                id="contact-form"
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                className="space-y-6"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {/* Hidden fields for Netlify */}
-                <input type="hidden" name="form-name" value="contact" />
-                <p className="hidden">
-                  <label>
-                    Don't fill this out if you're human: <input name="bot-field" />
-                  </label>
-                </p>
-
-                {/* Name */}
-                <motion.div variants={itemVariants}>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-3">
-                    Name
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full px-5 py-4 bg-white/5 backdrop-blur-md border-2 border-white/10 text-white rounded-xl transition-all duration-300 hover:border-white/20 placeholder-gray-500 focus:outline-none"
-                      placeholder="Your name"
-                      onFocus={() => setFocusedField('name')}
-                      onBlur={() => setFocusedField(null)}
-                      style={{
-                        borderImage: focusedField === 'name' ? 'linear-gradient(90deg, #3b82f6, #a855f7, #ec4899) 1' : 'none',
-                        boxShadow: focusedField === 'name' ? '0 0 20px rgba(59, 130, 246, 0.3)' : 'none'
-                      }}
-                    />
-                    {focusedField === 'name' && (
-                      <motion.div
-                        className="absolute -inset-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl -z-10 blur-sm"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      />
-                    )}
-                  </div>
-                </motion.div>
-
-                {/* Email */}
-                <motion.div variants={itemVariants}>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-3">
-                    Email
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full px-5 py-4 bg-white/5 backdrop-blur-md border-2 border-white/10 text-white rounded-xl transition-all duration-300 hover:border-white/20 placeholder-gray-500 focus:outline-none"
-                      placeholder="your.email@example.com"
-                      onFocus={() => setFocusedField('email')}
-                      onBlur={() => setFocusedField(null)}
-                      style={{
-                        borderImage: focusedField === 'email' ? 'linear-gradient(90deg, #3b82f6, #a855f7, #ec4899) 1' : 'none',
-                        boxShadow: focusedField === 'email' ? '0 0 20px rgba(168, 85, 247, 0.3)' : 'none'
-                      }}
-                    />
-                    {focusedField === 'email' && (
-                      <motion.div
-                        className="absolute -inset-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl -z-10 blur-sm"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      />
-                    )}
-                  </div>
-                </motion.div>
-
-                {/* Message */}
-                <motion.div variants={itemVariants}>
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-3">
-                    Message
-                  </label>
-                  <div className="relative">
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={6}
-                      required
-                      className="w-full px-5 py-4 bg-white/5 backdrop-blur-md border-2 border-white/10 text-white rounded-xl transition-all duration-300 resize-none hover:border-white/20 placeholder-gray-500 focus:outline-none"
-                      placeholder="Tell me about your project, idea, or opportunity…"
-                      onFocus={() => setFocusedField('message')}
-                      onBlur={() => setFocusedField(null)}
-                      style={{
-                        borderImage: focusedField === 'message' ? 'linear-gradient(90deg, #3b82f6, #a855f7, #ec4899) 1' : 'none',
-                        boxShadow: focusedField === 'message' ? '0 0 20px rgba(236, 72, 153, 0.3)' : 'none'
-                      }}
-                    />
-                    {focusedField === 'message' && (
-                      <motion.div
-                        className="absolute -inset-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl -z-10 blur-sm"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      />
-                    )}
-                  </div>
-                </motion.div>
-
-                {/* Submit Button */}
-                <motion.div className="pt-4" variants={itemVariants}>
-                  <motion.button
-                    type="submit"
-                    id="submit-button"
-                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-xl font-semibold text-lg relative overflow-hidden"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0"
-                      whileHover={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <motion.div
-                      className="absolute -inset-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl opacity-0 blur-lg"
-                      whileHover={{ opacity: 0.6 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <span className="relative z-10">Send Message</span>
-                  </motion.button>
-                </motion.div>
-              </motion.form>
-            </div>
-
-            {/* Thank You Message (hidden by default) */}
-            <motion.div
-              id="thank-you-message"
-              className="hidden text-center space-y-6 relative z-10"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <motion.div
-                className="inline-flex items-center justify-center w-20 h-20 bg-green-500/20 backdrop-blur-md rounded-full mb-4 border border-green-500/30"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 200, damping: 10 }}
-              >
-                <svg className="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-              </motion.div>
-              <h3 className="text-3xl font-bold text-white">Thank You!</h3>
-              <p className="text-lg text-gray-400 leading-relaxed">
-                Your message has been sent successfully. I'll get back to you within 24 hours.
-              </p>
-              <button
-                id="send-another"
-                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 font-semibold shadow-lg shadow-blue-500/50 hover:shadow-xl"
-              >
-                Send Another Message
-              </button>
             </motion.div>
           </motion.div>
         </div>
