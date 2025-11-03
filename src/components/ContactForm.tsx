@@ -89,22 +89,6 @@ const ContactForm: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="inline-block mb-4"
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 border border-white/10 text-sm font-medium text-gray-300">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-pink-500"></span>
-              </span>
-              Available for opportunities
-            </span>
-          </motion.div>
-
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent mb-6">
             Let's Connect
           </h2>
