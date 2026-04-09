@@ -1,167 +1,163 @@
 import React from 'react';
-import Marquee from 'react-fast-marquee';
+import { motion } from 'framer-motion';
 import {
+  SiRos,
+  SiPython,
+  SiCplusplus,
+  SiNvidia,
+  SiPytorch,
+  SiLinux,
+  SiDocker,
+  SiGit,
   SiJira,
   SiFigma,
   SiNotion,
-  SiPython,
-  SiJavascript,
-  SiReact,
-  SiNextdotjs,
-  SiMysql,
-  SiPytorch,
-  SiGooglegemini,
-  SiAutodesk,
-  SiRhinoceros
+  SiOpencv,
 } from 'react-icons/si';
-import { motion } from 'framer-motion';
+
+type Category = 'ROBOTICS' | 'AI_ML' | 'INFRA' | 'PRODUCT';
 
 interface Skill {
   name: string;
-  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
-  color: string;
-  category: 'product' | 'tech' | 'ai';
+  category: Category;
+  icon?: React.ComponentType<{ className?: string }>;
+  mono?: string; // text-only fallback for topics with no icon
 }
 
-const skills: Skill[] = [
-  // Product Tools
-  { name: 'Jira', icon: SiJira, color: '#0052CC', category: 'product' },
-  { name: 'Figma', icon: SiFigma, color: '#F24E1E', category: 'product' },
-  { name: 'Notion', icon: SiNotion, color: '#ffffff', category: 'product' },
+const stack: Skill[] = [
+  // Robotics / Autonomy
+  { name: 'ROS 2',              category: 'ROBOTICS', icon: SiRos },
+  { name: 'C++',                category: 'ROBOTICS', icon: SiCplusplus },
+  { name: 'Python',             category: 'ROBOTICS', icon: SiPython },
+  { name: 'Motion Planning',    category: 'ROBOTICS', mono: 'MP' },
+  { name: 'MPC / Control',      category: 'ROBOTICS', mono: 'CTL' },
+  { name: 'SLAM',               category: 'ROBOTICS', mono: 'SLAM' },
+  { name: 'LiDAR · IMU',        category: 'ROBOTICS', mono: 'SNS' },
 
-  // Tech Stack
-  { name: 'Python', icon: SiPython, color: '#3776AB', category: 'tech' },
-  { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E', category: 'tech' },
-  { name: 'React', icon: SiReact, color: '#61DAFB', category: 'tech' },
-  { name: 'Next.js', icon: SiNextdotjs, color: '#ffffff', category: 'tech' },
-  { name: 'SQL', icon: SiMysql, color: '#4479A1', category: 'tech' },
+  // AI / ML
+  { name: 'PyTorch',            category: 'AI_ML',    icon: SiPytorch },
+  { name: 'OpenCV',             category: 'AI_ML',    icon: SiOpencv },
+  { name: 'CUDA',               category: 'AI_ML',    icon: SiNvidia },
+  { name: 'TensorRT',           category: 'AI_ML',    mono: 'TRT' },
+  { name: 'LLM / Agents',       category: 'AI_ML',    mono: 'LLM' },
 
-  // AI & Automation
-  { name: 'PyTorch', icon: SiPytorch, color: '#EE4C2C', category: 'ai' },
-  { name: 'Gemini', icon: SiGooglegemini, color: '#8E75B2', category: 'ai' },
-  { name: 'AutoCAD', icon: SiAutodesk, color: '#E51050', category: 'ai' },
-  { name: 'Revit', icon: SiAutodesk, color: '#0696D7', category: 'ai' },
-  { name: 'Rhino', icon: SiRhinoceros, color: '#801010', category: 'ai' },
+  // Infra
+  { name: 'Linux',              category: 'INFRA',    icon: SiLinux },
+  { name: 'Docker',             category: 'INFRA',    icon: SiDocker },
+  { name: 'Git',                category: 'INFRA',    icon: SiGit },
+  { name: 'Jetson',             category: 'INFRA',    icon: SiNvidia },
+
+  // Product
+  { name: 'Jira',               category: 'PRODUCT',  icon: SiJira },
+  { name: 'Figma',              category: 'PRODUCT',  icon: SiFigma },
+  { name: 'Notion',             category: 'PRODUCT',  icon: SiNotion },
+  { name: 'Roadmap · Strategy', category: 'PRODUCT',  mono: 'PRD' },
 ];
 
-const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) => {
-  const Icon = skill.icon;
+const categories: { id: Category; label: string; count: number }[] = [
+  { id: 'ROBOTICS', label: 'Robotics / Autonomy', count: stack.filter((s) => s.category === 'ROBOTICS').length },
+  { id: 'AI_ML',    label: 'AI / ML',             count: stack.filter((s) => s.category === 'AI_ML').length },
+  { id: 'INFRA',    label: 'Infra / DevOps',      count: stack.filter((s) => s.category === 'INFRA').length },
+  { id: 'PRODUCT',  label: 'Product',             count: stack.filter((s) => s.category === 'PRODUCT').length },
+];
 
+const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
+  const Icon = skill.icon;
   return (
     <motion.div
-      className="group mx-6 flex flex-col items-center justify-center transition-all duration-300"
-      whileHover={{
-        scale: 1.15,
-        y: -8,
-        transition: { duration: 0.2 }
-      }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.05 }}
+      className="group relative flex flex-col items-center justify-center aspect-square border border-white/5 bg-ink-900/50 hover:border-nv-500/40 hover:bg-ink-900 transition-all p-4"
+      whileHover={{ y: -2 }}
     >
-      <div
-        className="mb-3 flex h-24 w-24 items-center justify-center rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-300 group-hover:bg-white/10 group-hover:border-white/30 relative overflow-hidden"
-        style={{
-          boxShadow: `0 0 0 rgba(${hexToRgb(skill.color)}, 0)`,
-        }}
-      >
-        {/* Glow effect on hover */}
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
-          style={{ backgroundColor: skill.color, filter: 'blur(20px)' }}
-        />
-
-        {/* Icon */}
-        <Icon
-          className="h-12 w-12 transition-all duration-300 relative z-10"
-          style={{ color: skill.color }}
-        />
+      <div className="absolute top-2 left-2 font-mono text-[9px] uppercase tracking-wider text-ink-500 group-hover:text-nv-500 transition-colors">
+        {skill.category.slice(0, 3)}
       </div>
-      <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors duration-300">
+      <div className="flex items-center justify-center mb-3 h-10">
+        {Icon ? (
+          <Icon className="h-9 w-9 text-ink-200 group-hover:text-nv-500 transition-colors" />
+        ) : (
+          <span className="font-mono font-semibold text-xl text-ink-200 group-hover:text-nv-500 transition-colors tracking-wider">
+            {skill.mono}
+          </span>
+        )}
+      </div>
+      <div className="font-mono text-[11px] text-center text-ink-200 group-hover:text-white transition-colors">
         {skill.name}
-      </span>
+      </div>
     </motion.div>
   );
 };
 
-// Helper function to convert hex to RGB
-const hexToRgb = (hex: string): string => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
-    : '255, 255, 255';
-};
-
-const SkillsCarousel: React.FC = () => {
+const TechStack: React.FC = () => {
   return (
     <section
-      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative overflow-hidden bg-black"
-      id="skills"
+      id="stack"
+      className="relative bg-ink-950 py-20 sm:py-28 lg:py-32 overflow-hidden"
     >
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent animate-pulse" />
+      <div className="absolute inset-0 bg-blueprint-fine opacity-50" />
 
-      <motion.div
-        className="w-full max-w-7xl mx-auto relative z-10"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Title */}
-        <motion.h2
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-center mb-4 sm:mb-6"
-          initial={{ opacity: 0, y: -20 }}
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10">
+        {/* Header */}
+        <motion.div
+          className="mb-12 lg:mb-16 grid grid-cols-12 gap-6 items-end"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Skills
-        </motion.h2>
+          <div className="col-span-12 lg:col-span-8">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px w-12 bg-nv-500" />
+              <span className="tech-label text-nv-500">TECHNICAL_STACK / 03</span>
+            </div>
+            <h2 className="font-display font-bold text-white text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4">
+              Built in the stack
+            </h2>
+            <p className="text-base md:text-lg text-ink-300 max-w-2xl">
+              From real-time control loops on embedded Linux to product discovery
+              decks — I work across the whole vertical.
+            </p>
+          </div>
 
-        {/* Animated Marquee */}
-        <div className="relative mb-8">
-          {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
-
-          {/* Single Row - All Skills */}
-          <Marquee
-            gradient={false}
-            speed={40}
-            pauseOnHover={true}
-            className="py-8"
-          >
-            {skills.map((skill, index) => (
-              <SkillCard key={`${skill.name}-${index}`} skill={skill} index={index} />
+          {/* Category breakdown */}
+          <div className="col-span-12 lg:col-span-4 space-y-1">
+            {categories.map((cat) => (
+              <div
+                key={cat.id}
+                className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.15em] border-b border-white/5 py-2"
+              >
+                <span className="text-ink-500">{cat.id}</span>
+                <span className="text-ink-200">{cat.label}</span>
+                <span className="text-nv-500 w-6 text-right">{cat.count}</span>
+              </div>
             ))}
-          </Marquee>
-        </div>
+          </div>
+        </motion.div>
 
-        {/* Summary */}
-        <motion.p
-          className="text-base md:text-lg text-gray-400 text-center max-w-3xl mx-auto italic"
+        {/* Grid */}
+        <motion.div
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-px bg-white/5 border border-white/5"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          "Blending engineering precision with product vision to build data-driven, scalable solutions."
-        </motion.p>
+          {stack.map((skill) => (
+            <SkillCard key={skill.name} skill={skill} />
+          ))}
+        </motion.div>
 
-        {/* Hover hint */}
         <motion.p
-          className="text-xs text-gray-500 text-center mt-4"
+          className="mt-8 font-mono text-[11px] text-ink-500 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+          transition={{ delay: 0.5 }}
         >
-          Hover to pause • Continuously learning new technologies
+          // Always learning · Currently deep in CUDA optimization and MPC solver warm-starts
         </motion.p>
-      </motion.div>
+      </div>
     </section>
   );
 };
 
-export default SkillsCarousel;
+export default TechStack;

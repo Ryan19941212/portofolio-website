@@ -1,189 +1,199 @@
-import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const HeroSection: React.FC = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', updateMousePosition);
-    return () => window.removeEventListener('mousemove', updateMousePosition);
-  }, []);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  useEffect(() => {
-    mouseX.set(mousePosition.x);
-    mouseY.set(mousePosition.y);
-  }, [mousePosition, mouseX, mouseY]);
-
-  const backgroundX = useTransform(mouseX, [0, typeof window !== 'undefined' ? window.innerWidth : 1920], [-20, 20]);
-  const backgroundY = useTransform(mouseY, [0, typeof window !== 'undefined' ? window.innerHeight : 1080], [-20, 20]);
-
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-black px-4 sm:px-6 pt-20 pb-12 sm:py-24 relative overflow-hidden">
-      {/* Enhanced Animated Parallax Background */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{
-          x: backgroundX,
-          y: backgroundY,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-pink-600/10" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s', animationDuration: '3s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }} />
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center bg-ink-950 overflow-hidden pt-16"
+    >
+      {/* Blueprint grid background */}
+      <div className="absolute inset-0 bg-blueprint opacity-60" />
+      {/* Vignette */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgb(5,6,10,0.85)_80%)]" />
+      {/* Accent gradient bloom */}
+      <div className="absolute top-1/3 left-1/4 w-[480px] h-[480px] bg-nv-500/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-[320px] h-[320px] bg-nv-500/5 rounded-full blur-[100px]" />
 
-        {/* Floating particles effect */}
-        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-blue-400/30 rounded-full animate-ping" style={{ animationDuration: '3s' }} />
-        <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-purple-400/30 rounded-full animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }} />
-        <div className="absolute top-2/3 right-1/4 w-2 h-2 bg-pink-400/30 rounded-full animate-ping" style={{ animationDuration: '5s', animationDelay: '2s' }} />
-      </motion.div>
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 py-16 lg:py-24">
+        {/* Top telemetry bar */}
+        <motion.div
+          className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-10 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-400"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center gap-2">
+            <span className="live-dot" />
+            <span className="text-ink-200">SYS_ONLINE</span>
+          </div>
+          <div className="hidden sm:flex items-center gap-2">
+            <span className="text-ink-500">TARGET::</span>
+            <span className="text-nv-500">NVIDIA_ROBOTICS</span>
+          </div>
+          <div className="hidden md:flex items-center gap-2">
+            <span className="text-ink-500">LOC::</span>
+            <span>LOS_ANGELES</span>
+          </div>
+          <div className="hidden md:flex items-center gap-2">
+            <span className="text-ink-500">STATUS::</span>
+            <span className="text-amber-500">OPEN_TO_OPPS</span>
+          </div>
+        </motion.div>
 
-      <motion.div
-        className="max-w-5xl mx-auto relative z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="text-center space-y-8">
-          {/* Status Badge */}
-          <motion.div
-            className="inline-block mb-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 border border-white/10 text-sm font-medium text-gray-300 backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-              </span>
-              Open to opportunities
-            </span>
-          </motion.div>
+        <div className="grid grid-cols-12 gap-6 lg:gap-10 items-center">
+          {/* Left: Identity + value prop */}
+          <div className="col-span-12 lg:col-span-7 relative">
+            {/* Corner bracket */}
+            <div className="absolute -top-4 -left-2 w-4 h-4 border-t border-l border-nv-500/60" />
 
-          {/* Main Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 drop-shadow-2xl px-2 sm:px-4 leading-tight">
-              Hi, I'm <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Ryan Huang</span>
-              <br />
-              <motion.span
-                className="gradient-underline bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent inline-block"
-                initial={{ backgroundPosition: "0% 50%" }}
-                animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              >
-                AI Product Manager
-              </motion.span>
-            </h1>
-          </motion.div>
-
-          {/* Value Proposition */}
-          <motion.p
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-medium px-4 sm:px-6 mb-3 sm:mb-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Building <span className="text-blue-400 font-semibold">AI-powered products</span> that bridge
-            <span className="text-purple-400 font-semibold"> engineering precision</span> and
-            <span className="text-pink-400 font-semibold"> user empathy</span>.
-          </motion.p>
-
-          {/* Credentials */}
-          <motion.p
-            className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-400 max-w-3xl mx-auto px-4 sm:px-6 mb-2"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            🎓 UCLA Anderson MBA | 🏗️ Former Civil Engineer | 🤖 AI & Automation Enthusiast
-          </motion.p>
-
-          {/* Enhanced CTA Buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4 sm:pt-6 px-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <motion.a
-              href="#projects"
-              className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-xl font-semibold text-base sm:text-lg overflow-hidden shadow-lg shadow-blue-500/30"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              {/* Shimmer effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+              <div className="tech-label mb-4">
+                <span className="text-nv-500">◆</span> IDENTITY / 01
               </div>
 
-              <span className="relative z-10">View My Work</span>
-              <motion.svg
-                className="ml-2 w-5 h-5 relative z-10"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </motion.svg>
-            </motion.a>
+              <h1 className="font-display font-bold leading-[0.95] tracking-tight text-white mb-6">
+                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[88px]">
+                  Ryan Huang
+                </span>
+                <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 text-ink-200 font-medium">
+                  Robotics Product Manager
+                </span>
+                <span className="block text-base sm:text-lg md:text-xl mt-2 font-mono text-nv-500 tracking-wide">
+                  &#123; who ships the code &#125;
+                </span>
+              </h1>
 
-            <motion.a
-              href="#contact"
-              className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-md text-white border-2 border-white/20 rounded-xl font-semibold text-base sm:text-lg overflow-hidden hover:border-white/40 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative z-10">Let's Talk</span>
-              <motion.svg
-                className="ml-2 w-5 h-5 relative z-10"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </motion.svg>
-            </motion.a>
-          </motion.div>
+              <p className="text-base sm:text-lg text-ink-200 leading-relaxed max-w-xl mb-8">
+                MBA-trained product strategist and hands-on autonomy engineer.
+                I build the robotic systems I ship — from{' '}
+                <span className="text-white font-medium">ROS 2 perception</span> and{' '}
+                <span className="text-white font-medium">motion planning</span> to{' '}
+                <span className="text-white font-medium">model predictive control</span>{' '}
+                on real hardware.
+              </p>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            className="pt-12 sm:pt-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-          >
-            <motion.div
-              className="inline-flex flex-col items-center gap-2 text-gray-500 hover:text-gray-300 transition-colors cursor-pointer"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <span className="text-xs font-medium">Scroll to explore</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
+              {/* Key credentials as horizontal data strip */}
+              <div className="flex flex-wrap gap-x-6 gap-y-3 mb-10 font-mono text-xs">
+                <div>
+                  <div className="tech-label-sm mb-1">EDU</div>
+                  <div className="text-ink-100">UCLA Anderson MBA</div>
+                </div>
+                <div className="hidden sm:block w-px bg-white/10" />
+                <div>
+                  <div className="tech-label-sm mb-1">BACKGROUND</div>
+                  <div className="text-ink-100">5y Civil Eng / Automation</div>
+                </div>
+                <div className="hidden sm:block w-px bg-white/10" />
+                <div>
+                  <div className="tech-label-sm mb-1">FOCUS</div>
+                  <div className="text-nv-500">Autonomous Robotics</div>
+                </div>
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <motion.a
+                  href="#f1tenth"
+                  className="group relative inline-flex items-center justify-center gap-3 px-6 py-4 bg-nv-500 text-ink-950 font-mono text-xs uppercase tracking-[0.2em] font-semibold hover:bg-nv-400 transition-colors"
+                  whileHover={{ x: 2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span>&gt; See F1TENTH project</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="square" strokeWidth="2" d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </motion.a>
+                <motion.a
+                  href="#resume"
+                  className="group inline-flex items-center justify-center gap-3 px-6 py-4 border border-white/20 text-white font-mono text-xs uppercase tracking-[0.2em] hover:border-nv-500 hover:text-nv-500 transition-colors"
+                  whileHover={{ x: 2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span>Download resume</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="square" strokeWidth="2" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+                  </svg>
+                </motion.a>
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
+
+          {/* Right: Featured asset — F1Tenth hero image + telemetry overlay */}
+          <div className="col-span-12 lg:col-span-5">
+            <motion.div
+              className="relative bracket-frame bg-ink-900/60 backdrop-blur-sm"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {/* Top label */}
+              <div className="absolute -top-3 left-4 z-10 px-2 bg-ink-950">
+                <span className="tech-label text-nv-500">● LIVE_FEED / F1TENTH</span>
+              </div>
+
+              {/* F1tenth hero image - we'll use the YouTube thumbnail as a placeholder for the featured asset */}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="scanlines absolute inset-0" />
+                <div className="scan-sweep absolute inset-0" />
+                <iframe
+                  src="https://www.youtube.com/embed/QS4dnrDDZss?autoplay=1&mute=1&loop=1&playlist=QS4dnrDDZss&controls=0&modestbranding=1"
+                  title="F1TENTH Autonomous Racing"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  className="w-full h-full"
+                  style={{ border: 0 }}
+                />
+              </div>
+
+              {/* Bottom telemetry strip */}
+              <div className="border-t border-white/10 px-4 py-3 grid grid-cols-3 gap-2 font-mono text-[10px]">
+                <div>
+                  <div className="tech-label-sm">ALGO</div>
+                  <div className="text-nv-500 mt-1">GAP_FOLLOW</div>
+                </div>
+                <div>
+                  <div className="tech-label-sm">SPEED</div>
+                  <div className="text-white mt-1">1.5 m/s</div>
+                </div>
+                <div>
+                  <div className="tech-label-sm">STATUS</div>
+                  <div className="text-amber-500 mt-1">NOMINAL</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="mt-3 font-mono text-[10px] text-ink-500 text-right"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              // 1/10-scale autonomous race car · ROS 2 Humble · Jetson Orin Nano
+            </motion.div>
+          </div>
         </div>
-      </motion.div>
+
+        {/* Scroll hint */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+        >
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-500">
+            Scroll / Explore
+          </span>
+          <motion.div
+            className="w-px h-8 bg-gradient-to-b from-nv-500 to-transparent"
+            animate={{ scaleY: [0.3, 1, 0.3], originY: 0 }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </motion.div>
+      </div>
     </section>
   );
 };
