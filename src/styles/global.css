@@ -29,11 +29,11 @@
 @layer components {
   /* Technical label: uppercase mono with tracking */
   .tech-label {
-    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-ink-300;
+    @apply font-mono text-[13px] uppercase tracking-[0.16em] text-ink-200 font-medium;
   }
 
   .tech-label-sm {
-    @apply font-mono text-[10px] uppercase tracking-[0.2em] text-ink-400;
+    @apply font-mono text-[12px] uppercase tracking-[0.18em] text-ink-300 font-medium;
   }
 
   /* Corner-bracket framed panel */

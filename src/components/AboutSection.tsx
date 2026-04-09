@@ -136,13 +136,13 @@ const AboutSection: React.FC = () => {
               >
                 <div className="absolute top-0 left-0 h-px bg-nv-500 w-0 group-hover:w-full transition-all duration-700" />
 
-                <div className="font-mono text-[10px] text-nv-500 mb-3 tracking-wider">
+                <div className="font-mono text-[12px] text-nv-500 mb-3 tracking-wider">
                   {String(i + 1).padStart(2, '0')} · {item.year}
                 </div>
                 <div className="font-display font-semibold text-white text-xl mb-1">
                   {item.role}
                 </div>
-                <div className="font-mono text-[11px] text-ink-400 mb-4">
+                <div className="font-mono text-[12px] text-ink-400 mb-4">
                   {item.org}
                 </div>
                 <p className="text-sm text-ink-300 leading-relaxed">

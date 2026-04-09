@@ -114,21 +114,21 @@ const F1TenthShowcase: React.FC = () => {
                 control, deployed on ROS 2 and NVIDIA Jetson.
               </p>
             </div>
-            <div className="col-span-12 lg:col-span-4 font-mono text-[10px] uppercase tracking-[0.18em] space-y-1 text-ink-300">
+            <div className="col-span-12 lg:col-span-4 font-mono text-[12px] uppercase tracking-[0.18em] space-y-1 text-ink-300">
               <div className="flex justify-between border-b border-white/5 py-2">
-                <span className="text-ink-500">ALGORITHMS</span>
+                <span className="text-ink-400">ALGORITHMS</span>
                 <span className="text-white">06</span>
               </div>
               <div className="flex justify-between border-b border-white/5 py-2">
-                <span className="text-ink-500">RUNTIME</span>
+                <span className="text-ink-400">RUNTIME</span>
                 <span className="text-white">ROS_2_HUMBLE</span>
               </div>
               <div className="flex justify-between border-b border-white/5 py-2">
-                <span className="text-ink-500">PLATFORM</span>
+                <span className="text-ink-400">PLATFORM</span>
                 <span className="text-white">JETSON_ORIN_NANO</span>
               </div>
               <div className="flex justify-between py-2">
-                <span className="text-ink-500">LANG</span>
+                <span className="text-ink-400">LANG</span>
                 <span className="text-white">PY · C++</span>
               </div>
             </div>
@@ -137,13 +137,13 @@ const F1TenthShowcase: React.FC = () => {
             href="https://github.com/Ryan19941212/F1tenth"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 border border-white/15 hover:border-nv-500 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-200 hover:text-nv-500 transition-colors"
+            className="mt-8 inline-flex items-center gap-2 border border-white/15 hover:border-nv-500 px-4 py-2 font-mono text-[13px] uppercase tracking-[0.18em] text-ink-200 hover:text-nv-500 transition-colors"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
             </svg>
             Ryan19941212/F1tenth
-            <span className="text-ink-500">→</span>
+            <span className="text-ink-400">→</span>
           </a>
         </motion.div>
 
@@ -171,7 +171,7 @@ const F1TenthShowcase: React.FC = () => {
               >
                 <div className="tech-label-sm mb-2">{hw.label}</div>
                 <div className="text-white font-medium text-sm md:text-base">{hw.value}</div>
-                <div className="mt-1 font-mono text-[10px] text-ink-500 group-hover:text-nv-500 transition-colors">
+                <div className="mt-1 font-mono text-[12px] text-ink-400 group-hover:text-nv-500 transition-colors">
                   {hw.spec}
                 </div>
               </motion.div>
@@ -190,7 +190,7 @@ const F1TenthShowcase: React.FC = () => {
           <div className="flex items-center gap-3 mb-6">
             <span className="tech-label">▪ ALGORITHM_STACK</span>
             <div className="h-px flex-1 bg-white/5" />
-            <span className="font-mono text-[10px] text-ink-500">06 / MODULES</span>
+            <span className="font-mono text-[12px] text-ink-400">06 / MODULES</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
@@ -251,12 +251,12 @@ const F1TenthShowcase: React.FC = () => {
                 <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
                 <div className="w-2.5 h-2.5 rounded-full bg-nv-500" />
               </div>
-              <div className="flex-1 text-center font-mono text-[10px] text-ink-500">
+              <div className="flex-1 text-center font-mono text-[12px] text-ink-400">
                 f1tenth_ws/architecture.diagram
               </div>
             </div>
 
-            <pre className="p-4 sm:p-6 font-mono text-[11px] sm:text-xs text-ink-200 leading-relaxed overflow-x-auto">
+            <pre className="p-4 sm:p-6 font-mono text-[13px] sm:text-xs text-ink-200 leading-relaxed overflow-x-auto">
 {`
     [ /scan ] LiDAR ─────────────────────────────────┐
                                                       │
@@ -280,7 +280,7 @@ const F1TenthShowcase: React.FC = () => {
             </pre>
           </div>
 
-          <p className="mt-4 font-mono text-[11px] text-ink-500">
+          <p className="mt-4 font-mono text-[13px] text-ink-400">
             // Priority-based Ackermann mux ensures AEB (priority 200) overrides
             any autonomous algorithm (priority 10) in case of imminent collision.
           </p>
@@ -296,7 +296,7 @@ const F1TenthShowcase: React.FC = () => {
           <div className="flex items-center gap-3 mb-6">
             <span className="tech-label">▪ LIVE_DEMO_FEED</span>
             <div className="h-px flex-1 bg-white/5" />
-            <span className="font-mono text-[10px] text-ink-500">03 / CAPTURES</span>
+            <span className="font-mono text-[12px] text-ink-400">03 / CAPTURES</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -328,9 +328,9 @@ const F1TenthShowcase: React.FC = () => {
                 <div className="border-t border-white/10 px-4 py-3 flex items-center justify-between">
                   <div>
                     <div className="text-white text-sm font-medium">{demo.name}</div>
-                    <div className="font-mono text-[10px] text-ink-500">{demo.algo}</div>
+                    <div className="font-mono text-[12px] text-ink-400">{demo.algo}</div>
                   </div>
-                  <div className="font-mono text-[10px] text-nv-500">REC</div>
+                  <div className="font-mono text-[12px] text-nv-500">REC</div>
                 </div>
               </motion.div>
             ))}

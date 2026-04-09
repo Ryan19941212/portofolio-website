@@ -18,7 +18,7 @@ const HeroSection: React.FC = () => {
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-10 py-16 lg:py-24">
         {/* Top telemetry bar */}
         <motion.div
-          className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-10 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-400"
+          className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-10 font-mono text-[12px] uppercase tracking-[0.2em] text-ink-400"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -28,15 +28,15 @@ const HeroSection: React.FC = () => {
             <span className="text-ink-200">SYS_ONLINE</span>
           </div>
           <div className="hidden sm:flex items-center gap-2">
-            <span className="text-ink-500">TARGET::</span>
+            <span className="text-ink-400">TARGET::</span>
             <span className="text-nv-500">NVIDIA_ROBOTICS</span>
           </div>
           <div className="hidden md:flex items-center gap-2">
-            <span className="text-ink-500">LOC::</span>
+            <span className="text-ink-400">LOC::</span>
             <span>LOS_ANGELES</span>
           </div>
           <div className="hidden md:flex items-center gap-2">
-            <span className="text-ink-500">STATUS::</span>
+            <span className="text-ink-400">STATUS::</span>
             <span className="text-amber-500">OPEN_TO_OPPS</span>
           </div>
         </motion.div>
@@ -150,7 +150,7 @@ const HeroSection: React.FC = () => {
               </div>
 
               {/* Bottom telemetry strip */}
-              <div className="border-t border-white/10 px-4 py-3 grid grid-cols-3 gap-2 font-mono text-[10px]">
+              <div className="border-t border-white/10 px-4 py-3 grid grid-cols-3 gap-2 font-mono text-[12px]">
                 <div>
                   <div className="tech-label-sm">ALGO</div>
                   <div className="text-nv-500 mt-1">GAP_FOLLOW</div>
@@ -167,7 +167,7 @@ const HeroSection: React.FC = () => {
             </motion.div>
 
             <motion.div
-              className="mt-3 font-mono text-[10px] text-ink-500 text-right"
+              className="mt-3 font-mono text-[12px] text-ink-400 text-right"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
@@ -184,7 +184,7 @@ const HeroSection: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-500">
+          <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-ink-400">
             Scroll / Explore
           </span>
           <motion.div

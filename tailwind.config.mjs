@@ -27,18 +27,18 @@ export default {
         amber: {
           500: '#ffb020',
         },
-        // Neutral grays - blueprint/HUD backdrop
+        // Neutral grays - blueprint/HUD backdrop (raised for readability)
         ink: {
           950: '#05060a',
           900: '#0a0c12',
-          800: '#11141c',
-          700: '#1a1e29',
-          600: '#242938',
-          500: '#3a4056',
-          400: '#5d6479',
-          300: '#8a91a4',
-          200: '#b4b9c8',
-          100: '#dcdfe8',
+          800: '#14171f',
+          700: '#1f232e',
+          600: '#2f3446',
+          500: '#565d73',  // was 3a4056 — now usable as secondary text
+          400: '#858ca1',  // was 5d6479 — now usable as body text
+          300: '#a8aebf',  // was 8a91a4 — now high contrast
+          200: '#c8ccd9',
+          100: '#e4e7ee',
         },
       },
       animation: {

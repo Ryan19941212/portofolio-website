@@ -79,7 +79,7 @@ const ResumeSection: React.FC<Props> = ({ baseUrl }) => {
                   <div className="font-display text-2xl sm:text-3xl text-white font-semibold mb-2">
                     Resume.pdf
                   </div>
-                  <div className="font-mono text-[11px] text-ink-400">
+                  <div className="font-mono text-[13px] text-ink-400">
                     // robotics focus · 2026 edition
                   </div>
                 </div>
@@ -93,7 +93,7 @@ const ResumeSection: React.FC<Props> = ({ baseUrl }) => {
                 </svg>
               </div>
 
-              <div className="space-y-2 font-mono text-[11px] mb-8">
+              <div className="space-y-2 font-mono text-[13px] mb-8">
                 <div className="flex justify-between text-ink-300">
                   <span className="text-ink-500">FORMAT</span>
                   <span>PDF</span>

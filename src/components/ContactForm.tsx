@@ -95,11 +95,11 @@ const ContactForm: React.FC = () => {
               <div className="text-white text-sm md:text-base font-medium break-all mb-2 group-hover:text-nv-500 transition-colors">
                 {m.value}
               </div>
-              <div className="font-mono text-[11px] text-ink-500">
+              <div className="font-mono text-[13px] text-ink-400">
                 // {m.hint}
               </div>
 
-              <div className="mt-6 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-400 group-hover:text-nv-500 transition-colors">
+              <div className="mt-6 flex items-center gap-2 font-mono text-[13px] uppercase tracking-[0.18em] text-ink-400 group-hover:text-nv-500 transition-colors">
                 <span>&gt; Reach out</span>
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </div>
@@ -109,7 +109,7 @@ const ContactForm: React.FC = () => {
 
         {/* Footer signature */}
         <motion.div
-          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 border-t border-white/5 font-mono text-[11px] text-ink-500"
+          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 border-t border-white/5 font-mono text-[13px] text-ink-400"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

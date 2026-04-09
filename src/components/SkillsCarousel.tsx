@@ -68,7 +68,7 @@ const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
       className="group relative flex flex-col items-center justify-center aspect-square border border-white/5 bg-ink-900/50 hover:border-nv-500/40 hover:bg-ink-900 transition-all p-4"
       whileHover={{ y: -2 }}
     >
-      <div className="absolute top-2 left-2 font-mono text-[9px] uppercase tracking-wider text-ink-500 group-hover:text-nv-500 transition-colors">
+      <div className="absolute top-2 left-2 font-mono text-[11px] uppercase tracking-wider text-ink-400 group-hover:text-nv-500 transition-colors">
         {skill.category.slice(0, 3)}
       </div>
       <div className="flex items-center justify-center mb-3 h-10">
@@ -80,7 +80,7 @@ const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
           </span>
         )}
       </div>
-      <div className="font-mono text-[11px] text-center text-ink-200 group-hover:text-white transition-colors">
+      <div className="font-mono text-[13px] text-center text-ink-200 group-hover:text-white transition-colors">
         {skill.name}
       </div>
     </motion.div>
@@ -123,9 +123,9 @@ const TechStack: React.FC = () => {
             {categories.map((cat) => (
               <div
                 key={cat.id}
-                className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.15em] border-b border-white/5 py-2"
+                className="flex items-center justify-between font-mono text-[12px] uppercase tracking-[0.15em] border-b border-white/5 py-2"
               >
-                <span className="text-ink-500">{cat.id}</span>
+                <span className="text-ink-400">{cat.id}</span>
                 <span className="text-ink-200">{cat.label}</span>
                 <span className="text-nv-500 w-6 text-right">{cat.count}</span>
               </div>
@@ -147,7 +147,7 @@ const TechStack: React.FC = () => {
         </motion.div>
 
         <motion.p
-          className="mt-8 font-mono text-[11px] text-ink-500 text-center"
+          className="mt-8 font-mono text-[13px] text-ink-400 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
