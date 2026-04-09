@@ -9,8 +9,26 @@ import ContactForm from '../components/ContactForm';
 
 const projects = [
   {
-    title: 'My Project',
+    title: 'RhinoMCP – AI-driven geometry generation in Rhino 3D',
+    description: 'Built an MCP integration enabling users to generate parametric buildings and bridges using natural language.',
     videoUrl: 'https://youtu.be/xDlB3Oj2Fg8',
+    githubUrl: 'https://github.com/Ryan19941212/rhinomcp',
+    bullets: [
+      { icon: '🚀', bold: 'Reduced manual modeling time by 80%', text: '– Automated complex parametric workflows' },
+      { icon: '🤖', bold: 'Combined LLM reasoning with 3D procedural design', text: '– Seamlessly bridged natural language and computational geometry' },
+      { icon: '🧩', bold: 'Integrated with Python and Rhino API', text: '– Built robust, production-ready tooling for architects' },
+    ],
+  },
+  {
+    title: 'F1Tenth Autonomous Racing',
+    description: 'Implemented 6 autonomous driving algorithms from scratch — reactive control → PID → path tracking → sampling-based planning → MPC — on a real 1/10-scale race car running ROS 2 on NVIDIA Jetson.',
+    videoUrl: 'https://youtu.be/QS4dnrDDZss',
+    githubUrl: 'https://github.com/Ryan19941212/F1tenth',
+    bullets: [
+      { icon: '🏎️', bold: '6 algorithms implemented from scratch', text: '– AEB → PID Wall Follow → Follow the Gap → Pure Pursuit → RRT* → MPC' },
+      { icon: '🤖', bold: 'Deployed on NVIDIA Jetson Orin Nano', text: '– ROS 2 Humble with real RPLiDAR A2M12 and VESC motor controller' },
+      { icon: '🛡️', bold: 'Safety-first architecture', text: '– Priority-based Ackermann mux with AEB override at highest priority (200)' },
+    ],
   },
 ];
 ---
