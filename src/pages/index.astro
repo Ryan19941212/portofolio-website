@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection';
-import F1TenthShowcase from '../components/F1TenthShowcase';
+import RoboRacerShowcase from '../components/RoboRacerShowcase';
 import ProjectsSection from '../components/ProjectsSection';
 import TechStack from '../components/SkillsCarousel';
 import AboutSection from '../components/AboutSection';
@@ -32,10 +32,10 @@ const projects = [
   description="Robotics Product Manager and autonomy engineer. UCLA Anderson MBA + 5 years of engineering. Building end-to-end autonomous systems on ROS 2 and NVIDIA Jetson."
 >
   <HeroSection client:load />
-  <F1TenthShowcase client:load />
+  <AboutSection client:load />
+  <RoboRacerShowcase client:load />
   <ProjectsSection projects={projects} client:load />
   <TechStack client:only="react" />
-  <AboutSection client:load />
   <ResumeSection baseUrl={import.meta.env.BASE_URL} client:load />
   <ContactForm client:load />
 </BaseLayout>

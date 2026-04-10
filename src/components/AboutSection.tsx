@@ -49,7 +49,7 @@ const timeline: TimelineNode[] = [
     summary:
       'Closing the loop — applying MBA product thinking to the field I love most. Building autonomous systems end-to-end to understand what I ship.',
     bullets: [
-      'F1Tenth autonomous racing stack on Jetson + ROS 2',
+      'RoboRacer (F1TENTH) autonomous racing stack on Jetson + ROS 2',
       'Implemented 6 algorithms end-to-end: AEB, wall follow, gap follow, pure pursuit, RRT*, MPC',
       'Targeting NVIDIA robotics — PM role with deep autonomy fluency',
     ],
@@ -76,7 +76,7 @@ const AboutSection: React.FC = () => {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-nv-500" />
-            <span className="tech-label text-nv-500">PROFILE / 04</span>
+            <span className="tech-label text-nv-500">PROFILE / 01</span>
           </div>
           <h2 className="font-display font-bold text-white text-4xl sm:text-5xl md:text-6xl tracking-tight">
             The crossover

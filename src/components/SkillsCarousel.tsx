@@ -109,7 +109,7 @@ const TechStack: React.FC = () => {
           <div className="col-span-12 lg:col-span-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-12 bg-nv-500" />
-              <span className="tech-label text-nv-500">TECHNICAL_STACK / 03</span>
+              <span className="tech-label text-nv-500">TECHNICAL_STACK / 04</span>
             </div>
             <h2 className="font-display font-bold text-white text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4">
               Built in the stack

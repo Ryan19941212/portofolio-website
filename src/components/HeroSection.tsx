@@ -39,6 +39,15 @@ const HeroSection: React.FC = () => {
             <span className="text-ink-400">STATUS::</span>
             <span className="text-amber-500">OPEN_TO_OPPS</span>
           </div>
+          <a
+            href="#resume"
+            className="ml-auto inline-flex items-center gap-2 border border-nv-500/40 hover:bg-nv-500 hover:text-ink-950 text-nv-500 px-3 py-1.5 transition-colors"
+          >
+            <span>RESUME</span>
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="square" strokeWidth="2" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+            </svg>
+          </a>
         </motion.div>
 
         <div className="grid grid-cols-12 gap-6 lg:gap-10 items-center">
@@ -63,51 +72,92 @@ const HeroSection: React.FC = () => {
                 <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 text-ink-100 font-medium">
                   Robotics Product Manager
                 </span>
-                <span className="block text-base sm:text-lg md:text-xl mt-3 font-mono text-nv-500 tracking-wide">
-                  <span className="text-ink-500">$</span> ships_product ={' '}
-                  <span className="text-white">writes_code()</span>
-                  <span className="text-nv-500 animate-pulse">_</span>
-                </span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-ink-100 leading-relaxed max-w-xl mb-4 font-medium">
-                I don't translate between PMs and engineers.{' '}
-                <span className="text-nv-500">I am both.</span>
+              <p className="text-xl sm:text-2xl md:text-3xl text-white leading-[1.25] max-w-2xl mb-4 font-display font-medium">
+                I build the robots{' '}
+                <span className="text-nv-500">I ship specs for.</span>
               </p>
-              <p className="text-base text-ink-300 leading-relaxed max-w-xl mb-8">
-                UCLA Anderson MBA + 5y engineering. I ship the{' '}
-                <span className="text-white font-medium">perception, planning, and control</span>{' '}
-                stacks I write specs for — so the trade-offs I negotiate are the
-                ones I've already debugged on real hardware at 2am.
+              <p className="text-base md:text-lg text-ink-200 leading-relaxed max-w-xl mb-3">
+                UCLA Anderson MBA with 5+ years of engineering. Most PMs
+                translate between product and engineering — I already speak
+                both. When I write a spec, I've already debugged the code.
+              </p>
+              <p className="font-mono text-[13px] text-ink-500 mb-8 max-w-xl">
+                $ ships_product ={' '}
+                <span className="text-nv-500">writes_code()</span>
+                <span className="text-nv-500 animate-pulse">_</span>
               </p>
 
-              {/* Key credentials as horizontal data strip */}
-              <div className="flex flex-wrap gap-x-6 gap-y-3 mb-10 font-mono text-xs">
-                <div>
-                  <div className="tech-label-sm mb-1">EDU</div>
-                  <div className="text-ink-100">UCLA Anderson MBA</div>
+              {/* EXECUTIVE SUMMARY — recruiter-friendly data card */}
+              <div className="mb-10 border border-white/10 bg-ink-900/60 relative">
+                <div className="absolute -top-3 left-4 px-2 bg-ink-950">
+                  <span className="tech-label text-nv-500">● EXECUTIVE_SUMMARY</span>
                 </div>
-                <div className="hidden sm:block w-px bg-white/10" />
-                <div>
-                  <div className="tech-label-sm mb-1">BACKGROUND</div>
-                  <div className="text-ink-100">5y Civil Eng / Automation</div>
-                </div>
-                <div className="hidden sm:block w-px bg-white/10" />
-                <div>
-                  <div className="tech-label-sm mb-1">FOCUS</div>
-                  <div className="text-nv-500">Autonomous Robotics</div>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-white/5">
+                  <div className="bg-ink-900 p-4">
+                    <div className="tech-label-sm mb-2">MBA</div>
+                    <div className="text-white text-sm font-medium leading-snug">
+                      UCLA Anderson
+                    </div>
+                    <div className="font-mono text-[12px] text-ink-400 mt-1">
+                      Class of 2027
+                    </div>
+                  </div>
+                  <div className="bg-ink-900 p-4">
+                    <div className="tech-label-sm mb-2">EXPERIENCE</div>
+                    <div className="text-white text-sm font-medium leading-snug">
+                      5+ yrs
+                    </div>
+                    <div className="font-mono text-[12px] text-ink-400 mt-1">
+                      Eng / Automation
+                    </div>
+                  </div>
+                  <div className="bg-ink-900 p-4">
+                    <div className="tech-label-sm mb-2">LOCATION</div>
+                    <div className="text-white text-sm font-medium leading-snug">
+                      Los Angeles
+                    </div>
+                    <div className="font-mono text-[12px] text-ink-400 mt-1">
+                      Open to relocate
+                    </div>
+                  </div>
+                  <div className="bg-ink-900 p-4">
+                    <div className="tech-label-sm mb-2">AVAILABLE</div>
+                    <div className="text-white text-sm font-medium leading-snug">
+                      Summer 2026
+                    </div>
+                    <div className="font-mono text-[12px] text-ink-400 mt-1">
+                      FT: 2027
+                    </div>
+                  </div>
+                  <a
+                    href="#resume"
+                    className="group bg-ink-900 p-4 hover:bg-nv-500 hover:text-ink-950 transition-colors block col-span-2 md:col-span-1"
+                  >
+                    <div className="tech-label-sm mb-2 group-hover:text-ink-950">RESUME</div>
+                    <div className="text-nv-500 group-hover:text-ink-950 text-sm font-medium leading-snug flex items-center gap-2">
+                      Download PDF
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="square" strokeWidth="2" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+                      </svg>
+                    </div>
+                    <div className="font-mono text-[12px] text-ink-400 group-hover:text-ink-900 mt-1">
+                      ~125 KB · 2026
+                    </div>
+                  </a>
                 </div>
               </div>
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
                 <motion.a
-                  href="#f1tenth"
+                  href="#roboracer"
                   className="group relative inline-flex items-center justify-center gap-3 px-6 py-4 bg-nv-500 text-ink-950 font-mono text-xs uppercase tracking-[0.2em] font-semibold hover:bg-nv-400 transition-colors"
                   whileHover={{ x: 2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span>&gt; See F1TENTH project</span>
+                  <span>&gt; See RoboRacer project</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="square" strokeWidth="2" d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
@@ -138,7 +188,7 @@ const HeroSection: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Right: Featured asset — F1Tenth hero image + telemetry overlay */}
+          {/* Right: Featured asset — RoboRacer hero image + telemetry overlay */}
           <div className="col-span-12 lg:col-span-5">
             <motion.div
               className="relative bracket-frame bg-ink-900/60 backdrop-blur-sm"
@@ -148,16 +198,16 @@ const HeroSection: React.FC = () => {
             >
               {/* Top label */}
               <div className="absolute -top-3 left-4 z-10 px-2 bg-ink-950">
-                <span className="tech-label text-nv-500">● LIVE_FEED / F1TENTH</span>
+                <span className="tech-label text-nv-500">● LIVE_FEED / ROBORACER</span>
               </div>
 
-              {/* F1tenth hero image - we'll use the YouTube thumbnail as a placeholder for the featured asset */}
+              {/* RoboRacer hero feed */}
               <div className="relative aspect-[4/3] overflow-hidden">
                 <div className="scanlines absolute inset-0" />
                 <div className="scan-sweep absolute inset-0" />
                 <iframe
                   src="https://www.youtube.com/embed/QS4dnrDDZss?autoplay=1&mute=1&loop=1&playlist=QS4dnrDDZss&controls=0&modestbranding=1"
-                  title="F1TENTH Autonomous Racing"
+                  title="RoboRacer Autonomous Racing"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   className="w-full h-full"
                   style={{ border: 0 }}

@@ -34,7 +34,7 @@ const ProjectsSection: React.FC<Props> = ({ projects }) => {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-nv-500" />
-            <span className="tech-label text-nv-500">OTHER_WORK / 02</span>
+            <span className="tech-label text-nv-500">OTHER_WORK / 03</span>
           </div>
           <h2 className="font-display font-bold text-white text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4">
             Adjacent projects

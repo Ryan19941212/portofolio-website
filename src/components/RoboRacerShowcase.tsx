@@ -159,10 +159,10 @@ const decisionNotes = [
   },
 ];
 
-const F1TenthShowcase: React.FC = () => {
+const RoboRacerShowcase: React.FC = () => {
   return (
     <section
-      id="f1tenth"
+      id="roboracer"
       className="relative bg-ink-950 py-20 sm:py-28 lg:py-32 overflow-hidden"
     >
       {/* Background */}
@@ -180,18 +180,30 @@ const F1TenthShowcase: React.FC = () => {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-nv-500" />
-            <span className="tech-label text-nv-500">FEATURED_PROJECT / 01</span>
+            <span className="tech-label text-nv-500">FEATURED_PROJECT / 02</span>
+            <span className="tech-label-sm text-ink-400 hidden sm:inline">
+              · formerly F1TENTH
+            </span>
           </div>
           <div className="grid grid-cols-12 gap-6 items-end">
             <div className="col-span-12 lg:col-span-8">
               <h2 className="font-display font-bold text-white leading-[0.9] tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-[96px] mb-5">
-                F1<span className="text-nv-500">/</span>TENTH
+                Robo<span className="text-nv-500">/</span>Racer
               </h2>
-              <p className="text-lg md:text-xl text-ink-100 max-w-2xl leading-relaxed">
+              <p className="text-lg md:text-xl text-ink-100 max-w-2xl leading-relaxed mb-5">
                 Six autonomous driving algorithms, built{' '}
                 <span className="text-nv-500 font-semibold">solo from scratch</span>{' '}
                 on a 1/10-scale race car — from reactive control to model
                 predictive control — running ROS 2 on NVIDIA Jetson.
+              </p>
+              <p className="text-base md:text-lg text-ink-300 max-w-2xl leading-relaxed">
+                Most PMs write requirements. I wrote these six algorithms — from
+                scratch, on a real race car —{' '}
+                <span className="text-white">
+                  so the roadmap trade-offs I make come from actually debugging
+                  them at 2am
+                </span>
+                , not from a textbook.
               </p>
             </div>
             <div className="col-span-12 lg:col-span-4 font-mono text-[12px] uppercase tracking-[0.16em] space-y-1 text-ink-200">
@@ -227,6 +239,49 @@ const F1TenthShowcase: React.FC = () => {
           </a>
         </motion.div>
 
+        {/* TL;DR strip — for recruiters who only have 30 seconds */}
+        <motion.div
+          className="mb-12 lg:mb-16 border border-nv-500/30 bg-ink-900/60 relative"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="absolute -top-3 left-4 px-2 bg-ink-950">
+            <span className="tech-label text-nv-500">▸ TL;DR / 30 SEC</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-white/5">
+            <div className="bg-ink-900 p-5">
+              <div className="tech-label-sm mb-2">WHAT</div>
+              <div className="text-white text-sm leading-relaxed">
+                A 1/10-scale autonomous race car I built end-to-end — from
+                firmware up to motion planning.
+              </div>
+            </div>
+            <div className="bg-ink-900 p-5">
+              <div className="tech-label-sm mb-2">WHY IT MATTERS</div>
+              <div className="text-white text-sm leading-relaxed">
+                Proves I can do the robotics work I'm asking to manage.
+                Hiring managers don't guess.
+              </div>
+            </div>
+            <div className="bg-ink-900 p-5">
+              <div className="tech-label-sm mb-2">STACK</div>
+              <div className="text-white text-sm leading-relaxed">
+                ROS 2 · NVIDIA Jetson · C++/Python · LiDAR perception ·
+                MPC control.
+              </div>
+            </div>
+            <div className="bg-ink-900 p-5">
+              <div className="tech-label-sm mb-2">SCOPE</div>
+              <div className="text-white text-sm leading-relaxed">
+                6 algorithms · ~5k LOC · solo build · real hardware + sim ·
+                2025 – 2026.
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Hero image + system specs strip */}
         <motion.div
           className="mb-16 lg:mb-20 grid grid-cols-12 gap-6"
@@ -243,7 +298,7 @@ const F1TenthShowcase: React.FC = () => {
               <div className="scanlines absolute inset-0 z-10 opacity-40" />
               <img
                 src="/f1tenth-hero.jpg"
-                alt="Physical F1Tenth 1/10-scale autonomous race car"
+                alt="RoboRacer (formerly F1TENTH) 1/10-scale autonomous race car"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -255,7 +310,7 @@ const F1TenthShowcase: React.FC = () => {
                 CAM_01
               </div>
               <div className="absolute bottom-4 left-4 font-mono text-[12px] text-white/80 tracking-[0.18em] z-20">
-                F1TENTH / LAB_CAR
+                ROBORACER / LAB_CAR
               </div>
             </div>
           </div>
@@ -312,8 +367,9 @@ const F1TenthShowcase: React.FC = () => {
               <p className="text-ink-100 leading-relaxed mb-3">
                 Halfway through Lab 5, the steering servo on the real car stopped
                 responding. The default VESC 6.06 firmware shipped for 60_MK6 had
-                a broken servo output path — and the f1tenth pre-built binaries
-                only covered MKIII/MKV/PLUS/FLIPSKY. No MK6.
+                a broken servo output path — and the RoboRacer (formerly
+                F1TENTH) pre-built binaries only covered MKIII/MKV/PLUS/FLIPSKY.
+                No MK6.
               </p>
               <p className="text-ink-200 leading-relaxed">
                 So I kept developing in AutoDRIVE sim for the algorithm work, and
@@ -687,4 +743,4 @@ const CodeBlock: React.FC<{ filename: string; code: string }> = ({
   </div>
 );
 
-export default F1TenthShowcase;
+export default RoboRacerShowcase;
