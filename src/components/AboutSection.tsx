@@ -14,44 +14,58 @@ interface TimelineNode {
 const timeline: TimelineNode[] = [
   {
     id: '01',
-    year: '2025 – now',
+    year: '2026 – now',
     role: 'Robotics Product',
-    org: 'Autonomy · AI Systems',
+    org: 'UCLA Mobility Lab · Autonomy',
     tag: 'SHIP',
     summary:
-      'Closing the loop — applying MBA product thinking to the field I love most. Building autonomous systems end-to-end to understand what I ship.',
+      'Closing the loop — applying product thinking to the field I love most. Building autonomous systems end-to-end so the specs I write and the trade-offs I negotiate come from real hardware, not slides.',
     bullets: [
-      'RoboRacer (F1TENTH) autonomous racing stack on Jetson + ROS 2',
+      'RoboRacer (formerly F1TENTH) autonomous racing stack on Jetson + ROS 2',
       'Implemented 6 algorithms end-to-end: AEB, wall follow, gap follow, pure pursuit, RRT*, MPC',
-      'Targeting NVIDIA robotics — PM role with deep autonomy fluency',
+      'Targeting NVIDIA robotics — PM with deep autonomy + sim fluency',
     ],
   },
   {
     id: '02',
-    year: '2023 – 2025',
+    year: '2025 – 2027',
     role: 'MBA · UCLA Anderson',
-    org: 'Product Strategy · Tech',
+    org: 'Technology Management',
     tag: 'TRANSLATE',
     summary:
-      'Crossed over to product. Learned the business of shipping software — market sizing, customer research, roadmap tradeoffs.',
+      'Full-time MBA in the Technology Management track. Crossed from engineering leadership into product strategy — market sizing, customer research, roadmap trade-offs, GTM.',
     bullets: [
-      'Product management specialization at UCLA Anderson',
-      'Go-to-market strategy for hardware + AI systems',
-      'Closed the gap between technical feasibility and business reality',
+      'Technology Management track · Technology Immersion Program honors',
+      'Startup project: Modeling.ai — AI-powered 3D modeling via MCP for AEC',
+      'Closing the gap between technical feasibility and business reality',
     ],
   },
   {
     id: '03',
-    year: '2018 – 2023',
-    role: 'Civil Engineer',
-    org: 'Infrastructure · Automation',
+    year: '2025',
+    role: 'AI Product Manager',
+    org: 'Zendesk · James Tech Consulting · Taipei',
+    tag: 'LAUNCH',
+    summary:
+      'First dedicated product role — shipped an AI customer-service chatbot extension on the Zendesk platform. Hands-on LLM fine-tuning, CRM integration, and cross-functional delivery.',
+    bullets: [
+      'Shipped AI chatbot extension → 70% support-effort reduction · 2× revenue in 5 mo',
+      "Fine-tuned LLM + custom API into BenQ's CRM — saved the client $200K / month",
+      'Expanded the chatbot to a new e-commerce vertical: +50% client acquisition, 70% conversion',
+    ],
+  },
+  {
+    id: '04',
+    year: '2020 – 2025',
+    role: 'Infrastructure PM',
+    org: 'China Engineering Consultants + Taiwan Gov · Taipei',
     tag: 'BUILD',
     summary:
-      'Built the physical world — underground railways, LNG terminals, high-rises. Learned to ship where failure has real consequences.',
+      '5 years managing large-scale public infrastructure — underground railways, high-rises, LNG terminals. Learned to ship where failure has real, physical consequences.',
     bullets: [
-      'Delivered multi-year infrastructure projects on schedule and budget',
-      'Coordinated across trades, vendors, and regulators at scale',
-      'First touched automation — the spark that pulled me toward robotics',
+      'Managed a $3.3B underground railway · balanced 5+ stakeholders · 100% on-time',
+      'Resolved a critical issue via independent data analysis — saved $1.5M, accelerated 12 mo',
+      'Delivered 3+ large-scale projects · -15% execution cost · on schedule under evolving scope',
     ],
   },
 ];
@@ -130,7 +144,7 @@ const AboutSection: React.FC = () => {
                 </div>
                 <div className="flex items-start justify-between gap-4 pb-3 border-b border-white/5">
                   <dt className="tech-label-sm">BACKGROUND</dt>
-                  <dd className="text-white text-right">5y Civil Engineering<br /><span className="text-ink-400">Automation · Infra</span></dd>
+                  <dd className="text-white text-right">5y AI PM · Infra PM<br /><span className="text-ink-400">Civil Eng M.S.</span></dd>
                 </div>
                 <div className="flex items-start justify-between gap-4 pb-3 border-b border-white/5">
                   <dt className="tech-label-sm">TARGET</dt>

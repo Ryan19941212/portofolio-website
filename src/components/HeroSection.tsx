@@ -79,9 +79,10 @@ const HeroSection: React.FC = () => {
                 <span className="text-nv-500">I ship specs for.</span>
               </p>
               <p className="text-base md:text-lg text-ink-200 leading-relaxed max-w-xl mb-3">
-                UCLA Anderson MBA with 5+ years of engineering. Most PMs
-                translate between product and engineering — I already speak
-                both. When I write a spec, I've already debugged the code.
+                UCLA Anderson MBA · 5+ years across AI product management,
+                infrastructure PM, and hands-on robotics. Most PMs translate
+                between product and engineering — I already speak both. When I
+                write a spec, I've already debugged the code.
               </p>
               <p className="font-mono text-[13px] text-ink-500 mb-8 max-w-xl">
                 $ ships_product ={' '}
@@ -110,7 +111,7 @@ const HeroSection: React.FC = () => {
                       5+ yrs
                     </div>
                     <div className="font-mono text-[12px] text-ink-400 mt-1">
-                      Eng / Automation
+                      PM · AI · Infra
                     </div>
                   </div>
                   <div className="bg-ink-900 p-4">
