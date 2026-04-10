@@ -60,21 +60,25 @@ const HeroSection: React.FC = () => {
                 <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[88px]">
                   Ryan Huang
                 </span>
-                <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 text-ink-200 font-medium">
+                <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 text-ink-100 font-medium">
                   Robotics Product Manager
                 </span>
-                <span className="block text-base sm:text-lg md:text-xl mt-2 font-mono text-nv-500 tracking-wide">
-                  &#123; who ships the code &#125;
+                <span className="block text-base sm:text-lg md:text-xl mt-3 font-mono text-nv-500 tracking-wide">
+                  <span className="text-ink-500">$</span> ships_product ={' '}
+                  <span className="text-white">writes_code()</span>
+                  <span className="text-nv-500 animate-pulse">_</span>
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-ink-200 leading-relaxed max-w-xl mb-8">
-                MBA-trained product strategist and hands-on autonomy engineer.
-                I build the robotic systems I ship — from{' '}
-                <span className="text-white font-medium">ROS 2 perception</span> and{' '}
-                <span className="text-white font-medium">motion planning</span> to{' '}
-                <span className="text-white font-medium">model predictive control</span>{' '}
-                on real hardware.
+              <p className="text-lg sm:text-xl text-ink-100 leading-relaxed max-w-xl mb-4 font-medium">
+                I don't translate between PMs and engineers.{' '}
+                <span className="text-nv-500">I am both.</span>
+              </p>
+              <p className="text-base text-ink-300 leading-relaxed max-w-xl mb-8">
+                UCLA Anderson MBA + 5y engineering. I ship the{' '}
+                <span className="text-white font-medium">perception, planning, and control</span>{' '}
+                stacks I write specs for — so the trade-offs I negotiate are the
+                ones I've already debugged on real hardware at 2am.
               </p>
 
               {/* Key credentials as horizontal data strip */}
@@ -96,7 +100,7 @@ const HeroSection: React.FC = () => {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
                 <motion.a
                   href="#f1tenth"
                   className="group relative inline-flex items-center justify-center gap-3 px-6 py-4 bg-nv-500 text-ink-950 font-mono text-xs uppercase tracking-[0.2em] font-semibold hover:bg-nv-400 transition-colors"
@@ -119,6 +123,17 @@ const HeroSection: React.FC = () => {
                     <path strokeLinecap="square" strokeWidth="2" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
                   </svg>
                 </motion.a>
+              </div>
+
+              {/* Looking for block */}
+              <div className="relative border-l-2 border-nv-500/60 pl-4 py-1 max-w-xl">
+                <div className="tech-label-sm mb-2 text-nv-500">▸ SEEKING / 2026</div>
+                <div className="font-mono text-[13px] text-ink-200 leading-relaxed">
+                  <span className="text-white">Robotics / Autonomy PM</span> roles —
+                  <span className="text-ink-300"> perception, planning, control, simulation.</span>
+                  <br />
+                  <span className="text-ink-400">// Built for NVIDIA Robotics · Isaac · Jetson · Drive</span>
+                </div>
               </div>
             </motion.div>
           </div>

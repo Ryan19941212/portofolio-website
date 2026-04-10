@@ -1,24 +1,58 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const timeline = [
+interface TimelineNode {
+  id: string;
+  year: string;
+  role: string;
+  org: string;
+  tag: string;
+  summary: string;
+  bullets: string[];
+}
+
+const timeline: TimelineNode[] = [
   {
+    id: '01',
     year: '2018 – 2023',
     role: 'Civil Engineer',
     org: 'Infrastructure · Automation',
-    summary: 'Built the physical world — underground railways, LNG terminals, high-rises. Learned to ship projects where failure has real consequences.',
+    tag: 'BUILD',
+    summary:
+      'Built the physical world — underground railways, LNG terminals, high-rises. Learned to ship where failure has real consequences.',
+    bullets: [
+      'Delivered multi-year infrastructure projects on schedule and budget',
+      'Coordinated across trades, vendors, and regulators at scale',
+      'First touched automation — the spark that pulled me toward robotics',
+    ],
   },
   {
+    id: '02',
     year: '2023 – 2025',
     role: 'MBA · UCLA Anderson',
-    org: 'Product Strategy',
-    summary: 'Crossed over to product. Learned the business of shipping software — market sizing, customer research, roadmap tradeoffs.',
+    org: 'Product Strategy · Tech',
+    tag: 'TRANSLATE',
+    summary:
+      'Crossed over to product. Learned the business of shipping software — market sizing, customer research, roadmap tradeoffs.',
+    bullets: [
+      'Product management specialization at UCLA Anderson',
+      'Go-to-market strategy for hardware + AI systems',
+      'Closed the gap between technical feasibility and business reality',
+    ],
   },
   {
+    id: '03',
     year: '2025 – now',
     role: 'Robotics Product',
     org: 'Autonomy · AI Systems',
-    summary: 'Closing the loop — applying MBA product thinking to the field I love most. Building autonomous systems end-to-end to understand what I ship.',
+    tag: 'SHIP',
+    summary:
+      'Closing the loop — applying MBA product thinking to the field I love most. Building autonomous systems end-to-end to understand what I ship.',
+    bullets: [
+      'F1Tenth autonomous racing stack on Jetson + ROS 2',
+      'Implemented 6 algorithms end-to-end: AEB, wall follow, gap follow, pure pursuit, RRT*, MPC',
+      'Targeting NVIDIA robotics — PM role with deep autonomy fluency',
+    ],
   },
 ];
 
@@ -32,6 +66,7 @@ const AboutSection: React.FC = () => {
       <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-nv-500/5 rounded-full blur-[120px]" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10">
+        {/* Header */}
         <motion.div
           className="mb-12 lg:mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -48,7 +83,7 @@ const AboutSection: React.FC = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-12 gap-6 lg:gap-10 mb-16">
+        <div className="grid grid-cols-12 gap-6 lg:gap-10 mb-20">
           {/* Lead statement */}
           <motion.div
             className="col-span-12 lg:col-span-7"
@@ -112,44 +147,103 @@ const AboutSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Timeline */}
+        {/* Vertical Timeline */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-3 mb-10">
             <span className="tech-label">▪ TRAJECTORY</span>
             <div className="h-px flex-1 bg-white/5" />
+            <span className="font-mono text-[12px] text-ink-400">
+              {timeline.length} NODES
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/5">
-            {timeline.map((item, i) => (
-              <motion.div
-                key={item.year}
-                className="group relative bg-ink-900 p-6 hover:bg-ink-800 transition-colors"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * i }}
-              >
-                <div className="absolute top-0 left-0 h-px bg-nv-500 w-0 group-hover:w-full transition-all duration-700" />
+          <div className="relative pl-6 md:pl-10">
+            {/* Vertical line */}
+            <div className="absolute left-[9px] md:left-[15px] top-3 bottom-3 w-px bg-gradient-to-b from-nv-500 via-nv-500/40 to-transparent" />
 
-                <div className="font-mono text-[12px] text-nv-500 mb-3 tracking-wider">
-                  {String(i + 1).padStart(2, '0')} · {item.year}
+            <div className="space-y-10 md:space-y-14">
+              {timeline.map((node, i) => (
+                <motion.div
+                  key={node.id}
+                  className="relative"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 * i }}
+                >
+                  {/* Node marker */}
+                  <div className="absolute -left-6 md:-left-10 top-2 flex items-center">
+                    <div className="relative flex items-center justify-center w-[18px] h-[18px] md:w-[30px] md:h-[30px]">
+                      <div className="absolute inset-0 rounded-full border border-nv-500/40" />
+                      <div className="absolute inset-[3px] md:inset-[5px] rounded-full bg-nv-500" />
+                      <div className="absolute inset-0 rounded-full bg-nv-500/30 blur-md" />
+                    </div>
+                  </div>
+
+                  {/* Card */}
+                  <div className="group relative bg-ink-900/70 border border-white/5 hover:border-nv-500/40 transition-colors p-6 md:p-8">
+                    <div className="absolute top-0 left-0 h-px bg-nv-500 w-0 group-hover:w-full transition-all duration-700" />
+
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <span className="font-mono text-[12px] text-nv-500 tracking-wider">
+                        {node.id} · {node.year}
+                      </span>
+                      <span className="h-px flex-1 bg-white/5 min-w-[20px]" />
+                      <span className="tech-label-sm text-nv-500 border border-nv-500/40 px-2 py-[2px]">
+                        {node.tag}
+                      </span>
+                    </div>
+
+                    <div className="font-display font-semibold text-white text-2xl md:text-3xl mb-1">
+                      {node.role}
+                    </div>
+                    <div className="font-mono text-[13px] text-ink-400 mb-4">
+                      // {node.org}
+                    </div>
+
+                    <p className="text-base text-ink-200 leading-relaxed mb-4 max-w-3xl">
+                      {node.summary}
+                    </p>
+
+                    <ul className="space-y-2">
+                      {node.bullets.map((b) => (
+                        <li
+                          key={b}
+                          className="flex items-start gap-3 font-mono text-[13px] text-ink-300"
+                        >
+                          <span className="text-nv-500 mt-[2px]">›</span>
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* Terminal node */}
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+              >
+                <div className="absolute -left-6 md:-left-10 top-2 flex items-center">
+                  <div className="w-[18px] h-[18px] md:w-[30px] md:h-[30px] flex items-center justify-center">
+                    <div className="w-2 h-2 border border-nv-500 rotate-45" />
+                  </div>
                 </div>
-                <div className="font-display font-semibold text-white text-xl mb-1">
-                  {item.role}
+                <div className="font-mono text-[13px] text-ink-400 pt-1">
+                  {'>'} <span className="text-nv-500">AWAITING_NEXT_NODE</span> ·
+                  NVIDIA Robotics Product Management_
                 </div>
-                <div className="font-mono text-[12px] text-ink-400 mb-4">
-                  {item.org}
-                </div>
-                <p className="text-sm text-ink-300 leading-relaxed">
-                  {item.summary}
-                </p>
               </motion.div>
-            ))}
+            </div>
           </div>
         </motion.div>
       </div>

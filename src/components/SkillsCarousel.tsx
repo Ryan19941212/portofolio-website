@@ -38,14 +38,16 @@ const stack: Skill[] = [
   { name: 'PyTorch',            category: 'AI_ML',    icon: SiPytorch },
   { name: 'OpenCV',             category: 'AI_ML',    icon: SiOpencv },
   { name: 'CUDA',               category: 'AI_ML',    icon: SiNvidia },
-  { name: 'TensorRT',           category: 'AI_ML',    mono: 'TRT' },
+  { name: 'TensorRT',           category: 'AI_ML',    icon: SiNvidia },
   { name: 'LLM / Agents',       category: 'AI_ML',    mono: 'LLM' },
 
   // Infra
   { name: 'Linux',              category: 'INFRA',    icon: SiLinux },
   { name: 'Docker',             category: 'INFRA',    icon: SiDocker },
   { name: 'Git',                category: 'INFRA',    icon: SiGit },
-  { name: 'Jetson',             category: 'INFRA',    icon: SiNvidia },
+  { name: 'Jetson Orin',        category: 'INFRA',    icon: SiNvidia },
+  { name: 'Isaac Sim',          category: 'INFRA',    icon: SiNvidia },
+  { name: 'Isaac ROS',          category: 'INFRA',    icon: SiNvidia },
 
   // Product
   { name: 'Jira',               category: 'PRODUCT',  icon: SiJira },
@@ -153,7 +155,7 @@ const TechStack: React.FC = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          // Always learning · Currently deep in CUDA optimization and MPC solver warm-starts
+          // Always learning · Currently deep in Isaac Sim / Isaac ROS, CUDA kernels, and MPC warm-starts
         </motion.p>
       </div>
     </section>
