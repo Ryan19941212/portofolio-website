@@ -295,7 +295,7 @@ const RoboRacerShowcase: React.FC = () => {
               <span className="tech-label text-nv-500">● REAL_HARDWARE</span>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden">
-              <div className="scanlines absolute inset-0 z-10 opacity-40" />
+              <div className="scanlines absolute inset-0 z-10 opacity-40 pointer-events-none" />
               <img
                 src="/f1tenth-hero.jpg"
                 alt="RoboRacer (formerly F1TENTH) 1/10-scale autonomous race car"
@@ -303,13 +303,13 @@ const RoboRacerShowcase: React.FC = () => {
                 loading="lazy"
               />
               {/* Corner HUD overlay */}
-              <div className="absolute top-4 left-4 font-mono text-[12px] text-nv-500 tracking-[0.18em] z-20">
+              <div className="absolute top-4 left-4 font-mono text-[12px] text-nv-500 tracking-[0.18em] z-20 pointer-events-none">
                 ● LIVE
               </div>
-              <div className="absolute top-4 right-4 font-mono text-[12px] text-white/80 tracking-[0.18em] z-20">
+              <div className="absolute top-4 right-4 font-mono text-[12px] text-white/80 tracking-[0.18em] z-20 pointer-events-none">
                 CAM_01
               </div>
-              <div className="absolute bottom-4 left-4 font-mono text-[12px] text-white/80 tracking-[0.18em] z-20">
+              <div className="absolute bottom-4 left-4 font-mono text-[12px] text-white/80 tracking-[0.18em] z-20 pointer-events-none">
                 ROBORACER / LAB_CAR
               </div>
             </div>
@@ -652,16 +652,16 @@ const RoboRacerShowcase: React.FC = () => {
                 </div>
 
                 <div className="relative aspect-video overflow-hidden">
-                  <div className="scanlines absolute inset-0" />
                   <iframe
                     src={`https://www.youtube-nocookie.com/embed/${demo.id}`}
                     title={demo.name}
-                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                     loading="lazy"
-                    className="w-full h-full"
+                    className="w-full h-full relative z-0"
                     style={{ border: 0 }}
                   />
+                  <div className="scanlines absolute inset-0 pointer-events-none z-10" />
                 </div>
 
                 <div className="border-t border-white/10 px-4 py-3 flex items-center justify-between">

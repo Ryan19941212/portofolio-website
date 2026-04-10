@@ -203,8 +203,8 @@ const HeroSection: React.FC = () => {
 
               {/* RoboRacer hero feed */}
               <div className="relative aspect-[4/3] overflow-hidden">
-                <div className="scanlines absolute inset-0" />
-                <div className="scan-sweep absolute inset-0" />
+                <div className="scanlines absolute inset-0 pointer-events-none" />
+                <div className="scan-sweep absolute inset-0 pointer-events-none" />
                 <iframe
                   src="https://www.youtube.com/embed/QS4dnrDDZss?autoplay=1&mute=1&loop=1&playlist=QS4dnrDDZss&controls=0&modestbranding=1"
                   title="RoboRacer Autonomous Racing"

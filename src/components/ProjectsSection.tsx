@@ -58,16 +58,16 @@ const ProjectsSection: React.FC<Props> = ({ projects }) => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
                 {/* Video */}
                 <div className="lg:col-span-6 relative bg-black">
-                  <div className="scanlines absolute inset-0 z-10 opacity-40" />
-                  <div className="aspect-video lg:aspect-auto lg:h-full">
+                  <div className="aspect-video lg:aspect-auto lg:h-full relative">
                     <iframe
-                      src={`https://www.youtube.com/embed/${project.videoUrl.split('/').pop()}`}
+                      src={`https://www.youtube-nocookie.com/embed/${project.videoUrl.split('/').pop()}`}
                       title={project.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
-                      className="w-full h-full"
+                      className="w-full h-full relative z-0"
                       style={{ border: 0 }}
                     />
+                    <div className="scanlines absolute inset-0 z-10 opacity-40 pointer-events-none" />
                   </div>
                 </div>
 
