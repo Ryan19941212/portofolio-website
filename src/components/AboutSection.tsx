@@ -14,16 +14,16 @@ interface TimelineNode {
 const timeline: TimelineNode[] = [
   {
     id: '01',
-    year: '2018 – 2023',
-    role: 'Civil Engineer',
-    org: 'Infrastructure · Automation',
-    tag: 'BUILD',
+    year: '2025 – now',
+    role: 'Robotics Product',
+    org: 'Autonomy · AI Systems',
+    tag: 'SHIP',
     summary:
-      'Built the physical world — underground railways, LNG terminals, high-rises. Learned to ship where failure has real consequences.',
+      'Closing the loop — applying MBA product thinking to the field I love most. Building autonomous systems end-to-end to understand what I ship.',
     bullets: [
-      'Delivered multi-year infrastructure projects on schedule and budget',
-      'Coordinated across trades, vendors, and regulators at scale',
-      'First touched automation — the spark that pulled me toward robotics',
+      'RoboRacer (F1TENTH) autonomous racing stack on Jetson + ROS 2',
+      'Implemented 6 algorithms end-to-end: AEB, wall follow, gap follow, pure pursuit, RRT*, MPC',
+      'Targeting NVIDIA robotics — PM role with deep autonomy fluency',
     ],
   },
   {
@@ -42,16 +42,16 @@ const timeline: TimelineNode[] = [
   },
   {
     id: '03',
-    year: '2025 – now',
-    role: 'Robotics Product',
-    org: 'Autonomy · AI Systems',
-    tag: 'SHIP',
+    year: '2018 – 2023',
+    role: 'Civil Engineer',
+    org: 'Infrastructure · Automation',
+    tag: 'BUILD',
     summary:
-      'Closing the loop — applying MBA product thinking to the field I love most. Building autonomous systems end-to-end to understand what I ship.',
+      'Built the physical world — underground railways, LNG terminals, high-rises. Learned to ship where failure has real consequences.',
     bullets: [
-      'RoboRacer (F1TENTH) autonomous racing stack on Jetson + ROS 2',
-      'Implemented 6 algorithms end-to-end: AEB, wall follow, gap follow, pure pursuit, RRT*, MPC',
-      'Targeting NVIDIA robotics — PM role with deep autonomy fluency',
+      'Delivered multi-year infrastructure projects on schedule and budget',
+      'Coordinated across trades, vendors, and regulators at scale',
+      'First touched automation — the spark that pulled me toward robotics',
     ],
   },
 ];
@@ -163,10 +163,29 @@ const AboutSection: React.FC = () => {
           </div>
 
           <div className="relative pl-6 md:pl-10">
-            {/* Vertical line */}
-            <div className="absolute left-[9px] md:left-[15px] top-3 bottom-3 w-px bg-gradient-to-b from-nv-500 via-nv-500/40 to-transparent" />
+            {/* Vertical line — solid at top (current), fading into the past at the bottom */}
+            <div className="absolute left-[9px] md:left-[15px] top-3 bottom-3 w-px bg-gradient-to-b from-nv-500 via-nv-500/60 to-transparent" />
 
             <div className="space-y-10 md:space-y-14">
+              {/* Terminal node — where I'm heading next */}
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="absolute -left-6 md:-left-10 top-2 flex items-center">
+                  <div className="w-[18px] h-[18px] md:w-[30px] md:h-[30px] flex items-center justify-center">
+                    <div className="w-2.5 h-2.5 border border-nv-500 rotate-45 animate-pulse" />
+                  </div>
+                </div>
+                <div className="font-mono text-[13px] text-ink-300 pt-1">
+                  {'>'} <span className="text-nv-500">AWAITING_NEXT_NODE</span> ·
+                  NVIDIA Robotics Product Management_
+                </div>
+              </motion.div>
+
               {timeline.map((node, i) => (
                 <motion.div
                   key={node.id}
@@ -224,25 +243,6 @@ const AboutSection: React.FC = () => {
                   </div>
                 </motion.div>
               ))}
-
-              {/* Terminal node */}
-              <motion.div
-                className="relative"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-              >
-                <div className="absolute -left-6 md:-left-10 top-2 flex items-center">
-                  <div className="w-[18px] h-[18px] md:w-[30px] md:h-[30px] flex items-center justify-center">
-                    <div className="w-2 h-2 border border-nv-500 rotate-45" />
-                  </div>
-                </div>
-                <div className="font-mono text-[13px] text-ink-400 pt-1">
-                  {'>'} <span className="text-nv-500">AWAITING_NEXT_NODE</span> ·
-                  NVIDIA Robotics Product Management_
-                </div>
-              </motion.div>
             </div>
           </div>
         </motion.div>
