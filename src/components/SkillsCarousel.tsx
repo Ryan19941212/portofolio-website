@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import {
   SiRos,
   SiPython,
@@ -21,11 +20,10 @@ interface Skill {
   name: string;
   category: Category;
   icon?: React.ComponentType<{ className?: string }>;
-  mono?: string; // text-only fallback for topics with no icon
+  mono?: string;
 }
 
 const stack: Skill[] = [
-  // Robotics / Autonomy
   { name: 'ROS 2',              category: 'ROBOTICS', icon: SiRos },
   { name: 'C++',                category: 'ROBOTICS', icon: SiCplusplus },
   { name: 'Python',             category: 'ROBOTICS', icon: SiPython },
@@ -34,14 +32,12 @@ const stack: Skill[] = [
   { name: 'SLAM',               category: 'ROBOTICS', mono: 'SLAM' },
   { name: 'LiDAR · IMU',        category: 'ROBOTICS', mono: 'SNS' },
 
-  // AI / ML
   { name: 'PyTorch',            category: 'AI_ML',    icon: SiPytorch },
   { name: 'OpenCV',             category: 'AI_ML',    icon: SiOpencv },
   { name: 'CUDA',               category: 'AI_ML',    icon: SiNvidia },
   { name: 'TensorRT',           category: 'AI_ML',    icon: SiNvidia },
   { name: 'LLM / Agents',       category: 'AI_ML',    mono: 'LLM' },
 
-  // Infra
   { name: 'Linux',              category: 'INFRA',    icon: SiLinux },
   { name: 'Docker',             category: 'INFRA',    icon: SiDocker },
   { name: 'Git',                category: 'INFRA',    icon: SiGit },
@@ -49,7 +45,6 @@ const stack: Skill[] = [
   { name: 'Isaac Sim',          category: 'INFRA',    icon: SiNvidia },
   { name: 'Isaac ROS',          category: 'INFRA',    icon: SiNvidia },
 
-  // Product
   { name: 'Jira',               category: 'PRODUCT',  icon: SiJira },
   { name: 'Figma',              category: 'PRODUCT',  icon: SiFigma },
   { name: 'Notion',             category: 'PRODUCT',  icon: SiNotion },
@@ -66,10 +61,7 @@ const categories: { id: Category; label: string; count: number }[] = [
 const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
   const Icon = skill.icon;
   return (
-    <motion.div
-      className="group relative flex flex-col items-center justify-center aspect-square border border-white/5 bg-ink-900/50 hover:border-nv-500/40 hover:bg-ink-900 transition-all p-4"
-      whileHover={{ y: -2 }}
-    >
+    <div className="group relative flex flex-col items-center justify-center aspect-square border border-white/5 bg-ink-900/50 hover:border-nv-500/40 hover:bg-ink-900 hover:-translate-y-0.5 transition-all p-4">
       <div className="absolute top-2 left-2 font-mono text-[11px] uppercase tracking-wider text-ink-400 group-hover:text-nv-500 transition-colors">
         {skill.category.slice(0, 3)}
       </div>
@@ -85,7 +77,7 @@ const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
       <div className="font-mono text-[13px] text-center text-ink-200 group-hover:text-white transition-colors">
         {skill.name}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -98,29 +90,21 @@ const TechStack: React.FC = () => {
       <div className="absolute inset-0 bg-blueprint-fine opacity-50" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10">
-        {/* Header */}
-        <motion.div
-          className="mb-12 lg:mb-16 grid grid-cols-12 gap-6 items-end"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="mb-12 lg:mb-16 grid grid-cols-12 gap-6 items-end">
           <div className="col-span-12 lg:col-span-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-12 bg-nv-500" />
-              <span className="tech-label text-nv-500">TECHNICAL_STACK / 04</span>
+              <span className="tech-label text-ink-300">TECHNICAL STACK / 04</span>
             </div>
             <h2 className="font-display font-bold text-white text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4">
               Built in the stack
             </h2>
-            <p className="text-base md:text-lg text-ink-300 max-w-2xl">
+            <p className="text-lg md:text-xl text-ink-200 max-w-2xl leading-relaxed">
               From real-time control loops on embedded Linux to product discovery
               decks — I work across the whole vertical.
             </p>
           </div>
 
-          {/* Category breakdown */}
           <div className="col-span-12 lg:col-span-4 space-y-1">
             {categories.map((cat) => (
               <div
@@ -133,30 +117,17 @@ const TechStack: React.FC = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Grid */}
-        <motion.div
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-px bg-white/5 border border-white/5"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-px bg-white/5 border border-white/5">
           {stack.map((skill) => (
             <SkillCard key={skill.name} skill={skill} />
           ))}
-        </motion.div>
+        </div>
 
-        <motion.p
-          className="mt-8 font-mono text-[13px] text-ink-400 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-        >
+        <p className="mt-8 font-mono text-[13px] text-ink-400 text-center">
           // Always learning · Currently deep in Isaac Sim / Isaac ROS, CUDA kernels, and MPC warm-starts
-        </motion.p>
+        </p>
       </div>
     </section>
   );

@@ -1,12 +1,14 @@
 {
-  "name": "claude-portfolio",
+  "name": "ryan-huang-portfolio",
   "type": "module",
-  "version": "1.0.0",
-  "description": "Claude's Portfolio Website - Built with Astro + Tailwind CSS",
+  "version": "2.0.0",
+  "description": "Ryan Huang's portfolio — Astro + Tailwind + React islands",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "typecheck": "astro check",
+    "build": "astro build",
+    "build:check": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -20,7 +22,6 @@
     "framer-motion": "^12.23.24",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.5.0",
     "tailwindcss": "^3.4.18"
   },
@@ -28,7 +29,11 @@
     "node": ">=20.0.0"
   },
   "optionalDependencies": {
-    "@rollup/rollup-darwin-arm64": "^4.52.5",
+    "@rollup/rollup-darwin-arm64": "^4.60.1",
     "@rollup/rollup-linux-x64-gnu": "^4.52.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "typescript": "^5.9.3"
   }
 }

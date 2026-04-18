@@ -32,12 +32,12 @@ const projects = [
   description="Robotics Product Manager and autonomy engineer. UCLA Anderson MBA + 5 years of engineering. Building end-to-end autonomous systems on ROS 2 and NVIDIA Jetson."
 >
   <HeroSection client:load />
-  <AboutSection client:load />
-  <RoboRacerShowcase client:load />
-  <ProjectsSection projects={projects} client:load />
-  <TechStack client:only="react" />
-  <ResumeSection baseUrl={import.meta.env.BASE_URL} client:load />
-  <ContactForm client:load />
+  <AboutSection client:visible />
+  <RoboRacerShowcase client:visible />
+  <ProjectsSection projects={projects} client:visible />
+  <TechStack />
+  <ResumeSection baseUrl={import.meta.env.BASE_URL} client:visible />
+  <ContactForm client:visible />
 </BaseLayout>
 
 <style>
