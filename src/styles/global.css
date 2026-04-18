@@ -1,5 +1,4 @@
-/* Fonts: Space Grotesk (display) + JetBrains Mono (technical) */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* Fonts are loaded via <link> in BaseLayout.astro (non-blocking). */
 
 @tailwind base;
 @tailwind components;
@@ -27,16 +26,14 @@
 }
 
 @layer components {
-  /* Technical label: uppercase mono with tracking */
   .tech-label {
-    @apply font-mono text-[13px] uppercase tracking-[0.16em] text-ink-200 font-medium;
+    @apply font-mono text-[13px] uppercase tracking-[0.16em] text-ink-300 font-medium;
   }
 
   .tech-label-sm {
-    @apply font-mono text-[12px] uppercase tracking-[0.18em] text-ink-300 font-medium;
+    @apply font-mono text-[12px] uppercase tracking-[0.18em] text-ink-400 font-medium;
   }
 
-  /* Corner-bracket framed panel */
   .bracket-frame {
     position: relative;
   }
@@ -46,7 +43,7 @@
     position: absolute;
     width: 14px;
     height: 14px;
-    border: 1px solid rgb(118 185 0 / 0.8);
+    border: 1px solid rgb(118 185 0 / 0.6);
     pointer-events: none;
   }
   .bracket-frame::before {
@@ -58,7 +55,6 @@
     border-left: 0; border-top: 0;
   }
 
-  /* Blueprint grid background */
   .bg-blueprint {
     background-image:
       linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
@@ -73,7 +69,6 @@
     background-size: 24px 24px;
   }
 
-  /* Live/telemetry dot */
   .live-dot {
     @apply relative inline-flex h-2 w-2 rounded-full bg-nv-500;
   }
@@ -84,11 +79,10 @@
   }
 
   @keyframes ping-slow {
-    0%      { transform: scale(1);   opacity: 0.8; }
+    0%       { transform: scale(1);   opacity: 0.8; }
     75%,100% { transform: scale(2.5); opacity: 0; }
   }
 
-  /* Scanline effect for hero/video frames */
   .scanlines::before {
     content: '';
     position: absolute;
@@ -104,7 +98,6 @@
     z-index: 2;
   }
 
-  /* Vertical scan sweep */
   .scan-sweep::after {
     content: '';
     position: absolute;
@@ -130,5 +123,16 @@
 
   .border-glow-nv {
     box-shadow: 0 0 0 1px rgb(118 185 0 / 0.3), 0 0 32px rgb(118 185 0 / 0.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

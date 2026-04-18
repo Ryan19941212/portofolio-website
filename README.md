@@ -1,118 +1,75 @@
-# Ryan Huang - Portfolio Website
+# Ryan Huang — Portfolio
 
-個人作品集網站，使用 Astro + Tailwind CSS 建立。
+A single-page portfolio built with Astro + Tailwind CSS + React islands. Live at
+[ryanxhuang.com](https://ryanxhuang.com).
 
-## 特色功能
+## Tech stack
 
-- ⚡ **快速載入** - 使用 Astro 的 Zero-JS 架構
-- 🎨 **現代設計** - 簡潔清新的亮色系設計
-- 📱 **響應式** - 完美支援手機、平板和桌面裝置
-- ✨ **互動效果** - 使用 Astro Islands 實現打字動畫
-- 📝 **Netlify Forms** - 整合聯絡表單功能
-- 🚀 **易於部署** - 一鍵部署到 Netlify
+- [Astro](https://astro.build/) — static site generator, ships zero JS by default
+- [Tailwind CSS](https://tailwindcss.com/) — utility-first styling
+- [React](https://react.dev/) — interactive islands only (Framer Motion for scroll animations)
+- [TypeScript](https://www.typescriptlang.org/) — strict mode
+- [GitHub Pages](https://pages.github.com/) — hosting (CNAME → ryanxhuang.com)
 
-## 頁面結構
-
-- **Home** - 自我介紹、技能展示和 Hero 區域
-- **Projects** - 專案作品集，包含圖片、描述和連結
-- **Resume** - 線上履歷和 PDF 下載
-- **Contact** - Netlify Forms 聯絡表單
-
-## 技術棧
-
-- [Astro](https://astro.build/) - 靜態網站生成器
-- [Tailwind CSS](https://tailwindcss.com/) - CSS 框架
-- [React](https://react.dev/) - 用於 Astro Islands 互動組件
-- [TypeScript](https://www.typescriptlang.org/) - 類型安全
-- [Netlify](https://www.netlify.com/) - 部署平台
-
-## 本地開發
-
-### 安裝依賴
+## Local development
 
 ```bash
-npm install
+npm install         # one-time
+npm run dev         # http://localhost:4321
+npm run typecheck   # astro check (TS + astro)
+npm run build       # build -> dist/
+npm run preview     # serve the built site
 ```
 
-### 啟動開發伺服器
+Node version is pinned in `.nvmrc` (20).
 
-```bash
-npm run dev
-```
-
-網站將在 `http://localhost:4321` 運行
-
-### 建置專案
-
-```bash
-npm run build
-```
-
-### 預覽建置結果
-
-```bash
-npm run preview
-```
-
-## 部署到 Netlify
-
-### 方法一：透過 Git
-
-1. 將程式碼推送到 GitHub/GitLab
-2. 在 Netlify 中連接你的 repository
-3. 建置設定會自動從 `netlify.toml` 讀取
-4. 點擊部署！
-
-### 方法二：拖放部署
-
-1. 執行 `npm run build`
-2. 將 `dist` 資料夾拖放到 Netlify
-
-## 自訂內容
-
-### 更新個人資訊
-
-- **首頁內容**: 編輯 `src/pages/index.astro`
-- **專案列表**: 編輯 `src/pages/projects.astro` 中的 `projects` 陣列
-- **履歷內容**: 編輯 `src/pages/resume.astro`
-- **聯絡資訊**: 編輯 `src/pages/contact.astro` 和 `src/components/Footer.astro`
-
-### 更改顏色主題
-
-編輯 `tailwind.config.mjs` 中的 `primary` 顏色設定
-
-### 添加 Resume PDF
-
-將你的 PDF 檔案放在 `public/resume.pdf`
-
-## 專案結構
+## Project layout
 
 ```
 /
-├── public/              # 靜態檔案
-│   └── images/         # 圖片資源
+├── public/                     # Static assets served as-is
+│   ├── f1tenth-hero.jpg        # RoboRacer hero (desktop, 1600px)
+│   ├── f1tenth-hero-sm.jpg     # RoboRacer hero (mobile, 800px)
+│   ├── resume.pdf
+│   ├── og-image.svg
+│   ├── favicon.svg
+│   ├── robots.txt
+│   └── CNAME
 ├── src/
-│   ├── components/     # Astro 組件
-│   │   ├── islands/   # React 互動組件
-│   │   ├── Navigation.astro
-│   │   └── Footer.astro
-│   ├── layouts/        # 頁面佈局
-│   │   └── BaseLayout.astro
-│   └── pages/          # 路由頁面
-│       ├── index.astro
-│       ├── projects.astro
-│       ├── resume.astro
-│       └── contact.astro
-├── astro.config.mjs    # Astro 設定
-├── tailwind.config.mjs # Tailwind 設定
-├── netlify.toml        # Netlify 設定
-└── package.json
+│   ├── components/             # One-off Astro + React components
+│   ├── layouts/BaseLayout.astro
+│   ├── pages/index.astro       # Single-page site
+│   └── styles/global.css
+├── astro.config.mjs
+├── tailwind.config.mjs
+└── .github/workflows/deploy.yml
 ```
+
+The site is a single page — every section (`HeroSection`, `AboutSection`,
+`RoboRacerShowcase`, `ProjectsSection`, `SkillsCarousel`, `ResumeSection`,
+`ContactForm`) lives under `src/components/` and is composed in
+`src/pages/index.astro`.
+
+## Hydration strategy
+
+- `HeroSection` uses `client:load` (above-fold entry animations run on load).
+- `SkillsCarousel` is SSR'd with no directive — ships zero JS.
+- All other React sections use `client:visible` — they hydrate only when
+  scrolled into view, keeping initial JS small.
+
+## Updating content
+
+- Personal info + copy: `src/components/*.tsx` / `*.astro`
+- Projects list: `src/pages/index.astro` (`projects` array)
+- Resume PDF: `public/resume.pdf`
+- Color palette: `tailwind.config.mjs`
+
+## Deployment
+
+Pushes to `main` are deployed to GitHub Pages via
+`.github/workflows/deploy.yml`. The workflow runs `astro check` → `astro build`,
+then publishes `dist/`.
 
 ## License
 
-MIT License - 可自由使用和修改
-
----
-
-**Designed by Claude, Built with Astro**
+MIT.

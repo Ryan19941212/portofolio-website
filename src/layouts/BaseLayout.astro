@@ -14,11 +14,34 @@ const {
   title,
   description = 'Robotics Product Manager who ships code. UCLA Anderson MBA with 5 years of engineering experience, building autonomous systems in ROS 2 on NVIDIA Jetson.',
   keywords = 'Ryan Huang, Robotics Product Manager, Autonomy, ROS 2, NVIDIA Jetson, RoboRacer, F1TENTH, UCLA Anderson MBA, MPC, Motion Planning, Autonomous Systems',
-  image = '/og-image.svg'
+  image = '/og-image.svg',
 } = Astro.props;
 
-const siteUrl = 'https://ryanxhuang.com';
-const fullImageUrl = `${siteUrl}${image}`;
+const siteOrigin = (Astro.site ?? new URL('https://ryanxhuang.com')).origin;
+const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
+const fullImageUrl = new URL(image, siteOrigin).href;
+
+const fontsHref =
+  'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap';
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ryan Huang',
+  url: siteOrigin,
+  jobTitle: 'Robotics Product Manager',
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'UCLA Anderson School of Management' },
+  ],
+  knowsAbout: [
+    'Robotics', 'Autonomy', 'ROS 2', 'NVIDIA Jetson',
+    'Motion Planning', 'Model Predictive Control', 'Product Management',
+  ],
+  sameAs: [
+    'https://github.com/Ryan19941212',
+    'https://www.linkedin.com/in/ching-yu-huang/',
+  ],
+};
 ---
 
 <!doctype html>
@@ -29,39 +52,39 @@ const fullImageUrl = `${siteUrl}${image}`;
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="Ryan Huang" />
+    <meta name="theme-color" content="#05060a" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Font preconnect + preload for faster first paint -->
+    {/* Fonts — non-blocking: load as print, then flip to all. */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    />
+    <link rel="stylesheet" href={fontsHref} media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href={fontsHref} /></noscript>
 
-    <!-- Open Graph / Facebook -->
+    {/* Open Graph */}
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={fullImageUrl} />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={siteUrl} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={fullImageUrl} />
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullImageUrl} />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col bg-ink-950 text-ink-100">
-    <!-- Skip to main content link for accessibility -->
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:ring-4 focus:ring-blue-500/50 focus:outline-none"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-nv-500 focus:text-ink-950 focus:rounded focus:shadow-lg focus:outline-none"
     >
       Skip to main content
     </a>
