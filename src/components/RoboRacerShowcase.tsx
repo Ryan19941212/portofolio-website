@@ -98,13 +98,6 @@ const algorithms: Algo[] = [
   },
 ];
 
-const hardware = [
-  { label: 'COMPUTE',    value: 'Jetson Orin Nano',  spec: 'arm64 · JetPack 6 · L4T R36.4' },
-  { label: 'LIDAR',      value: 'RPLIDAR A2M12',     spec: '8 m range · 15 Hz · 360°' },
-  { label: 'MOTOR_ECU',  value: 'VESC 60_MK6',       spec: 'Custom FW · release_6_06' },
-  { label: 'RUNTIME',    value: 'ROS 2 Humble',      spec: 'Ubuntu 22.04 · DDS' },
-];
-
 const systemSpecs = [
   { label: 'ALGORITHMS',  value: '06',          note: 'from scratch' },
   { label: 'LIDAR_HZ',    value: '15 Hz',       note: 'A2M12 scan rate' },
@@ -155,7 +148,7 @@ const RoboRacerShowcase: React.FC = () => {
   return (
     <section
       id="roboracer"
-      className="relative bg-ink-950 py-20 sm:py-28 lg:py-32 overflow-hidden"
+      className="relative bg-ink-950 py-16 sm:py-20 lg:py-24 overflow-hidden"
     >
       <div className="absolute inset-0 bg-blueprint-fine opacity-80" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-nv-500/5 rounded-full blur-[120px]" />
@@ -222,6 +215,59 @@ const RoboRacerShowcase: React.FC = () => {
             Ryan19941212/F1tenth
             <span className="text-ink-400">→</span>
           </a>
+        </motion.div>
+
+        {/* Demo videos — visual hook moved up */}
+        <motion.div
+          className="mb-12 lg:mb-16"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <span className="tech-label">LIVE DEMO FEED</span>
+            <div className="h-px flex-1 bg-white/5" />
+            <span className="font-mono text-[12px] text-ink-400">03 / CAPTURES</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {demos.map((demo, i) => (
+              <motion.div
+                key={demo.id}
+                className="group relative bg-ink-900 border border-white/5"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <div className="absolute -top-3 left-4 z-10 px-2 bg-ink-950">
+                  <span className="tech-label-sm text-nv-500">● CH_{String(i + 1).padStart(2, '0')}</span>
+                </div>
+
+                <div className="relative aspect-video overflow-hidden">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${demo.id}`}
+                    title={demo.name}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                    className="w-full h-full relative z-0"
+                    style={{ border: 0 }}
+                  />
+                  <div className="scanlines absolute inset-0 pointer-events-none z-10" />
+                </div>
+
+                <div className="border-t border-white/10 px-4 py-3 flex items-center justify-between">
+                  <div>
+                    <div className="text-white text-sm font-medium">{demo.name}</div>
+                    <div className="font-mono text-[12px] text-ink-400">{demo.algo}</div>
+                  </div>
+                  <div className="font-mono text-[12px] text-nv-500">REC</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* TL;DR strip */}
@@ -335,92 +381,27 @@ const RoboRacerShowcase: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Sim-to-real story callout */}
+        {/* System architecture — moved up, near hero */}
         <motion.div
-          className="mb-16 lg:mb-20 relative border border-white/10 bg-ink-900/60 p-6 sm:p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="absolute -top-3 left-4 px-2 bg-ink-950">
-            <span className="tech-label-sm text-nv-500">● FIELD NOTE / SIM TO REAL</span>
-          </div>
-          <div className="grid grid-cols-12 gap-6 items-start">
-            <div className="col-span-12 md:col-span-8">
-              <h3 className="font-display font-semibold text-white text-xl sm:text-2xl mb-3">
-                The servo died. I rebuilt the firmware.
-              </h3>
-              <p className="text-lg text-ink-100 leading-relaxed mb-3">
-                Halfway through Lab 5, the steering servo on the real car stopped
-                responding. The default VESC 6.06 firmware shipped for 60_MK6 had
-                a broken servo output path — and the RoboRacer pre-built binaries
-                only covered MKIII/MKV/PLUS/FLIPSKY. No MK6.
-              </p>
-              <p className="text-lg text-ink-200 leading-relaxed">
-                I kept developing in AutoDRIVE sim for the algorithm work, and in
-                parallel built VESC firmware from source off the{' '}
-                <span className="font-mono text-nv-500">release_6_06</span> branch
-                for the MK6 target using a Docker cross-compile. Flashed via
-                Custom File tab → servo alive → back on real hardware.{' '}
-                <span className="text-white font-medium">
-                  Robotics is half writing controllers, half knowing when to drop
-                  a level of the stack.
-                </span>
-              </p>
-            </div>
-            <div className="col-span-12 md:col-span-4 font-mono text-[12px] space-y-2">
-              <div className="tech-label-sm mb-3">DEBUG LOG</div>
-              <div className="border-l-2 border-white/10 pl-3 py-1">
-                <div className="text-ink-400">01</div>
-                <div className="text-white">Servo dead on MK6</div>
-              </div>
-              <div className="border-l-2 border-white/10 pl-3 py-1">
-                <div className="text-ink-400">02</div>
-                <div className="text-white">Pivot to AutoDRIVE sim</div>
-              </div>
-              <div className="border-l-2 border-white/10 pl-3 py-1">
-                <div className="text-ink-400">03</div>
-                <div className="text-white">Build FW from source</div>
-              </div>
-              <div className="border-l-2 border-nv-500 pl-3 py-1">
-                <div className="text-ink-400">04</div>
-                <div className="text-nv-500">Flash · back online ✓</div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Hardware BOM strip */}
-        <motion.div
-          className="mb-16 lg:mb-20"
+          className="mb-12 lg:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <span className="tech-label">HARDWARE STACK</span>
+            <span className="tech-label">SYSTEM ARCHITECTURE</span>
             <div className="h-px flex-1 bg-white/5" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/5">
-            {hardware.map((hw, i) => (
-              <motion.div
-                key={hw.label}
-                className="bg-ink-900 p-5 group hover:bg-ink-800 transition-colors"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-              >
-                <div className="tech-label-sm mb-2">{hw.label}</div>
-                <div className="text-white font-medium text-base">{hw.value}</div>
-                <div className="mt-1 font-mono text-[12px] text-ink-400 group-hover:text-nv-500 transition-colors">
-                  {hw.spec}
-                </div>
-              </motion.div>
-            ))}
+
+          <div className="bg-ink-900 border border-white/5 p-6 sm:p-8">
+            <ArchitectureDiagram />
           </div>
+
+          <p className="mt-4 font-mono text-[13px] text-ink-400">
+            // Priority-based Ackermann mux ensures AEB (priority 200) overrides
+            any autonomous algorithm (priority 10) in case of imminent collision.
+          </p>
         </motion.div>
 
         {/* 6 algorithms grid with MPC featured */}
@@ -548,80 +529,31 @@ const RoboRacerShowcase: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* System architecture — SVG diagram */}
-        <motion.div
-          className="mb-16 lg:mb-20"
+        {/* Field note — collapsed to a single-column aside */}
+        <motion.aside
+          className="relative border-l-2 border-nv-500/40 pl-5 sm:pl-6 py-2"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center gap-3 mb-6">
-            <span className="tech-label">SYSTEM ARCHITECTURE</span>
-            <div className="h-px flex-1 bg-white/5" />
-          </div>
-
-          <div className="bg-ink-900 border border-white/5 p-6 sm:p-8">
-            <ArchitectureDiagram />
-          </div>
-
-          <p className="mt-4 font-mono text-[13px] text-ink-400">
-            // Priority-based Ackermann mux ensures AEB (priority 200) overrides
-            any autonomous algorithm (priority 10) in case of imminent collision.
+          <div className="tech-label-sm text-nv-500 mb-2">● FIELD NOTE / SIM TO REAL</div>
+          <h3 className="font-display font-semibold text-white text-xl sm:text-2xl mb-3">
+            The servo died. I rebuilt the firmware.
+          </h3>
+          <p className="text-base text-ink-200 leading-relaxed max-w-3xl">
+            Mid-Lab 5 the steering servo quit on the real car: VESC 6.06 for
+            60_MK6 shipped a broken servo output path, and the prebuilt binaries
+            only covered MKIII/MKV/PLUS/FLIPSKY. I kept developing in AutoDRIVE
+            sim while cross-compiling VESC from source off the{' '}
+            <span className="font-mono text-nv-500">release_6_06</span> branch
+            for MK6 via Docker → flashed → servo alive.{' '}
+            <span className="text-white">
+              Robotics is half writing controllers, half knowing when to drop a
+              level of the stack.
+            </span>
           </p>
-        </motion.div>
-
-        {/* Demo videos grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <span className="tech-label">LIVE DEMO FEED</span>
-            <div className="h-px flex-1 bg-white/5" />
-            <span className="font-mono text-[12px] text-ink-400">03 / CAPTURES</span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {demos.map((demo, i) => (
-              <motion.div
-                key={demo.id}
-                className="group relative bracket-frame bg-ink-900"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <div className="absolute -top-3 left-4 z-10 px-2 bg-ink-950">
-                  <span className="tech-label-sm text-nv-500">● CH_{String(i + 1).padStart(2, '0')}</span>
-                </div>
-
-                <div className="relative aspect-video overflow-hidden">
-                  <iframe
-                    src={`https://www.youtube-nocookie.com/embed/${demo.id}`}
-                    title={demo.name}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    loading="lazy"
-                    className="w-full h-full relative z-0"
-                    style={{ border: 0 }}
-                  />
-                  <div className="scanlines absolute inset-0 pointer-events-none z-10" />
-                </div>
-
-                <div className="border-t border-white/10 px-4 py-3 flex items-center justify-between">
-                  <div>
-                    <div className="text-white text-sm font-medium">{demo.name}</div>
-                    <div className="font-mono text-[12px] text-ink-400">{demo.algo}</div>
-                  </div>
-                  <div className="font-mono text-[12px] text-nv-500">REC</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        </motion.aside>
       </div>
     </section>
   );

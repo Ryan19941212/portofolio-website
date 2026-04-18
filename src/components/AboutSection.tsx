@@ -125,7 +125,7 @@ const AboutSection: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="bracket-frame bg-ink-900/60 p-6 relative">
+            <div className="border border-white/10 bg-ink-900/60 p-6 relative">
               <div className="absolute -top-3 left-4 px-2 bg-ink-950">
                 <span className="tech-label-sm text-nv-500">● PROFILE DATA</span>
               </div>

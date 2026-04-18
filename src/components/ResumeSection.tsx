@@ -66,7 +66,7 @@ const ResumeSection: React.FC<Props> = ({ baseUrl }) => {
             <motion.a
               href={`${baseUrl}resume.pdf`}
               download="Ryan_Huang_Resume.pdf"
-              className="group relative block h-full bracket-frame bg-ink-900/60 p-8 border border-white/5 hover:border-nv-500/60 transition-colors"
+              className="group relative block h-full bg-ink-900/60 p-8 border border-white/10 hover:border-nv-500/60 transition-colors"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.99 }}
             >

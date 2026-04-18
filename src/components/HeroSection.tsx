@@ -51,7 +51,7 @@ const HeroSection: React.FC = () => {
                 <div className="absolute -top-3 left-4 px-2 bg-ink-950">
                   <span className="tech-label-sm text-nv-500">● EXECUTIVE SUMMARY</span>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-white/5">
                   <div className="bg-ink-900 p-4">
                     <div className="tech-label-sm mb-2">MBA</div>
                     <div className="text-white text-sm font-medium leading-snug">
@@ -166,7 +166,7 @@ const HeroSection: React.FC = () => {
             </motion.div>
 
             <motion.div
-              className="mt-3 font-mono text-[12px] text-ink-400 text-right"
+              className="mt-3 font-mono text-[11px] md:text-[12px] text-ink-400 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}

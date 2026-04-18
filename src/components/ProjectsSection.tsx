@@ -20,28 +20,29 @@ const ProjectsSection: React.FC<Props> = ({ projects }) => {
   return (
     <section
       id="projects"
-      className="relative bg-ink-950 py-20 sm:py-28 lg:py-32 overflow-hidden"
+      className="relative bg-ink-950 py-16 sm:py-20 lg:py-24 overflow-hidden"
     >
       <div className="absolute inset-0 bg-blueprint-fine opacity-50" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10">
         <motion.div
-          className="mb-12 lg:mb-16"
+          className="mb-8 lg:mb-10 flex flex-wrap items-end justify-between gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-12 bg-nv-500" />
-            <span className="tech-label text-ink-300">OTHER WORK / 03</span>
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="h-px w-12 bg-nv-500" />
+              <span className="tech-label text-ink-300">OTHER WORK / 03</span>
+            </div>
+            <h2 className="font-display font-bold text-white text-2xl sm:text-3xl md:text-4xl tracking-tight">
+              Adjacent projects
+            </h2>
           </div>
-          <h2 className="font-display font-bold text-white text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4">
-            Adjacent projects
-          </h2>
-          <p className="text-lg md:text-xl text-ink-200 max-w-2xl leading-relaxed">
-            Side projects exploring the intersection of AI, geometry, and
-            production tooling. Each one shipped to real users.
+          <p className="font-mono text-[13px] text-ink-400 max-w-md">
+            // Side projects at the intersection of AI, geometry, and tooling
           </p>
         </motion.div>
 

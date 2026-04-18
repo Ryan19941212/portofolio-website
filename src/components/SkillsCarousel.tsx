@@ -19,37 +19,32 @@ type Category = 'ROBOTICS' | 'AI_ML' | 'INFRA' | 'PRODUCT';
 interface Skill {
   name: string;
   category: Category;
-  icon?: React.ComponentType<{ className?: string }>;
-  mono?: string;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 const stack: Skill[] = [
-  { name: 'ROS 2',              category: 'ROBOTICS', icon: SiRos },
-  { name: 'C++',                category: 'ROBOTICS', icon: SiCplusplus },
-  { name: 'Python',             category: 'ROBOTICS', icon: SiPython },
-  { name: 'Motion Planning',    category: 'ROBOTICS', mono: 'MP' },
-  { name: 'MPC / Control',      category: 'ROBOTICS', mono: 'CTL' },
-  { name: 'SLAM',               category: 'ROBOTICS', mono: 'SLAM' },
-  { name: 'LiDAR · IMU',        category: 'ROBOTICS', mono: 'SNS' },
+  { name: 'ROS 2',       category: 'ROBOTICS', icon: SiRos },
+  { name: 'C++',         category: 'ROBOTICS', icon: SiCplusplus },
+  { name: 'Python',      category: 'ROBOTICS', icon: SiPython },
 
-  { name: 'PyTorch',            category: 'AI_ML',    icon: SiPytorch },
-  { name: 'OpenCV',             category: 'AI_ML',    icon: SiOpencv },
-  { name: 'CUDA',               category: 'AI_ML',    icon: SiNvidia },
-  { name: 'TensorRT',           category: 'AI_ML',    icon: SiNvidia },
-  { name: 'LLM / Agents',       category: 'AI_ML',    mono: 'LLM' },
+  { name: 'PyTorch',     category: 'AI_ML',    icon: SiPytorch },
+  { name: 'OpenCV',      category: 'AI_ML',    icon: SiOpencv },
+  { name: 'CUDA',        category: 'AI_ML',    icon: SiNvidia },
+  { name: 'TensorRT',    category: 'AI_ML',    icon: SiNvidia },
 
-  { name: 'Linux',              category: 'INFRA',    icon: SiLinux },
-  { name: 'Docker',             category: 'INFRA',    icon: SiDocker },
-  { name: 'Git',                category: 'INFRA',    icon: SiGit },
-  { name: 'Jetson Orin',        category: 'INFRA',    icon: SiNvidia },
-  { name: 'Isaac Sim',          category: 'INFRA',    icon: SiNvidia },
-  { name: 'Isaac ROS',          category: 'INFRA',    icon: SiNvidia },
+  { name: 'Linux',       category: 'INFRA',    icon: SiLinux },
+  { name: 'Docker',      category: 'INFRA',    icon: SiDocker },
+  { name: 'Git',         category: 'INFRA',    icon: SiGit },
+  { name: 'Jetson Orin', category: 'INFRA',    icon: SiNvidia },
+  { name: 'Isaac Sim',   category: 'INFRA',    icon: SiNvidia },
+  { name: 'Isaac ROS',   category: 'INFRA',    icon: SiNvidia },
 
-  { name: 'Jira',               category: 'PRODUCT',  icon: SiJira },
-  { name: 'Figma',              category: 'PRODUCT',  icon: SiFigma },
-  { name: 'Notion',             category: 'PRODUCT',  icon: SiNotion },
-  { name: 'Roadmap · Strategy', category: 'PRODUCT',  mono: 'PRD' },
+  { name: 'Jira',        category: 'PRODUCT',  icon: SiJira },
+  { name: 'Figma',       category: 'PRODUCT',  icon: SiFigma },
+  { name: 'Notion',      category: 'PRODUCT',  icon: SiNotion },
 ];
+
+const disciplines = ['SLAM', 'Motion Planning', 'MPC / Control', 'LLM / Agents', 'LiDAR · IMU', 'Roadmap · Strategy'];
 
 const categories: { id: Category; label: string; count: number }[] = [
   { id: 'ROBOTICS', label: 'Robotics / Autonomy', count: stack.filter((s) => s.category === 'ROBOTICS').length },
@@ -66,13 +61,7 @@ const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
         {skill.category.slice(0, 3)}
       </div>
       <div className="flex items-center justify-center mb-3 h-10">
-        {Icon ? (
-          <Icon className="h-9 w-9 text-ink-200 group-hover:text-nv-500 transition-colors" />
-        ) : (
-          <span className="font-mono font-semibold text-xl text-ink-200 group-hover:text-nv-500 transition-colors tracking-wider">
-            {skill.mono}
-          </span>
-        )}
+        <Icon className="h-9 w-9 text-ink-200 group-hover:text-nv-500 transition-colors" />
       </div>
       <div className="font-mono text-[13px] text-center text-ink-200 group-hover:text-white transition-colors">
         {skill.name}
@@ -119,15 +108,25 @@ const TechStack: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-px bg-white/5 border border-white/5">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-px bg-white/5 border border-white/5">
           {stack.map((skill) => (
             <SkillCard key={skill.name} skill={skill} />
           ))}
         </div>
 
-        <p className="mt-8 font-mono text-[13px] text-ink-400 text-center">
-          // Always learning · Currently deep in Isaac Sim / Isaac ROS, CUDA kernels, and MPC warm-starts
-        </p>
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-ink-400 mr-2">
+            // Disciplines
+          </span>
+          {disciplines.map((d) => (
+            <span
+              key={d}
+              className="px-2.5 py-1 font-mono text-[12px] border border-white/10 text-ink-300"
+            >
+              {d}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
