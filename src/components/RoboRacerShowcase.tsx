@@ -120,14 +120,6 @@ const demos = [
   { id: 'UPQ4lJBQnXI', name: 'Manual Teleop',    algo: 'BASELINE' },
 ];
 
-const aebSnippet = `# Lab 2 — Vectorized iTTC across every LiDAR beam
-range_rates = -self.speed * np.cos(angles)
-ttc         = ranges / np.maximum(range_rates, 1e-6)
-
-# Any beam closing faster than the threshold → brake.
-if ttc[range_rates > 0].min() < TTC_THRESHOLD:
-    self.publish_brake()  # prio 200 → overrides all autonomy`;
-
 const mpcSnippet = `# Lab 8 — MPC cost with warm-start
 Q  = np.diag([13.5, 13.5, 5.5, 13.0])  # x, y, v, yaw
 R  = np.diag([0.01, 100.0])            # accel, steering_rate
@@ -145,7 +137,7 @@ const decisionNotes = [
   {
     n: '01',
     title: 'Why RRT* over plain RRT?',
-    body: "Plain RRT finds a path fast but rarely an optimal one. The *rewire* step in RRT* gives asymptotic optimality for a bounded cost per iteration — worth it on a 1/10 car where compute isn't the bottleneck but path quality matters for lap time.",
+    body: "Plain RRT finds a path fast but rarely an optimal one. The rewire step in RRT* gives asymptotic optimality for a bounded cost per iteration — worth it on a 1/10 car where compute isn't the bottleneck but path quality matters for lap time.",
   },
   {
     n: '02',
@@ -165,7 +157,6 @@ const RoboRacerShowcase: React.FC = () => {
       id="roboracer"
       className="relative bg-ink-950 py-20 sm:py-28 lg:py-32 overflow-hidden"
     >
-      {/* Background */}
       <div className="absolute inset-0 bg-blueprint-fine opacity-80" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-nv-500/5 rounded-full blur-[120px]" />
 
@@ -180,30 +171,26 @@ const RoboRacerShowcase: React.FC = () => {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-nv-500" />
-            <span className="tech-label text-nv-500">FEATURED_PROJECT / 02</span>
-            <span className="tech-label-sm text-ink-400 hidden sm:inline">
+            <span className="tech-label text-ink-300">FEATURED PROJECT / 02</span>
+            <span className="tech-label-sm text-ink-500 hidden sm:inline">
               · formerly F1TENTH
             </span>
           </div>
           <div className="grid grid-cols-12 gap-6 items-end">
             <div className="col-span-12 lg:col-span-8">
-              <h2 className="font-display font-bold text-white leading-[0.9] tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-[96px] mb-5">
+              <h2 className="font-display font-bold text-white leading-[0.9] tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-[96px] mb-6">
                 Robo<span className="text-nv-500">/</span>Racer
               </h2>
-              <p className="text-lg md:text-xl text-ink-100 max-w-2xl leading-relaxed mb-5">
+              <p className="text-xl md:text-2xl text-white max-w-2xl leading-relaxed mb-5 font-display font-medium">
                 Six autonomous driving algorithms, built{' '}
-                <span className="text-nv-500 font-semibold">solo from scratch</span>{' '}
-                on a 1/10-scale race car — from reactive control to model
-                predictive control — running ROS 2 on NVIDIA Jetson.
+                <span className="text-nv-500">solo from scratch</span>{' '}
+                on a 1/10-scale race car.
               </p>
-              <p className="text-base md:text-lg text-ink-300 max-w-2xl leading-relaxed">
-                Most PMs write requirements. I wrote these six algorithms — from
-                scratch, on a real race car —{' '}
-                <span className="text-white">
-                  so the roadmap trade-offs I make come from actually debugging
-                  them at 2am
-                </span>
-                , not from a textbook.
+              <p className="text-lg md:text-xl text-ink-200 max-w-2xl leading-relaxed">
+                From reactive control to model predictive control — running ROS 2
+                on NVIDIA Jetson. Most PMs write requirements. I wrote these six
+                algorithms, so the roadmap trade-offs I make come from actually
+                debugging them at 2am — not from a textbook.
               </p>
             </div>
             <div className="col-span-12 lg:col-span-4 font-mono text-[12px] uppercase tracking-[0.16em] space-y-1 text-ink-200">
@@ -231,52 +218,48 @@ const RoboRacerShowcase: React.FC = () => {
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center gap-2 border border-white/15 hover:border-nv-500 px-4 py-2.5 font-mono text-[13px] uppercase tracking-[0.16em] text-ink-100 hover:text-nv-500 transition-colors"
           >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-            </svg>
+            <GitHubIcon />
             Ryan19941212/F1tenth
             <span className="text-ink-400">→</span>
           </a>
         </motion.div>
 
-        {/* TL;DR strip — for recruiters who only have 30 seconds */}
+        {/* TL;DR strip */}
         <motion.div
-          className="mb-12 lg:mb-16 border border-nv-500/30 bg-ink-900/60 relative"
+          className="mb-12 lg:mb-16 border border-white/10 bg-ink-900/60 relative"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
           <div className="absolute -top-3 left-4 px-2 bg-ink-950">
-            <span className="tech-label text-nv-500">▸ TL;DR / 30 SEC</span>
+            <span className="tech-label-sm text-nv-500">● TL;DR / 30 SEC</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-white/5">
             <div className="bg-ink-900 p-5">
               <div className="tech-label-sm mb-2">WHAT</div>
-              <div className="text-white text-sm leading-relaxed">
-                A 1/10-scale autonomous race car I built end-to-end — from
-                firmware up to motion planning.
+              <div className="text-white text-base leading-relaxed">
+                A 1/10-scale autonomous race car I built end-to-end — firmware
+                up to motion planning.
               </div>
             </div>
             <div className="bg-ink-900 p-5">
               <div className="tech-label-sm mb-2">WHY IT MATTERS</div>
-              <div className="text-white text-sm leading-relaxed">
-                Proves I can do the robotics work I'm asking to manage.
-                Hiring managers don't guess.
+              <div className="text-white text-base leading-relaxed">
+                Proves I can do the robotics work I'm asking to manage. Hiring
+                managers don't guess.
               </div>
             </div>
             <div className="bg-ink-900 p-5">
               <div className="tech-label-sm mb-2">STACK</div>
-              <div className="text-white text-sm leading-relaxed">
-                ROS 2 · NVIDIA Jetson · C++/Python · LiDAR perception ·
-                MPC control.
+              <div className="text-white text-base leading-relaxed">
+                ROS 2 · NVIDIA Jetson · C++/Python · LiDAR perception · MPC control.
               </div>
             </div>
             <div className="bg-ink-900 p-5">
               <div className="tech-label-sm mb-2">SCOPE</div>
-              <div className="text-white text-sm leading-relaxed">
-                6 algorithms · ~5k LOC · solo build · real hardware + sim ·
-                2025 – 2026.
+              <div className="text-white text-base leading-relaxed">
+                6 algorithms · ~5k LOC · solo build · real hardware + sim · 2025–2026.
               </div>
             </div>
           </div>
@@ -292,17 +275,21 @@ const RoboRacerShowcase: React.FC = () => {
         >
           <div className="col-span-12 lg:col-span-7 relative bracket-frame bg-ink-900">
             <div className="absolute -top-3 left-4 z-10 px-2 bg-ink-950">
-              <span className="tech-label text-nv-500">● REAL_HARDWARE</span>
+              <span className="tech-label-sm text-nv-500">● REAL HARDWARE</span>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden">
               <div className="scanlines absolute inset-0 z-10 opacity-40 pointer-events-none" />
               <img
                 src="/f1tenth-hero.jpg"
+                srcSet="/f1tenth-hero-sm.jpg 800w, /f1tenth-hero.jpg 1600w"
+                sizes="(max-width: 1024px) 100vw, 60vw"
                 alt="RoboRacer (formerly F1TENTH) 1/10-scale autonomous race car"
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
+                width={1600}
+                height={1200}
               />
-              {/* Corner HUD overlay */}
               <div className="absolute top-4 left-4 font-mono text-[12px] text-nv-500 tracking-[0.18em] z-20 pointer-events-none">
                 ● LIVE
               </div>
@@ -317,7 +304,7 @@ const RoboRacerShowcase: React.FC = () => {
 
           <div className="col-span-12 lg:col-span-5 flex flex-col">
             <div className="flex items-center gap-3 mb-4">
-              <span className="tech-label">▪ SYSTEM_PARAMS</span>
+              <span className="tech-label">SYSTEM PARAMS</span>
               <div className="h-px flex-1 bg-white/5" />
             </div>
             <div className="grid grid-cols-2 gap-px bg-white/5 border border-white/5 flex-1">
@@ -350,30 +337,29 @@ const RoboRacerShowcase: React.FC = () => {
 
         {/* Sim-to-real story callout */}
         <motion.div
-          className="mb-16 lg:mb-20 relative border border-nv-500/30 bg-ink-900/60 p-6 sm:p-8"
+          className="mb-16 lg:mb-20 relative border border-white/10 bg-ink-900/60 p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="absolute -top-3 left-4 px-2 bg-ink-950">
-            <span className="tech-label text-nv-500">● FIELD_NOTE / SIM_TO_REAL</span>
+            <span className="tech-label-sm text-nv-500">● FIELD NOTE / SIM TO REAL</span>
           </div>
           <div className="grid grid-cols-12 gap-6 items-start">
             <div className="col-span-12 md:col-span-8">
               <h3 className="font-display font-semibold text-white text-xl sm:text-2xl mb-3">
                 The servo died. I rebuilt the firmware.
               </h3>
-              <p className="text-ink-100 leading-relaxed mb-3">
+              <p className="text-lg text-ink-100 leading-relaxed mb-3">
                 Halfway through Lab 5, the steering servo on the real car stopped
                 responding. The default VESC 6.06 firmware shipped for 60_MK6 had
-                a broken servo output path — and the RoboRacer (formerly
-                F1TENTH) pre-built binaries only covered MKIII/MKV/PLUS/FLIPSKY.
-                No MK6.
+                a broken servo output path — and the RoboRacer pre-built binaries
+                only covered MKIII/MKV/PLUS/FLIPSKY. No MK6.
               </p>
-              <p className="text-ink-200 leading-relaxed">
-                So I kept developing in AutoDRIVE sim for the algorithm work, and
-                in parallel built VESC firmware from source off the{' '}
+              <p className="text-lg text-ink-200 leading-relaxed">
+                I kept developing in AutoDRIVE sim for the algorithm work, and in
+                parallel built VESC firmware from source off the{' '}
                 <span className="font-mono text-nv-500">release_6_06</span> branch
                 for the MK6 target using a Docker cross-compile. Flashed via
                 Custom File tab → servo alive → back on real hardware.{' '}
@@ -384,16 +370,16 @@ const RoboRacerShowcase: React.FC = () => {
               </p>
             </div>
             <div className="col-span-12 md:col-span-4 font-mono text-[12px] space-y-2">
-              <div className="tech-label-sm mb-3">DEBUG_LOG</div>
-              <div className="border-l-2 border-nv-500/60 pl-3 py-1">
+              <div className="tech-label-sm mb-3">DEBUG LOG</div>
+              <div className="border-l-2 border-white/10 pl-3 py-1">
                 <div className="text-ink-400">01</div>
                 <div className="text-white">Servo dead on MK6</div>
               </div>
-              <div className="border-l-2 border-nv-500/60 pl-3 py-1">
+              <div className="border-l-2 border-white/10 pl-3 py-1">
                 <div className="text-ink-400">02</div>
                 <div className="text-white">Pivot to AutoDRIVE sim</div>
               </div>
-              <div className="border-l-2 border-nv-500/60 pl-3 py-1">
+              <div className="border-l-2 border-white/10 pl-3 py-1">
                 <div className="text-ink-400">03</div>
                 <div className="text-white">Build FW from source</div>
               </div>
@@ -414,7 +400,7 @@ const RoboRacerShowcase: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <span className="tech-label">▪ HARDWARE_STACK</span>
+            <span className="tech-label">HARDWARE STACK</span>
             <div className="h-px flex-1 bg-white/5" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/5">
@@ -428,7 +414,7 @@ const RoboRacerShowcase: React.FC = () => {
                 transition={{ duration: 0.4, delay: i * 0.05 }}
               >
                 <div className="tech-label-sm mb-2">{hw.label}</div>
-                <div className="text-white font-medium text-sm md:text-base">{hw.value}</div>
+                <div className="text-white font-medium text-base">{hw.value}</div>
                 <div className="mt-1 font-mono text-[12px] text-ink-400 group-hover:text-nv-500 transition-colors">
                   {hw.spec}
                 </div>
@@ -446,7 +432,7 @@ const RoboRacerShowcase: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <span className="tech-label">▪ ALGORITHM_STACK</span>
+            <span className="tech-label">ALGORITHM STACK</span>
             <div className="h-px flex-1 bg-white/5" />
             <span className="font-mono text-[12px] text-ink-400">06 / MODULES</span>
           </div>
@@ -455,7 +441,7 @@ const RoboRacerShowcase: React.FC = () => {
             {algorithms.slice(0, 5).map((algo, i) => (
               <AlgoCard key={algo.id} algo={algo} index={i} />
             ))}
-            {/* MPC - featured (2 cols) */}
+            {/* MPC - featured (full width) */}
             <motion.div
               className="md:col-span-2 lg:col-span-3 group relative bg-ink-900 p-6 sm:p-8 hover:bg-ink-800 transition-colors border-t border-nv-500/30"
               initial={{ opacity: 0, y: 20 }}
@@ -475,10 +461,10 @@ const RoboRacerShowcase: React.FC = () => {
                   <h3 className="text-white font-display font-semibold text-2xl sm:text-3xl mb-2">
                     {algorithms[5].name}
                   </h3>
-                  <p className="text-nv-500/90 text-base mb-4 font-mono">
+                  <p className="text-ink-300 text-base mb-4 font-mono">
                     {algorithms[5].summary}
                   </p>
-                  <p className="text-ink-100 leading-relaxed max-w-2xl">
+                  <p className="text-lg text-ink-100 leading-relaxed max-w-2xl">
                     {algorithms[5].details}
                   </p>
                 </div>
@@ -504,7 +490,7 @@ const RoboRacerShowcase: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Code snippets */}
+        {/* Single code snippet — MPC (capstone) */}
         <motion.div
           className="mb-16 lg:mb-20"
           initial={{ opacity: 0 }}
@@ -513,14 +499,12 @@ const RoboRacerShowcase: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <span className="tech-label">▪ CODE_SAMPLES</span>
+            <span className="tech-label">CODE SAMPLE · MPC CORE</span>
             <div className="h-px flex-1 bg-white/5" />
-            <span className="font-mono text-[12px] text-ink-400">02 / FILES</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <CodeBlock filename="safety_node/aeb.py" code={aebSnippet} />
-            <CodeBlock filename="mpc/controller.py"  code={mpcSnippet} />
+          <div className="max-w-4xl">
+            <CodeBlock filename="mpc/controller.py" code={mpcSnippet} />
           </div>
         </motion.div>
 
@@ -533,14 +517,13 @@ const RoboRacerShowcase: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <span className="tech-label">▪ ENGINEERING_DECISIONS</span>
+            <span className="tech-label">ENGINEERING DECISIONS</span>
             <div className="h-px flex-1 bg-white/5" />
             <span className="font-mono text-[12px] text-ink-400">TRADE-OFFS</span>
           </div>
-          <p className="text-ink-200 leading-relaxed max-w-3xl mb-8">
+          <p className="text-lg text-ink-200 leading-relaxed max-w-3xl mb-8">
             The fun part of robotics is not writing the algorithm — it's deciding
-            which one, tuned how, at what latency cost. These are three calls I
-            had to make:
+            which one, tuned how, at what latency cost. Three calls I had to make:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/5">
@@ -553,19 +536,19 @@ const RoboRacerShowcase: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <div className="font-mono text-[12px] text-nv-500 mb-3 tracking-[0.18em]">
+                <div className="font-mono text-[12px] text-ink-400 mb-3 tracking-[0.18em]">
                   DECISION_{d.n}
                 </div>
                 <h4 className="font-display font-semibold text-white text-lg mb-3">
                   {d.title}
                 </h4>
-                <p className="text-ink-200 text-sm leading-relaxed">{d.body}</p>
+                <p className="text-ink-200 text-base leading-relaxed">{d.body}</p>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* System architecture ASCII */}
+        {/* System architecture — SVG diagram */}
         <motion.div
           className="mb-16 lg:mb-20"
           initial={{ opacity: 0, y: 20 }}
@@ -574,48 +557,12 @@ const RoboRacerShowcase: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <span className="tech-label">▪ SYSTEM_ARCHITECTURE</span>
+            <span className="tech-label">SYSTEM ARCHITECTURE</span>
             <div className="h-px flex-1 bg-white/5" />
           </div>
 
-          <div className="bg-ink-900 border border-white/5 overflow-hidden">
-            <div className="flex items-center gap-2 px-4 py-2 border-b border-white/5 bg-ink-800">
-              <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                <div className="w-2.5 h-2.5 rounded-full bg-nv-500" />
-              </div>
-              <div className="flex-1 text-center font-mono text-[12px] text-ink-400">
-                f1tenth_ws/architecture.diagram
-              </div>
-              <div className="hidden sm:block font-mono text-[12px] text-ink-400">
-                scroll →
-              </div>
-            </div>
-            <div className="overflow-x-auto">
-              <pre className="p-4 sm:p-6 font-mono text-[12px] sm:text-[13px] text-ink-100 leading-relaxed min-w-[640px]">
-{`
-    [ /scan ] LiDAR ─────────────────────────────────┐
-                                                      │
-                                                      ▼
-    [ /odom ] Odometry ──► ┌────────────────────────────────┐
-                           │  SAFETY NODE (AEB)             │
-                           │  iTTC < threshold → brake      │
-                           └───────┬───────────┬────────────┘
-                                   │ prio 200  │ redundant
-                                   ▼           ▼
-    [ /joy ] Joystick ──► ┌────────────────┐  ┌────────┐
-                          │ Ackermann Mux  │─►│  VESC  │─► steering + throttle
-                          │ 200 > 100 > 10 │  │        │
-    [ planner ] ─────────►└────────────────┘  └────────┘
-        wall_follow
-        gap_follow          SAFETY ALWAYS PRE-EMPTS AUTONOMY
-        pure_pursuit
-        rrt_star
-        mpc
-`}
-              </pre>
-            </div>
+          <div className="bg-ink-900 border border-white/5 p-6 sm:p-8">
+            <ArchitectureDiagram />
           </div>
 
           <p className="mt-4 font-mono text-[13px] text-ink-400">
@@ -632,7 +579,7 @@ const RoboRacerShowcase: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <span className="tech-label">▪ LIVE_DEMO_FEED</span>
+            <span className="tech-label">LIVE DEMO FEED</span>
             <div className="h-px flex-1 bg-white/5" />
             <span className="font-mono text-[12px] text-ink-400">03 / CAPTURES</span>
           </div>
@@ -648,7 +595,7 @@ const RoboRacerShowcase: React.FC = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="absolute -top-3 left-4 z-10 px-2 bg-ink-950">
-                  <span className="tech-label text-nv-500">● CH_{String(i + 1).padStart(2, '0')}</span>
+                  <span className="tech-label-sm text-nv-500">● CH_{String(i + 1).padStart(2, '0')}</span>
                 </div>
 
                 <div className="relative aspect-video overflow-hidden">
@@ -700,8 +647,8 @@ const AlgoCard: React.FC<{ algo: Algo; index: number }> = ({ algo, index }) => (
     <h3 className="text-white font-display font-semibold text-xl mb-2">
       {algo.name}
     </h3>
-    <p className="text-nv-500/80 text-sm mb-3 font-mono">{algo.summary}</p>
-    <p className="text-ink-200 text-sm leading-relaxed mb-4">{algo.details}</p>
+    <p className="text-ink-300 text-sm mb-3 font-mono">{algo.summary}</p>
+    <p className="text-ink-200 text-base leading-relaxed mb-4">{algo.details}</p>
 
     {algo.params && (
       <div className="flex flex-wrap gap-x-4 gap-y-1 pt-3 border-t border-white/5 font-mono text-[12px]">
@@ -736,10 +683,95 @@ const CodeBlock: React.FC<{ filename: string; code: string }> = ({
       </div>
     </div>
     <div className="overflow-x-auto">
-      <pre className="p-4 sm:p-5 font-mono text-[12px] sm:text-[13px] leading-relaxed text-ink-100">
+      <pre className="p-4 sm:p-5 font-mono text-[13px] sm:text-[14px] leading-relaxed text-ink-100">
         <code>{code}</code>
       </pre>
     </div>
+  </div>
+);
+
+const GitHubIcon: React.FC = () => (
+  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+  </svg>
+);
+
+const ArchitectureDiagram: React.FC = () => (
+  <div className="w-full overflow-x-auto">
+    <svg
+      viewBox="0 0 880 360"
+      className="w-full min-w-[640px] max-w-[880px] mx-auto"
+      role="img"
+      aria-label="RoboRacer system architecture: sensors feed the safety node and planners; all outputs go through a priority-based Ackermann mux before VESC actuation."
+    >
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#76b900" />
+        </marker>
+        <marker id="arrMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#565d73" />
+        </marker>
+      </defs>
+
+      {/* Sensor column */}
+      <g fontFamily="'JetBrains Mono', ui-monospace, monospace" fontSize="13">
+        <rect x="20"  y="30"  width="140" height="40" fill="#14171f" stroke="#2f3446" />
+        <text x="90"  y="55"  textAnchor="middle" fill="#c8ccd9">/scan · LiDAR</text>
+
+        <rect x="20"  y="150" width="140" height="40" fill="#14171f" stroke="#2f3446" />
+        <text x="90"  y="175" textAnchor="middle" fill="#c8ccd9">/odom · Odometry</text>
+
+        <rect x="20"  y="270" width="140" height="40" fill="#14171f" stroke="#2f3446" />
+        <text x="90"  y="295" textAnchor="middle" fill="#c8ccd9">/joy · Joystick</text>
+
+        {/* Safety node */}
+        <rect x="240" y="20"  width="220" height="80" fill="#14171f" stroke="#76b900" />
+        <text x="350" y="45" textAnchor="middle" fill="#ffffff" fontWeight="600">SAFETY NODE (AEB)</text>
+        <text x="350" y="68" textAnchor="middle" fill="#858ca1" fontSize="12">iTTC &lt; threshold → brake</text>
+        <text x="350" y="88" textAnchor="middle" fill="#76b900" fontSize="12">prio 200 · redundant path</text>
+
+        {/* Planners */}
+        <rect x="240" y="140" width="220" height="160" fill="#14171f" stroke="#2f3446" />
+        <text x="350" y="160" textAnchor="middle" fill="#ffffff" fontWeight="600">PLANNERS</text>
+        <text x="260" y="185" fill="#c8ccd9">• wall_follow</text>
+        <text x="260" y="205" fill="#c8ccd9">• gap_follow</text>
+        <text x="260" y="225" fill="#c8ccd9">• pure_pursuit</text>
+        <text x="260" y="245" fill="#c8ccd9">• rrt_star</text>
+        <text x="260" y="265" fill="#c8ccd9">• mpc</text>
+        <text x="350" y="288" textAnchor="middle" fill="#858ca1" fontSize="12">prio 10</text>
+
+        {/* Mux */}
+        <rect x="540" y="110" width="180" height="80" fill="#14171f" stroke="#76b900" />
+        <text x="630" y="138" textAnchor="middle" fill="#ffffff" fontWeight="600">Ackermann Mux</text>
+        <text x="630" y="160" textAnchor="middle" fill="#858ca1" fontSize="12">200 &gt; 100 &gt; 10</text>
+        <text x="630" y="180" textAnchor="middle" fill="#76b900" fontSize="12">safety pre-empts autonomy</text>
+
+        {/* VESC */}
+        <rect x="770" y="110" width="90" height="80" fill="#14171f" stroke="#76b900" />
+        <text x="815" y="145" textAnchor="middle" fill="#ffffff" fontWeight="600">VESC</text>
+        <text x="815" y="168" textAnchor="middle" fill="#858ca1" fontSize="11">steer + throttle</text>
+      </g>
+
+      {/* Arrows */}
+      <g fill="none" strokeWidth="1.5">
+        {/* LiDAR → Safety + Planners */}
+        <path d="M160 50 L240 60" stroke="#76b900" markerEnd="url(#arr)" />
+        <path d="M160 60 Q 200 120 240 180" stroke="#565d73" markerEnd="url(#arrMuted)" />
+        {/* Odom → Safety + Planners */}
+        <path d="M160 170 Q 200 130 240 85"  stroke="#565d73" markerEnd="url(#arrMuted)" />
+        <path d="M160 180 L240 210" stroke="#565d73" markerEnd="url(#arrMuted)" />
+        {/* Joy → Mux */}
+        <path d="M160 290 Q 400 280 540 170" stroke="#565d73" markerEnd="url(#arrMuted)" />
+        {/* Safety → Mux (prio 200) */}
+        <path d="M460 60 Q 500 90 540 130" stroke="#76b900" markerEnd="url(#arr)" />
+        {/* Safety → VESC direct redundant */}
+        <path d="M460 80 Q 620 50 815 110" stroke="#76b900" strokeDasharray="4 3" markerEnd="url(#arr)" />
+        {/* Planners → Mux */}
+        <path d="M460 220 Q 500 200 540 170" stroke="#565d73" markerEnd="url(#arrMuted)" />
+        {/* Mux → VESC */}
+        <path d="M720 150 L770 150" stroke="#76b900" markerEnd="url(#arr)" />
+      </g>
+    </svg>
   </div>
 );
 

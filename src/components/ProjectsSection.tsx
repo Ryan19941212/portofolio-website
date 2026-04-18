@@ -34,12 +34,12 @@ const ProjectsSection: React.FC<Props> = ({ projects }) => {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-nv-500" />
-            <span className="tech-label text-nv-500">OTHER_WORK / 03</span>
+            <span className="tech-label text-ink-300">OTHER WORK / 03</span>
           </div>
           <h2 className="font-display font-bold text-white text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4">
             Adjacent projects
           </h2>
-          <p className="text-base md:text-lg text-ink-300 max-w-2xl">
+          <p className="text-lg md:text-xl text-ink-200 max-w-2xl leading-relaxed">
             Side projects exploring the intersection of AI, geometry, and
             production tooling. Each one shipped to real users.
           </p>
@@ -84,10 +84,10 @@ const ProjectsSection: React.FC<Props> = ({ projects }) => {
                     <h3 className="font-display font-semibold text-white text-2xl sm:text-3xl mb-2">
                       {project.title}
                     </h3>
-                    <p className="text-nv-500 font-mono text-xs mb-4">
+                    <p className="text-ink-300 font-mono text-sm mb-4">
                       {project.subtitle}
                     </p>
-                    <p className="text-ink-200 leading-relaxed mb-6">
+                    <p className="text-lg text-ink-200 leading-relaxed mb-6">
                       {project.description}
                     </p>
 

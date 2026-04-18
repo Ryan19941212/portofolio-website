@@ -31,12 +31,12 @@ const ResumeSection: React.FC<Props> = ({ baseUrl }) => {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-nv-500" />
-            <span className="tech-label text-nv-500">RESUME / 05</span>
+            <span className="tech-label text-ink-300">RESUME / 05</span>
           </div>
           <h2 className="font-display font-bold text-white text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4">
             Full dossier
           </h2>
-          <p className="text-base md:text-lg text-ink-300 max-w-2xl">
+          <p className="text-lg md:text-xl text-ink-200 max-w-2xl leading-relaxed">
             The complete record — experience, education, projects, and
             publications.
           </p>

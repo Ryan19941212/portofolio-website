@@ -23,7 +23,7 @@ const timeline: TimelineNode[] = [
     bullets: [
       'RoboRacer (formerly F1TENTH) autonomous racing stack on Jetson + ROS 2',
       'Implemented 6 algorithms end-to-end: AEB, wall follow, gap follow, pure pursuit, RRT*, MPC',
-      'Targeting NVIDIA robotics — PM with deep autonomy + sim fluency',
+      'Targeting robotics / autonomy PM — deep autonomy + sim fluency',
     ],
   },
   {
@@ -80,7 +80,6 @@ const AboutSection: React.FC = () => {
       <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-nv-500/5 rounded-full blur-[120px]" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10">
-        {/* Header */}
         <motion.div
           className="mb-12 lg:mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -90,7 +89,7 @@ const AboutSection: React.FC = () => {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-nv-500" />
-            <span className="tech-label text-nv-500">PROFILE / 01</span>
+            <span className="tech-label text-ink-300">PROFILE / 01</span>
           </div>
           <h2 className="font-display font-bold text-white text-4xl sm:text-5xl md:text-6xl tracking-tight">
             The crossover
@@ -98,7 +97,6 @@ const AboutSection: React.FC = () => {
         </motion.div>
 
         <div className="grid grid-cols-12 gap-6 lg:gap-10 mb-20">
-          {/* Lead statement */}
           <motion.div
             className="col-span-12 lg:col-span-7"
             initial={{ opacity: 0, y: 20 }}
@@ -106,13 +104,13 @@ const AboutSection: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <p className="text-xl md:text-2xl lg:text-3xl text-white leading-[1.3] font-display font-medium mb-6">
+            <p className="text-2xl md:text-3xl lg:text-[32px] text-white leading-[1.3] font-display font-medium mb-6">
               I'm a <span className="text-nv-500">Robotics Product Manager</span>{' '}
               who codes. I build the systems I ship — so the specs I write and the
               trade-offs I negotiate are grounded in what actually has to work on
               the robot.
             </p>
-            <p className="text-base md:text-lg text-ink-300 leading-relaxed max-w-2xl">
+            <p className="text-lg md:text-xl text-ink-200 leading-relaxed max-w-2xl">
               Most PMs write requirements. Most engineers write code. I do both —
               which means when I talk about perception latency, planning horizons,
               or the cost of model predictive control, I'm not repeating jargon.
@@ -120,7 +118,6 @@ const AboutSection: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Data card */}
           <motion.div
             className="col-span-12 lg:col-span-5"
             initial={{ opacity: 0, y: 20 }}
@@ -130,7 +127,7 @@ const AboutSection: React.FC = () => {
           >
             <div className="bracket-frame bg-ink-900/60 p-6 relative">
               <div className="absolute -top-3 left-4 px-2 bg-ink-950">
-                <span className="tech-label text-nv-500">● PROFILE_DATA</span>
+                <span className="tech-label-sm text-nv-500">● PROFILE DATA</span>
               </div>
 
               <dl className="space-y-4 mt-2 font-mono text-xs">
@@ -148,11 +145,11 @@ const AboutSection: React.FC = () => {
                 </div>
                 <div className="flex items-start justify-between gap-4 pb-3 border-b border-white/5">
                   <dt className="tech-label-sm">TARGET</dt>
-                  <dd className="text-nv-500 text-right">NVIDIA Robotics</dd>
+                  <dd className="text-white text-right">Robotics / Autonomy PM</dd>
                 </div>
                 <div className="flex items-start justify-between gap-4">
                   <dt className="tech-label-sm">STATUS</dt>
-                  <dd className="text-amber-500 text-right flex items-center gap-2">
+                  <dd className="text-nv-500 text-right flex items-center gap-2">
                     <span className="live-dot" /> OPEN TO OPPS
                   </dd>
                 </div>
@@ -169,37 +166,17 @@ const AboutSection: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="flex items-center gap-3 mb-10">
-            <span className="tech-label">▪ TRAJECTORY</span>
+            <span className="tech-label">TRAJECTORY</span>
             <div className="h-px flex-1 bg-white/5" />
             <span className="font-mono text-[12px] text-ink-400">
-              {timeline.length} NODES
+              {timeline.length + 1} NODES
             </span>
           </div>
 
           <div className="relative pl-6 md:pl-10">
-            {/* Vertical line — solid at top (current), fading into the past at the bottom */}
             <div className="absolute left-[9px] md:left-[15px] top-3 bottom-3 w-px bg-gradient-to-b from-nv-500 via-nv-500/60 to-transparent" />
 
             <div className="space-y-10 md:space-y-14">
-              {/* Terminal node — where I'm heading next */}
-              <motion.div
-                className="relative"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="absolute -left-6 md:-left-10 top-2 flex items-center">
-                  <div className="w-[18px] h-[18px] md:w-[30px] md:h-[30px] flex items-center justify-center">
-                    <div className="w-2.5 h-2.5 border border-nv-500 rotate-45 animate-pulse" />
-                  </div>
-                </div>
-                <div className="font-mono text-[13px] text-ink-300 pt-1">
-                  {'>'} <span className="text-nv-500">AWAITING_NEXT_NODE</span> ·
-                  NVIDIA Robotics Product Management_
-                </div>
-              </motion.div>
-
               {timeline.map((node, i) => (
                 <motion.div
                   key={node.id}
@@ -209,7 +186,6 @@ const AboutSection: React.FC = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 * i }}
                 >
-                  {/* Node marker */}
                   <div className="absolute -left-6 md:-left-10 top-2 flex items-center">
                     <div className="relative flex items-center justify-center w-[18px] h-[18px] md:w-[30px] md:h-[30px]">
                       <div className="absolute inset-0 rounded-full border border-nv-500/40" />
@@ -218,12 +194,11 @@ const AboutSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Card */}
                   <div className="group relative bg-ink-900/70 border border-white/5 hover:border-nv-500/40 transition-colors p-6 md:p-8">
                     <div className="absolute top-0 left-0 h-px bg-nv-500 w-0 group-hover:w-full transition-all duration-700" />
 
                     <div className="flex flex-wrap items-center gap-3 mb-3">
-                      <span className="font-mono text-[12px] text-nv-500 tracking-wider">
+                      <span className="font-mono text-[12px] text-ink-400 tracking-wider">
                         {node.id} · {node.year}
                       </span>
                       <span className="h-px flex-1 bg-white/5 min-w-[20px]" />
@@ -239,7 +214,7 @@ const AboutSection: React.FC = () => {
                       // {node.org}
                     </div>
 
-                    <p className="text-base text-ink-200 leading-relaxed mb-4 max-w-3xl">
+                    <p className="text-lg text-ink-200 leading-relaxed mb-4 max-w-3xl">
                       {node.summary}
                     </p>
 
@@ -257,6 +232,25 @@ const AboutSection: React.FC = () => {
                   </div>
                 </motion.div>
               ))}
+
+              {/* Terminal node — next step, at the bottom so history reads top-down naturally */}
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="absolute -left-6 md:-left-10 top-2 flex items-center">
+                  <div className="w-[18px] h-[18px] md:w-[30px] md:h-[30px] flex items-center justify-center">
+                    <div className="w-2.5 h-2.5 border border-nv-500 rotate-45 animate-pulse" />
+                  </div>
+                </div>
+                <div className="font-mono text-[13px] text-ink-300 pt-1">
+                  {'>'} <span className="text-nv-500">AWAITING_NEXT_NODE</span> ·
+                  Robotics / Autonomy PM — Summer 2026 / FT 2027_
+                </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>
